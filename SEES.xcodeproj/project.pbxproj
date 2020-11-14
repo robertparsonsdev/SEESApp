@@ -19,6 +19,7 @@
 		EEA59130255F7A0900B8F856 /* HomeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5912F255F7A0900B8F856 /* HomeCollectionViewController.swift */; };
 		EEA59133255F7A1400B8F856 /* CalendarCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA59132255F7A1400B8F856 /* CalendarCollectionViewController.swift */; };
 		EEA59136255F7A2000B8F856 /* ContactCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA59135255F7A2000B8F856 /* ContactCollectionViewController.swift */; };
+		EEA5913B255F881400B8F856 /* SEESLogoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5913A255F881400B8F856 /* SEESLogoImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		EEA5912F255F7A0900B8F856 /* HomeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewController.swift; sourceTree = "<group>"; };
 		EEA59132255F7A1400B8F856 /* CalendarCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewController.swift; sourceTree = "<group>"; };
 		EEA59135255F7A2000B8F856 /* ContactCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCollectionViewController.swift; sourceTree = "<group>"; };
+		EEA5913A255F881400B8F856 /* SEESLogoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEESLogoImageView.swift; sourceTree = "<group>"; };
 		FB293462A91E2B75DA431EF0 /* Pods_SEES.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SEES.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -90,6 +92,7 @@
 		EEA590D1255F5E4A00B8F856 /* SEES */ = {
 			isa = PBXGroup;
 			children = (
+				EEA59139255F880100B8F856 /* Custom Views */,
 				EEA5912A255F792100B8F856 /* Screens */,
 				EEA59111255F72AA00B8F856 /* Extensions */,
 				EEA5910F255F71DF00B8F856 /* Support */,
@@ -128,6 +131,14 @@
 				EEA59135255F7A2000B8F856 /* ContactCollectionViewController.swift */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		EEA59139255F880100B8F856 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				EEA5913A255F881400B8F856 /* SEESLogoImageView.swift */,
+			);
+			path = "Custom Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,6 +257,7 @@
 			files = (
 				EEA5912C255F79E800B8F856 /* LoginViewController.swift in Sources */,
 				EEA590D3255F5E4A00B8F856 /* AppDelegate.swift in Sources */,
+				EEA5913B255F881400B8F856 /* SEESLogoImageView.swift in Sources */,
 				EEA59136255F7A2000B8F856 /* ContactCollectionViewController.swift in Sources */,
 				EEA59117255F73DF00B8F856 /* MainTabBarController.swift in Sources */,
 				EEA59130255F7A0900B8F856 /* HomeCollectionViewController.swift in Sources */,

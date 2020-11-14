@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8752522D8ED9671963AFBE0D /* Pods_SEES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB293462A91E2B75DA431EF0 /* Pods_SEES.framework */; };
 		EEA590D3255F5E4A00B8F856 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA590D2255F5E4A00B8F856 /* AppDelegate.swift */; };
 		EEA590D5255F5E4A00B8F856 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA590D4255F5E4A00B8F856 /* SceneDelegate.swift */; };
 		EEA590D7255F5E4A00B8F856 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA590D6255F5E4A00B8F856 /* ViewController.swift */; };
 		EEA590DC255F5E4E00B8F856 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEA590DB255F5E4E00B8F856 /* Assets.xcassets */; };
 		EEA590DF255F5E4E00B8F856 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEA590DD255F5E4E00B8F856 /* LaunchScreen.storyboard */; };
+		EEA590EB255F5EC700B8F856 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EEA590EA255F5EC700B8F856 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		73006512DD1B120087C2ECDF /* Pods-SEES.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SEES.release.xcconfig"; path = "Target Support Files/Pods-SEES/Pods-SEES.release.xcconfig"; sourceTree = "<group>"; };
+		E45E24FFEC3B10333A34C4F7 /* Pods-SEES.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SEES.debug.xcconfig"; path = "Target Support Files/Pods-SEES/Pods-SEES.debug.xcconfig"; sourceTree = "<group>"; };
 		EEA590CF255F5E4A00B8F856 /* SEES.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SEES.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEA590D2255F5E4A00B8F856 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEA590D4255F5E4A00B8F856 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -22,6 +26,8 @@
 		EEA590DB255F5E4E00B8F856 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EEA590DE255F5E4E00B8F856 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EEA590E0255F5E4E00B8F856 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EEA590EA255F5EC700B8F856 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FB293462A91E2B75DA431EF0 /* Pods_SEES.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SEES.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +35,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8752522D8ED9671963AFBE0D /* Pods_SEES.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0BD64E0366F8BC72A334A79E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E45E24FFEC3B10333A34C4F7 /* Pods-SEES.debug.xcconfig */,
+				73006512DD1B120087C2ECDF /* Pods-SEES.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		0F3ABC64228771A334632A54 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FB293462A91E2B75DA431EF0 /* Pods_SEES.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EEA590C6255F5E4A00B8F856 = {
 			isa = PBXGroup;
 			children = (
 				EEA590D1255F5E4A00B8F856 /* SEES */,
 				EEA590D0255F5E4A00B8F856 /* Products */,
+				0BD64E0366F8BC72A334A79E /* Pods */,
+				0F3ABC64228771A334632A54 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,6 +87,7 @@
 				EEA590DB255F5E4E00B8F856 /* Assets.xcassets */,
 				EEA590DD255F5E4E00B8F856 /* LaunchScreen.storyboard */,
 				EEA590E0255F5E4E00B8F856 /* Info.plist */,
+				EEA590EA255F5EC700B8F856 /* GoogleService-Info.plist */,
 			);
 			path = SEES;
 			sourceTree = "<group>";
@@ -71,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EEA590E3255F5E4E00B8F856 /* Build configuration list for PBXNativeTarget "SEES" */;
 			buildPhases = (
+				3B4F127D2B48A85CD3EF6714 /* [CP] Check Pods Manifest.lock */,
 				EEA590CB255F5E4A00B8F856 /* Sources */,
 				EEA590CC255F5E4A00B8F856 /* Frameworks */,
 				EEA590CD255F5E4A00B8F856 /* Resources */,
+				BC4F1B8180521D843EED2AEC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,10 +153,53 @@
 			files = (
 				EEA590DF255F5E4E00B8F856 /* LaunchScreen.storyboard in Resources */,
 				EEA590DC255F5E4E00B8F856 /* Assets.xcassets in Resources */,
+				EEA590EB255F5EC700B8F856 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3B4F127D2B48A85CD3EF6714 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SEES-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BC4F1B8180521D843EED2AEC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SEES/Pods-SEES-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SEES/Pods-SEES-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SEES/Pods-SEES-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EEA590CB255F5E4A00B8F856 /* Sources */ = {
@@ -271,6 +344,7 @@
 		};
 		EEA590E4255F5E4E00B8F856 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E45E24FFEC3B10333A34C4F7 /* Pods-SEES.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -290,6 +364,7 @@
 		};
 		EEA590E5255F5E4E00B8F856 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73006512DD1B120087C2ECDF /* Pods-SEES.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

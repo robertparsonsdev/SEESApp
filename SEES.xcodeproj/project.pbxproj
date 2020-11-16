@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8752522D8ED9671963AFBE0D /* Pods_SEES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB293462A91E2B75DA431EF0 /* Pods_SEES.framework */; };
+		EE61809325620C80000283B9 /* SEESBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE61809225620C80000283B9 /* SEESBodyLabel.swift */; };
 		EE7BA660256090FE005126D2 /* SEESTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7BA65F256090FE005126D2 /* SEESTextField.swift */; };
 		EE7BA664256095A2005126D2 /* SEESButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7BA663256095A2005126D2 /* SEESButton.swift */; };
 		EE7BA66925609FCC005126D2 /* NSRegularExpressionExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7BA66725609FCC005126D2 /* NSRegularExpressionExt.swift */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		73006512DD1B120087C2ECDF /* Pods-SEES.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SEES.release.xcconfig"; path = "Target Support Files/Pods-SEES/Pods-SEES.release.xcconfig"; sourceTree = "<group>"; };
 		E45E24FFEC3B10333A34C4F7 /* Pods-SEES.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SEES.debug.xcconfig"; path = "Target Support Files/Pods-SEES/Pods-SEES.debug.xcconfig"; sourceTree = "<group>"; };
+		EE61809225620C80000283B9 /* SEESBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEESBodyLabel.swift; sourceTree = "<group>"; };
 		EE7BA65F256090FE005126D2 /* SEESTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEESTextField.swift; sourceTree = "<group>"; };
 		EE7BA663256095A2005126D2 /* SEESButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEESButton.swift; sourceTree = "<group>"; };
 		EE7BA66725609FCC005126D2 /* NSRegularExpressionExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSRegularExpressionExt.swift; sourceTree = "<group>"; };
@@ -77,6 +79,14 @@
 				FB293462A91E2B75DA431EF0 /* Pods_SEES.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EE61809125620C64000283B9 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				EE61809225620C80000283B9 /* SEESBodyLabel.swift */,
+			);
+			path = Labels;
 			sourceTree = "<group>";
 		};
 		EE7BA65D256090BC005126D2 /* Image Views */ = {
@@ -170,6 +180,7 @@
 		EEA59139255F880100B8F856 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				EE61809125620C64000283B9 /* Labels */,
 				EE7BA6622560957F005126D2 /* Buttons */,
 				EE7BA65E256090D1005126D2 /* Text Fields */,
 				EE7BA65D256090BC005126D2 /* Image Views */,
@@ -291,6 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE61809325620C80000283B9 /* SEESBodyLabel.swift in Sources */,
 				EEA5912C255F79E800B8F856 /* LoginViewController.swift in Sources */,
 				EE7BA66A25609FCC005126D2 /* StringExt.swift in Sources */,
 				EEA590D3255F5E4A00B8F856 /* AppDelegate.swift in Sources */,

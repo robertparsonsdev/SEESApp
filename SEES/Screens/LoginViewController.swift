@@ -13,19 +13,19 @@ class LoginViewController: UIViewController {
     private let broncoEmailTextField = SEESTextField(placeholder: "Bronco Email", keyboardType: .emailAddress, returnKeyType: .next)
     private let broncoIDTextField = SEESTextField(placeholder: "Bronco ID", keyboardType: .numberPad, returnKeyType: .go)
     private let loginButton = SEESButton(backgroundColor: .systemTeal, title: "Log In")
+    private let warningLabel = SEESBodyLabel(textAlignment: .center, text: "You will need to have signed up for SEES and have received the \"Welcome to SEES!\" email before you are able to login to this app.")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         configureViewController()
+        addNotificationObservers()
+        
         configureLogoImageView()
         configureTextField(textField: broncoEmailTextField, tag: 0)
         configureTextField(textField: broncoIDTextField, tag: 1)
         configureLoginButton()
         configureDismissKeyboardTapGesture()
         configureConstraints()
-        
-        print(logoImageView.frame.height)
     }
     
     // MARK: - Configuration Functions
@@ -37,6 +37,11 @@ class LoginViewController: UIViewController {
     
     fileprivate func configureLogoImageView() {
         logoImageView = SEESLogoImageView(cornerRadius: (self.view.frame.width * logoMultiplier) / 2)
+    }
+    
+    fileprivate func addNotificationObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     fileprivate func configureTextField(textField: SEESTextField, tag: Int) {
@@ -66,15 +71,28 @@ class LoginViewController: UIViewController {
         
         view.addSubview(loginButton)
         loginButton.anchor(top: broncoIDTextField.bottomAnchor, leading: nil, bottom: nil, trailing: nil, x: view.centerXAnchor, y: nil, paddingTop: 15, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: itemWidth, height: itemHeight)
+        
+        view.addSubview(warningLabel)
+        warningLabel.anchor(top: nil, leading: nil, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: nil, x: view.centerXAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: itemWidth + 50, height: 0)
     }
     
     // MARK: - Selectors
     @objc func handleLogin() {
-        guard let email = self.broncoEmailTextField.text, let password = self.broncoIDTextField.text else { return }
+        guard let email = self.broncoEmailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), let password = self.broncoIDTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         guard validateInput(of: email, for: .email) else { return }
         guard validateInput(of: password, for: .id) else { return }
         print(email)
         print(password)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        var keyboardFrame: CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        
     }
     
     // MARK: - Functions
@@ -85,16 +103,16 @@ class LoginViewController: UIViewController {
     }
     
     func validateInput(of input: String, for type: BroncoType) -> Bool {
-        if input.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+        if input.isEmpty {
             switch type {
             case .email: presentAlertController(withTitle: "Missing Bronco Email", andMessage: "Please enter your Bronco email.\n Example: billybronco@cpp.edu")
             case .id: presentAlertController(withTitle: "Missing Bronco ID", andMessage: "Please enter your 9 digit Bronco ID.")
             }
             return false
-        } else if type == .email && !(input.trimmingCharacters(in: .whitespacesAndNewlines) ~= "^[a-zA-Z0-9]+@cpp.edu$") {
+        } else if type == .email && !(input ~= "^[a-zA-Z0-9]+@cpp.edu$") {
             presentAlertController(withTitle: "Incorrect Email", andMessage: "Please ensure that you entered your Bronco Email correctly.\nExample: billybronco@cpp.edu")
             return false
-        } else if type == .id && !(input.trimmingCharacters(in: .whitespacesAndNewlines) ~= "^[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$") {
+        } else if type == .id && !(input ~= "^[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$") {
             presentAlertController(withTitle: "Incorrect Bronco ID", andMessage: "Please ensure that you entered your 9 digit Bronco ID correctly.")
             return false
         } else {

@@ -81,8 +81,22 @@ class LoginViewController: UIViewController {
         guard let email = self.broncoEmailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), let password = self.broncoIDTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         guard validateInput(of: email, for: .email) else { return }
         guard validateInput(of: password, for: .id) else { return }
-        print(email)
-        print(password)
+        
+        NetworkManager.shared.login(withEmail: email, andPassword: password) { (result) in
+            switch result {
+            case .success(_):
+                DispatchQueue.main.async {
+                    // cast user to Student and pass to maintabbarcontroller (I think?)
+                    guard let mainTabBarController = self.view.window?.rootViewController as? MainTabBarController else { return }
+                    mainTabBarController.configureViewControllers()
+                    self.dismiss(animated: true)
+                }
+            case .failure(_):
+                DispatchQueue.main.async {
+                    self.presentAlertController(withTitle: "Error: Unable to Log In", andMessage: "If you are in fact a SEES member and cannot log in, please report this error to the SEES Office.")
+                }
+            }
+        }
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {

@@ -23,7 +23,7 @@ class MainTabBarController: UITabBarController {
         configureViewControllers()
     }
     
-    fileprivate func configureViewControllers() {
+    func configureViewControllers() {
         let homeViewController = buildTabBarViewController(withTitle: "Home", andImage: UIImage(systemName: "house.fill")!, andRootVC: HomeCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout()))
         let calendarViewController = buildTabBarViewController(withTitle: "Calendar", andImage: UIImage(systemName: "calendar")!, andRootVC: CalendarCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout()))
         let contactViewController = buildTabBarViewController(withTitle: "Contact Us", andImage: UIImage(systemName: "envelope.fill")!, andRootVC: ContactCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout()))

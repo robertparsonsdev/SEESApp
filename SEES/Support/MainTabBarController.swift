@@ -9,13 +9,14 @@ import UIKit
 import Firebase
 
 class MainTabBarController: UITabBarController {
+    let networkManager = NetworkManager.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         guard Auth.auth().currentUser != nil else {
             DispatchQueue.main.async {
-                self.present(UINavigationController(rootViewController: LoginViewController()), animated: true)
+                self.present(UINavigationController(rootViewController: LoginViewController(networkManager: self.networkManager)), animated: true)
             }
             return
         }

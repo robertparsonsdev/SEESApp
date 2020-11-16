@@ -8,17 +8,29 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    private let logoMultiplier: CGFloat = 0.625
+    private let networkManager: NetworkManager
+    
+    private let logoMultiplier: CGFloat = 0.5
     private var logoImageView: SEESLogoImageView!
     private let broncoEmailTextField = SEESTextField(placeholder: "Bronco Email", keyboardType: .emailAddress, returnKeyType: .next)
     private let broncoIDTextField = SEESTextField(placeholder: "Bronco ID", keyboardType: .numberPad, returnKeyType: .go)
     private let loginButton = SEESButton(backgroundColor: .systemTeal, title: "Log In")
     private let warningLabel = SEESBodyLabel(textAlignment: .center, text: "You will need to have signed up for SEES and have received the \"Welcome to SEES!\" email before you are able to login to this app.")
     
+    // MARK: - Intializers
+    init(networkManager: NetworkManager) {
+        self.networkManager = networkManager
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - View Controller Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
-        addNotificationObservers()
         
         configureLogoImageView()
         configureTextField(textField: broncoEmailTextField, tag: 0)
@@ -37,11 +49,6 @@ class LoginViewController: UIViewController {
     
     fileprivate func configureLogoImageView() {
         logoImageView = SEESLogoImageView(cornerRadius: (self.view.frame.width * logoMultiplier) / 2)
-    }
-    
-    fileprivate func addNotificationObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     fileprivate func configureTextField(textField: SEESTextField, tag: Int) {
@@ -78,56 +85,37 @@ class LoginViewController: UIViewController {
     
     // MARK: - Selectors
     @objc func handleLogin() {
-        guard let email = self.broncoEmailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), let password = self.broncoIDTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+        guard let email = self.broncoEmailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), let id = self.broncoIDTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
         guard validateInput(of: email, for: .email) else { return }
-        guard validateInput(of: password, for: .id) else { return }
+        guard validateInput(of: id, for: .id) else { return }
         
-        NetworkManager.shared.login(withEmail: email, andPassword: password) { (result) in
+        self.networkManager.login(withEmail: email, andPassword: id) { (result) in
             switch result {
             case .success(_):
                 DispatchQueue.main.async {
-                    // cast user to Student and pass to maintabbarcontroller (I think?)
                     guard let mainTabBarController = self.view.window?.rootViewController as? MainTabBarController else { return }
                     mainTabBarController.configureViewControllers()
                     self.dismiss(animated: true)
                 }
-            case .failure(_):
-                DispatchQueue.main.async {
-                    self.presentAlertController(withTitle: "Error: Unable to Log In", andMessage: "If you are in fact a SEES member and cannot log in, please report this error to the SEES Office.")
-                }
+            case .failure(let error):
+                self.presentErrorOnMainThread(withError: .loginError, optionalMessage: "\n\n\(error.localizedDescription)")
             }
         }
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
-        guard let userInfo = notification.userInfo else { return }
-        var keyboardFrame: CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
-        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        
-    }
-    
     // MARK: - Functions
-    func presentAlertController(withTitle title: String, andMessage message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Okay", style: .default))
-        present(alertController, animated: true)
-    }
-    
     func validateInput(of input: String, for type: BroncoType) -> Bool {
         if input.isEmpty {
             switch type {
-            case .email: presentAlertController(withTitle: "Missing Bronco Email", andMessage: "Please enter your Bronco email.\n Example: billybronco@cpp.edu")
-            case .id: presentAlertController(withTitle: "Missing Bronco ID", andMessage: "Please enter your 9 digit Bronco ID.")
+            case .email: presentErrorOnMainThread(withError: .missingEmail)
+            case .id: presentErrorOnMainThread(withError: .missingID)
             }
             return false
         } else if type == .email && !(input ~= "^[a-zA-Z0-9]+@cpp.edu$") {
-            presentAlertController(withTitle: "Incorrect Email", andMessage: "Please ensure that you entered your Bronco Email correctly.\nExample: billybronco@cpp.edu")
+            presentErrorOnMainThread(withError: .incorrectEmail)
             return false
         } else if type == .id && !(input ~= "^[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$") {
-            presentAlertController(withTitle: "Incorrect Bronco ID", andMessage: "Please ensure that you entered your 9 digit Bronco ID correctly.")
+            presentErrorOnMainThread(withError: .incorrectID)
             return false
         } else {
             return true
@@ -147,10 +135,4 @@ extension LoginViewController: UITextFieldDelegate {
         }
         return true
     }
-}
-
-// MARK: - Enums
-enum BroncoType: String {
-    case email = "Email"
-    case id = "ID"
 }

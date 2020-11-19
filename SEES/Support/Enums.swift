@@ -13,7 +13,7 @@ enum BroncoType {
 
 enum SEESError {
     case missingEmail, missingID, incorrectEmail, incorrectID
-    case loginError
+    case loginError, signOutError
     
     var info: (title: String, message: String) {
         switch self {
@@ -21,7 +21,8 @@ enum SEESError {
         case .missingID: return ("Missing Bronco ID", "Please enter your 9 digit Bronco ID.")
         case .incorrectEmail: return ("Incorrect Email", "Please ensure that you entered your Bronco Email correctly.\nExample: billybronco@cpp.edu")
         case .incorrectID: return ("Incorrect Bronco ID", "Please ensure that you entered your 9 digit Bronco ID correctly.")
-        case .loginError: return ("Error: Unable to Log In", "If you are a SEES member and cannot log in, please report this error to the SEES Office.")
+        case .loginError: return ("Unable to Log In", "If you are a SEES member and cannot log in, please report this error to the SEES Office.")
+        case .signOutError: return ("Unable to Sign Out", "Make sure you are connected to the internet and try again.")
         }
     }
 }

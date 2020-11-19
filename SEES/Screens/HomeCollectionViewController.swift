@@ -10,7 +10,20 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class HomeCollectionViewController: UICollectionViewController {
-
+    private let networkManager: NetworkManager
+    
+    // MARK: - Initializers
+    init(networkManager: NetworkManager) {
+        self.networkManager = networkManager
+        
+        super.init(collectionViewLayout: UICollectionViewFlowLayout())
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Collection View Functions
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,7 +37,6 @@ class HomeCollectionViewController: UICollectionViewController {
         return 1
     }
 
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 0
     }
@@ -37,7 +49,21 @@ class HomeCollectionViewController: UICollectionViewController {
     
     // MARK: - Configuration Functions
     fileprivate func configureViewController() {
-        self.collectionView.backgroundColor = .systemPink
+        self.collectionView.backgroundColor = .systemBackground
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        let signOutButton = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOut))
+        signOutButton.tintColor = .systemRed
+        navigationItem.rightBarButtonItem = signOutButton
+    }
+    
+    // MARK: - Selectors
+    @objc fileprivate func signOut() {
+        self.networkManager.signOut { (result) in
+            switch result {
+            case .success(let boolean): print(boolean)
+            case .failure(let error): self.presentErrorOnMainThread(withError: .signOutError, optionalMessage: "\n\n\(error)")
+            }
+        }
     }
 }

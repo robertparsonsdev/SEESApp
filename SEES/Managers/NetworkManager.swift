@@ -25,4 +25,13 @@ class NetworkManager {
             }
         }
     }
+    
+    func signOut(completed: @escaping (Result<Bool, Error>) -> Void) {
+        do {
+            try Auth.auth().signOut()
+            completed(.success(true))
+        } catch let error {
+            completed(.failure(error))
+        }
+    }
 }

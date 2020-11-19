@@ -21,6 +21,6 @@ class HomeHeader: UICollectionReusableView {
     }
     
     fileprivate func configureCell() {
-        backgroundColor = .systemPurple
+        
     }
 }

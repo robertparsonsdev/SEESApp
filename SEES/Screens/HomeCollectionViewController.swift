@@ -41,12 +41,15 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HomeHeader.identifer, for: indexPath) as! HomeHeader
+        header.backgroundColor = .tertiarySystemFill
         return header
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCell.identifier, for: indexPath) as! HomeCell
-        cell.backgroundColor = self.homeItems[indexPath.row].color
+        let item = self.homeItems[indexPath.row]
+        cell.backgroundColor = item.color
+        cell.set(image: item.major.image, andText: item.major.name)
         return cell
     }
     

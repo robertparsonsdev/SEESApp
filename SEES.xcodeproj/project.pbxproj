@@ -11,6 +11,7 @@
 		EE06F58F2565FC3B0044CC27 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE06F58E2565FC3B0044CC27 /* UIHelper.swift */; };
 		EE06F5932566034A0044CC27 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE06F5922566034A0044CC27 /* HomeCell.swift */; };
 		EE06F597256604630044CC27 /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE06F596256604630044CC27 /* HomeHeader.swift */; };
+		EE06F59B256607240044CC27 /* HomeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE06F59A256607240044CC27 /* HomeItem.swift */; };
 		EE61809325620C80000283B9 /* SEESBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE61809225620C80000283B9 /* SEESBodyLabel.swift */; };
 		EE61809825621154000283B9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE61809725621154000283B9 /* NetworkManager.swift */; };
 		EE61809C25622560000283B9 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE61809B25622560000283B9 /* UIViewControllerExt.swift */; };
@@ -39,6 +40,7 @@
 		EE06F58E2565FC3B0044CC27 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		EE06F5922566034A0044CC27 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		EE06F596256604630044CC27 /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
+		EE06F59A256607240044CC27 /* HomeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeItem.swift; sourceTree = "<group>"; };
 		EE61809225620C80000283B9 /* SEESBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEESBodyLabel.swift; sourceTree = "<group>"; };
 		EE61809725621154000283B9 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		EE61809B25622560000283B9 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
@@ -111,6 +113,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		EE06F599256606330044CC27 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EE06F59A256607240044CC27 /* HomeItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		EE61809125620C64000283B9 /* Labels */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +182,7 @@
 		EEA590D1255F5E4A00B8F856 /* SEES */ = {
 			isa = PBXGroup;
 			children = (
+				EE06F599256606330044CC27 /* Models */,
 				EE06F58D2565FC230044CC27 /* Utilities */,
 				EE61809625621142000283B9 /* Managers */,
 				EEA59139255F880100B8F856 /* Custom Views */,
@@ -357,6 +368,7 @@
 				EE7BA66925609FCC005126D2 /* NSRegularExpressionExt.swift in Sources */,
 				EE7BA660256090FE005126D2 /* SEESTextField.swift in Sources */,
 				EE7BA664256095A2005126D2 /* SEESButton.swift in Sources */,
+				EE06F59B256607240044CC27 /* HomeItem.swift in Sources */,
 				EEA59136255F7A2000B8F856 /* ContactCollectionViewController.swift in Sources */,
 				EEA59117255F73DF00B8F856 /* MainTabBarController.swift in Sources */,
 				EEA59130255F7A0900B8F856 /* HomeCollectionViewController.swift in Sources */,

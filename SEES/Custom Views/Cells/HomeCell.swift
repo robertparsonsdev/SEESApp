@@ -22,6 +22,5 @@ class HomeCell: UICollectionViewCell {
     
     fileprivate func configureCell() {
         layer.cornerRadius = 14
-        backgroundColor = .systemBlue
     }
 }

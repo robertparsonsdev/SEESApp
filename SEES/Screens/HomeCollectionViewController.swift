@@ -7,8 +7,6 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
 class HomeCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     private let networkManager: NetworkManager
     
@@ -23,14 +21,14 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Collection View Functions
+    // MARK: - Collection View Life Cycle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureViewController()
         
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        self.collectionView!.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "Header")
+        self.collectionView!.register(HomeCell.self, forCellWithReuseIdentifier: HomeCell.identifier)
+        self.collectionView!.register(HomeHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HomeHeader.identifer)
     }
 
     // MARK: - UICollectionViewDataSource
@@ -43,14 +41,12 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath)
-        header.backgroundColor = .systemPink
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HomeHeader.identifer, for: indexPath) as! HomeHeader
         return header
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        cell.backgroundColor = .systemGray
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCell.identifier, for: indexPath) as! HomeCell
         return cell
     }
     

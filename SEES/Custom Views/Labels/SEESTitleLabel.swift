@@ -33,8 +33,7 @@ class SEESTitleLabel: UILabel {
         textColor = .label
         adjustsFontSizeToFitWidth = true
         minimumScaleFactor = 0.9
-        lineBreakMode = .byWordWrapping
+        lineBreakMode = .byTruncatingTail
         numberOfLines = 2
     }
-
 }

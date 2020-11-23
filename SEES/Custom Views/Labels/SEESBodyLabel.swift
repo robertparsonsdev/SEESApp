@@ -26,7 +26,7 @@ class SEESBodyLabel: UILabel {
     }
     
     private func configure() {
-        textColor = .secondaryLabel
+        textColor = .label
         font = UIFont.preferredFont(forTextStyle: .body)
         adjustsFontSizeToFitWidth = true
         minimumScaleFactor = 0.75
@@ -34,5 +34,4 @@ class SEESBodyLabel: UILabel {
         numberOfLines = 0
         sizeToFit()
     }
-    
 }

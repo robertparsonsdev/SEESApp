@@ -41,7 +41,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HomeHeader.identifer, for: indexPath) as! HomeHeader
-        header.backgroundColor = .tertiarySystemFill
+        header.set(name: "Dr. Robert Parsons", office: "3-2123")
         return header
     }
 

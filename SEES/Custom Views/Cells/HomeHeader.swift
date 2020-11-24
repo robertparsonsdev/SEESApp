@@ -10,16 +10,15 @@ import UIKit
 class HomeHeader: UICollectionReusableView {
     public static let identifer = "HomeHeader"
     
-    private var advisorName = ""
-    private var advisorOffice = ""
-    
     private let stackView = UIStackView()
-    private var advisorNameMessage: SEESMessageView!
-    private var advisorOfficeMessage: SEESMessageView!
-    private var infoMessage: SEESMessageView!
+    private let advisorNameMessage = SEESMessageView()
+    private let advisorOfficeMessage = SEESMessageView()
+    private let infoMessage = SEESMessageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        configureCell()
     }
     
     required init?(coder: NSCoder) {
@@ -27,18 +26,13 @@ class HomeHeader: UICollectionReusableView {
     }
     
     func set(name: String, office: String) {
-        self.advisorName = name
-        self.advisorOffice = office
-        
-        configureCell()
+        advisorNameMessage.set(title: "My Advisor:", message: name)
+        advisorOfficeMessage.set(title: "Advisor Office:", message: office)
+        infoMessage.set(title: nil, message: "SEES students are required to receive academic advising each semester. Instructions on how to do so can be found below along with major curriculum information.")
     }
     
     fileprivate func configureCell() {
         let externalPadding: CGFloat = 20, internalPadding: CGFloat = 15
-        
-        advisorNameMessage = SEESMessageView(title: "My Advisor:", message: self.advisorName)
-        advisorOfficeMessage = SEESMessageView(title: "Advisor Office:", message: self.advisorOffice)
-        infoMessage = SEESMessageView(title: nil, message: "SEES students are required to receive academic advising each semester. Instructions on how to do so can be found below along with major curriculum information.")
         
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually

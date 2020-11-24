@@ -8,9 +8,9 @@
 import UIKit
 
 class SEESBodyLabel: UILabel {
-
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         configure()
     }
     
@@ -20,9 +20,14 @@ class SEESBodyLabel: UILabel {
     
     init(textAlignment: NSTextAlignment, text: String) {
         super.init(frame: .zero)
+        
+        set(textAlignment: textAlignment, text: text)
+        configure()
+    }
+    
+    public func set(textAlignment: NSTextAlignment, text: String) {
         self.textAlignment = textAlignment
         self.text = text
-        configure()
     }
     
     private func configure() {

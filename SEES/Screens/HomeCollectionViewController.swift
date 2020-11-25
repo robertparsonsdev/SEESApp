@@ -137,7 +137,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     private func reload(withStudent student: Student) {
         DispatchQueue.main.async {
             self.student = student
-            self.navigationController?.title = "Welcome \(student.firstName)!"
+            self.navigationController?.navigationBar.topItem?.title = "Welcome \(student.firstName)!"
             self.collectionView.reloadData()
         }
     }

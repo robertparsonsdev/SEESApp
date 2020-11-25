@@ -8,13 +8,14 @@
 import UIKit
 
 class HomeCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    private var student: Student?
     private let networkManager: NetworkManager
     private var homeItems: [HomeItem] = []
     
     // MARK: - Initializers
     init(networkManager: NetworkManager) {
         self.networkManager = networkManager
-        
+
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
     }
     
@@ -28,6 +29,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
 
         configureViewController()
         createHomeItems()
+        fetchStudent()
     }
 
     // MARK: - UICollectionViewDataSource
@@ -41,7 +43,9 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HomeHeader.identifer, for: indexPath) as! HomeHeader
-        header.set(name: "Dr. Robert Parsons", office: "3-2123")
+        if let student = self.student {
+            header.set(name: student.advisor, office: student.advisorOffice)
+        }
         return header
     }
 
@@ -58,7 +62,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     // MARK: - Configuration Functions
-    fileprivate func configureViewController() {
+    private func configureViewController() {
         self.collectionView.backgroundColor = .systemBackground
         self.collectionView.collectionViewLayout = UIHelper.createSingleColumnFlowLayout(in: self.collectionView)
         self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -72,7 +76,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     // MARK: - Functions
-    fileprivate func createHomeItems() {
+    private func createHomeItems() {
         self.homeItems.append(HomeItem(major: .academicAdvising, color: .systemGreen))
         self.homeItems.append(HomeItem(major: .biology, color: .systemTeal))
         self.homeItems.append(HomeItem(major: .biotech, color: .systemTeal))
@@ -83,6 +87,22 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         self.homeItems.append(HomeItem(major: .kin, color: .systemTeal))
         self.homeItems.append(HomeItem(major: .math, color: .systemTeal))
         self.homeItems.append(HomeItem(major: .physics, color: .systemTeal))
+    }
+    
+    private func fetchStudent() {
+        self.networkManager.fetchStudent { [weak self] (result) in
+            guard let self = self else { return }
+            switch result {
+            case .success(let student):
+                DispatchQueue.main.async {
+                    self.student = student
+                    self.title = "Welcome \(student.firstName)!"
+                    self.collectionView.reloadData()
+                }
+            case .failure(let error):
+                self.presentErrorOnMainThread(withError: error, optionalMessage: nil)
+            }
+        }
     }
     
     // MARK: - Selectors

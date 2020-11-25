@@ -34,4 +34,17 @@ class NetworkManager {
             completed(.failure(error))
         }
     }
+    
+    func fetchStudent(completed: @escaping (Result<Student, SEESError>) -> Void) {
+        guard let email = Auth.auth().currentUser?.email?.components(separatedBy: "@")[0] else {
+            completed(.failure(.unableToGetCurrentStudent))
+            return
+        }
+        
+        Database.database().reference().child("users").child(email).observeSingleEvent(of: .value) { (snapshot) in
+            guard let studentDictionary = snapshot.value as? [String: String] else { completed(.failure(.unableToRetrieveData)); return }
+            let student = Student(dictionary: studentDictionary)
+            completed(.success(student))
+        }
+    }
 }

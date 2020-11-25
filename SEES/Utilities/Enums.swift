@@ -15,6 +15,7 @@ enum SEESError: Error {
     case missingEmail, missingID, incorrectEmail, incorrectID
     case loginError, signOutError
     case unableToGetCurrentStudent, unableToRetrieveData
+    case unableToSaveStudent, unableToRetrieveStudent
     
     var info: (title: String, message: String) {
         switch self {
@@ -26,6 +27,8 @@ enum SEESError: Error {
         case .signOutError: return ("Unable to Sign Out", "Make sure you are connected to the internet and try again.")
         case .unableToGetCurrentStudent: return ("Unable to Get Student", "Please ensure that you have an internet connection and are logged in.")
         case .unableToRetrieveData: return ("Unable to Retrieve Data", "Please ensure that you have an internet connection and are logged in.")
+        case .unableToSaveStudent: return ("Unable to Save Student Data", "Please try restarting this app.")
+        case .unableToRetrieveStudent: return ("Unable to Retrieve Student Data", "Please try restarting this app.")
         }
     }
 }
@@ -62,4 +65,8 @@ enum Major {
         case .physics: return UIImage(named: "phy")!
         }
     }
+}
+
+enum Keys {
+    static let student = "student"
 }

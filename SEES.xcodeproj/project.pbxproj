@@ -15,6 +15,7 @@
 		EE06F59B256607240044CC27 /* HomeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE06F59A256607240044CC27 /* HomeItem.swift */; };
 		EE06F59E2566255B0044CC27 /* SEESTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE06F59D2566255B0044CC27 /* SEESTitleLabel.swift */; };
 		EE122C16256DDD9400D11454 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE122C15256DDD9400D11454 /* Student.swift */; };
+		EE122C22256E0BD900D11454 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE122C21256E0BD900D11454 /* PersistenceManager.swift */; };
 		EE61809325620C80000283B9 /* SEESBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE61809225620C80000283B9 /* SEESBodyLabel.swift */; };
 		EE61809825621154000283B9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE61809725621154000283B9 /* NetworkManager.swift */; };
 		EE61809C25622560000283B9 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE61809B25622560000283B9 /* UIViewControllerExt.swift */; };
@@ -47,6 +48,7 @@
 		EE06F59A256607240044CC27 /* HomeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeItem.swift; sourceTree = "<group>"; };
 		EE06F59D2566255B0044CC27 /* SEESTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEESTitleLabel.swift; sourceTree = "<group>"; };
 		EE122C15256DDD9400D11454 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		EE122C21256E0BD900D11454 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		EE61809225620C80000283B9 /* SEESBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEESBodyLabel.swift; sourceTree = "<group>"; };
 		EE61809725621154000283B9 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		EE61809B25622560000283B9 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				EE61809725621154000283B9 /* NetworkManager.swift */,
+				EE122C21256E0BD900D11454 /* PersistenceManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -201,8 +204,8 @@
 				EE06F599256606330044CC27 /* Models */,
 				EE06F58D2565FC230044CC27 /* Utilities */,
 				EE61809625621142000283B9 /* Managers */,
-				EEA59139255F880100B8F856 /* Custom Views */,
 				EEA5912A255F792100B8F856 /* Screens */,
+				EEA59139255F880100B8F856 /* Custom Views */,
 				EEA59111255F72AA00B8F856 /* Extensions */,
 				EEA5910F255F71DF00B8F856 /* Support */,
 				EEA590DB255F5E4E00B8F856 /* Assets.xcassets */,
@@ -373,6 +376,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE61809325620C80000283B9 /* SEESBodyLabel.swift in Sources */,
+				EE122C22256E0BD900D11454 /* PersistenceManager.swift in Sources */,
 				EEA5912C255F79E800B8F856 /* LoginViewController.swift in Sources */,
 				EE025286256B3B1400E7047A /* SEESMessageView.swift in Sources */,
 				EE06F5932566034A0044CC27 /* HomeCell.swift in Sources */,

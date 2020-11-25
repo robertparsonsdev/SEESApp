@@ -10,11 +10,13 @@ import UIKit
 class HomeCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     private var student: Student?
     private let networkManager: NetworkManager
+    private let persistence: PersistenceManager
     private var homeItems: [HomeItem] = []
     
     // MARK: - Initializers
-    init(networkManager: NetworkManager) {
+    init(networkManager: NetworkManager, persistence: PersistenceManager) {
         self.networkManager = networkManager
+        self.persistence = persistence
 
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
     }
@@ -90,26 +92,49 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     private func fetchStudent() {
+        self.persistence.retrieve { [weak self] (result) in
+            guard let self = self else { return }
+            switch result {
+            case .success(let student):
+                if let savedStudent = student {
+                    self.reload(withStudent: savedStudent)
+                } else {
+                    self.fetchStudentFromNetwork()
+                }
+            case .failure(let error):
+                print(error)
+                self.fetchStudentFromNetwork()
+            }
+        }
+    }
+    
+    private func fetchStudentFromNetwork() {
         self.networkManager.fetchStudent { [weak self] (result) in
             guard let self = self else { return }
             switch result {
             case .success(let student):
-                DispatchQueue.main.async {
-                    self.student = student
-                    self.title = "Welcome \(student.firstName)!"
-                    self.collectionView.reloadData()
-                }
+                self.reload(withStudent: student)
+                self.persistence.save(student: student)
             case .failure(let error):
                 self.presentErrorOnMainThread(withError: error, optionalMessage: nil)
             }
         }
     }
     
+    private func reload(withStudent student: Student) {
+        DispatchQueue.main.async {
+            self.student = student
+            self.title = "Welcome \(student.firstName)!"
+            self.collectionView.reloadData()
+        }
+    }
+    
     // MARK: - Selectors
     @objc fileprivate func signOut() {
-        self.networkManager.signOut { (result) in
+        self.networkManager.signOut { [weak self] (result) in
+            guard let self = self else { return }
             switch result {
-            case .success(let boolean): print(boolean)
+            case .success(_): ()
             case .failure(let error): self.presentErrorOnMainThread(withError: .signOutError, optionalMessage: "\n\n\(error)")
             }
         }

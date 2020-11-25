@@ -10,6 +10,7 @@ import Firebase
 
 class MainTabBarController: UITabBarController {
     let networkManager = NetworkManager.shared
+    let persistence = PersistenceManager.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +26,7 @@ class MainTabBarController: UITabBarController {
     }
     
     func configureViewControllers() {
-        let homeViewController = buildTabBarViewController(withTitle: "Home", andImage: UIImage(systemName: "house.fill")!, andRootVC: HomeCollectionViewController(networkManager: self.networkManager))
+        let homeViewController = buildTabBarViewController(withTitle: "Home", andImage: UIImage(systemName: "house.fill")!, andRootVC: HomeCollectionViewController(networkManager: self.networkManager, persistence: self.persistence))
         let calendarViewController = buildTabBarViewController(withTitle: "Calendar", andImage: UIImage(systemName: "calendar")!, andRootVC: CalendarCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout()))
         let contactViewController = buildTabBarViewController(withTitle: "Contact Us", andImage: UIImage(systemName: "envelope.fill")!, andRootVC: ContactCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout()))
         

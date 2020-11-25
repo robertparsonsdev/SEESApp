@@ -13,6 +13,8 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     private let persistence: PersistenceManager
     private var homeItems: [HomeItem] = []
     
+    private let refresh = UIRefreshControl()
+    
     // MARK: - Initializers
     init(networkManager: NetworkManager, persistence: PersistenceManager) {
         self.networkManager = networkManager
@@ -30,6 +32,8 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         super.viewDidLoad()
 
         configureViewController()
+        configureRefresh()
+        
         createHomeItems()
         fetchStudent()
     }
@@ -77,6 +81,11 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         self.collectionView!.register(HomeHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HomeHeader.identifer)
     }
     
+    private func configureRefresh() {
+        self.collectionView.refreshControl = self.refresh
+        self.refresh.addTarget(self, action: #selector(refreshPulled), for: .valueChanged)
+    }
+    
     // MARK: - Functions
     private func createHomeItems() {
         self.homeItems.append(HomeItem(major: .academicAdvising, color: .systemGreen))
@@ -119,18 +128,22 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
                 self.presentErrorOnMainThread(withError: error, optionalMessage: nil)
             }
         }
+        
+        if self.refresh.isRefreshing {
+            self.refresh.endRefreshing()
+        }
     }
     
     private func reload(withStudent student: Student) {
         DispatchQueue.main.async {
             self.student = student
-            self.title = "Welcome \(student.firstName)!"
+            self.navigationController?.title = "Welcome \(student.firstName)!"
             self.collectionView.reloadData()
         }
     }
     
     // MARK: - Selectors
-    @objc fileprivate func signOut() {
+    @objc private func signOut() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alert.view.tintColor = .systemTeal
         alert.addAction(UIAlertAction(title: "Sign out", style: .destructive, handler: { (_) in
@@ -147,5 +160,9 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alert, animated: true)
+    }
+    
+    @objc private func refreshPulled() {
+        fetchStudentFromNetwork()
     }
 }

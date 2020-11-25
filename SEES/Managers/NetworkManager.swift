@@ -43,7 +43,6 @@ class NetworkManager {
         
         Database.database().reference().child("users").child(email).observeSingleEvent(of: .value) { (snapshot) in
             guard let studentDictionary = snapshot.value as? [String: Any] else { completed(.failure(.unableToRetrieveData)); return }
-            print("here")
             let student = Student(dictionary: studentDictionary)
             completed(.success(student))
         }

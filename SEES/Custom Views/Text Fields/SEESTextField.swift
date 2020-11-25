@@ -11,6 +11,7 @@ class SEESTextField: UITextField {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         configure()
     }
     
@@ -18,13 +19,12 @@ class SEESTextField: UITextField {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(placeholder: String, keyboardType: UIKeyboardType, returnKeyType: UIReturnKeyType) {
-        super.init(frame: .zero)
+    convenience init(placeholder: String, keyboardType: UIKeyboardType, returnKeyType: UIReturnKeyType) {
+        self.init(frame: .zero)
         
         self.placeholder = placeholder
         self.keyboardType = keyboardType
         self.returnKeyType = returnKeyType
-        configure()
     }
     
     func configure() {

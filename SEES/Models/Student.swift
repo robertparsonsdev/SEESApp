@@ -15,12 +15,12 @@ struct Student: Codable, Hashable {
     let firstName: String
     let lastName: String
     
-    init(dictionary: [String: String]) {
-        self.advisor = dictionary["advisor"] ?? "advisorError"
-        self.advisorOffice = dictionary["advisorOffice"] ?? "advisorOfficeError"
-        self.broncoID = dictionary["broncoID"] ?? "broncoIDError"
-        self.email = dictionary["email"] ?? "emailError"
-        self.firstName = dictionary["firstName"] ?? "firstNameError"
-        self.lastName = dictionary["lastName"] ?? "lastNameError"
+    init(dictionary: [String: Any]) {
+        self.advisor = dictionary["advisor"] as? String ?? "advisorError"
+        self.advisorOffice = dictionary["advisorOffice"] as? String ?? "advisorOfficeError"
+        self.broncoID = dictionary["broncoID"] as? String ?? "broncoIDError"
+        self.email = dictionary["email"] as? String ?? "emailError"
+        self.firstName = dictionary["firstName"] as? String ?? "firstNameError"
+        self.lastName = dictionary["lastName"] as? String ?? "lastNameError"
     }
 }

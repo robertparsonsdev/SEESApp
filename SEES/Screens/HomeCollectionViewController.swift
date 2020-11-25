@@ -131,12 +131,21 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     
     // MARK: - Selectors
     @objc fileprivate func signOut() {
-        self.networkManager.signOut { [weak self] (result) in
-            guard let self = self else { return }
-            switch result {
-            case .success(_): ()
-            case .failure(let error): self.presentErrorOnMainThread(withError: .signOutError, optionalMessage: "\n\n\(error)")
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.view.tintColor = .systemTeal
+        alert.addAction(UIAlertAction(title: "Sign out", style: .destructive, handler: { (_) in
+            self.networkManager.signOut { [weak self] (result) in
+                guard let self = self else { return }
+                switch result {
+                case .success(_):
+                    if let signedOutStudent = self.student { self.persistence.remove(student: signedOutStudent) }
+                    let navController = UINavigationController(rootViewController: LoginViewController(networkManager: self.networkManager))
+                    self.present(navController, animated: true)
+                case .failure(let error): self.presentErrorOnMainThread(withError: .signOutError, optionalMessage: "\n\n\(error)")
+                }
             }
-        }
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alert, animated: true)
     }
 }

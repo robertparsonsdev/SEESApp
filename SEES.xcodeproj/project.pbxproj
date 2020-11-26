@@ -16,6 +16,7 @@
 		EE06F59E2566255B0044CC27 /* SEESTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE06F59D2566255B0044CC27 /* SEESTitleLabel.swift */; };
 		EE122C16256DDD9400D11454 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE122C15256DDD9400D11454 /* Student.swift */; };
 		EE122C22256E0BD900D11454 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE122C21256E0BD900D11454 /* PersistenceManager.swift */; };
+		EE47B574256F0883007AE9D8 /* Major.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47B573256F0883007AE9D8 /* Major.swift */; };
 		EE61809325620C80000283B9 /* SEESBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE61809225620C80000283B9 /* SEESBodyLabel.swift */; };
 		EE61809825621154000283B9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE61809725621154000283B9 /* NetworkManager.swift */; };
 		EE61809C25622560000283B9 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE61809B25622560000283B9 /* UIViewControllerExt.swift */; };
@@ -49,6 +50,7 @@
 		EE06F59D2566255B0044CC27 /* SEESTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEESTitleLabel.swift; sourceTree = "<group>"; };
 		EE122C15256DDD9400D11454 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		EE122C21256E0BD900D11454 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		EE47B573256F0883007AE9D8 /* Major.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Major.swift; sourceTree = "<group>"; };
 		EE61809225620C80000283B9 /* SEESBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEESBodyLabel.swift; sourceTree = "<group>"; };
 		EE61809725621154000283B9 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		EE61809B25622560000283B9 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			children = (
 				EE06F59A256607240044CC27 /* HomeItem.swift */,
 				EE122C15256DDD9400D11454 /* Student.swift */,
+				EE47B573256F0883007AE9D8 /* Major.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				EEA5913B255F881400B8F856 /* SEESLogoImageView.swift in Sources */,
 				EE06F597256604630044CC27 /* HomeHeader.swift in Sources */,
 				EE7BA66925609FCC005126D2 /* NSRegularExpressionExt.swift in Sources */,
+				EE47B574256F0883007AE9D8 /* Major.swift in Sources */,
 				EE7BA660256090FE005126D2 /* SEESTextField.swift in Sources */,
 				EE7BA664256095A2005126D2 /* SEESButton.swift in Sources */,
 				EE06F59B256607240044CC27 /* HomeItem.swift in Sources */,
@@ -541,6 +545,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2PZN25HHY7;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = SEES/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

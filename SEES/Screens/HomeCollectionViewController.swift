@@ -67,6 +67,13 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         return CGSize(width: view.frame.width, height: 250)
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0: print("academic advising")
+        default: print("default")
+        }
+    }
+    
     // MARK: - Configuration Functions
     private func configureViewController() {
         self.collectionView.backgroundColor = .systemBackground
@@ -90,13 +97,13 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     private func createHomeItems() {
         self.homeItems.append(HomeItem(major: .academicAdvising, color: .systemGreen))
         self.homeItems.append(HomeItem(major: .biology, color: .systemTeal))
-        self.homeItems.append(HomeItem(major: .biotech, color: .systemTeal))
+        self.homeItems.append(HomeItem(major: .biotechnology, color: .systemTeal))
         self.homeItems.append(HomeItem(major: .chemistry, color: .systemTeal))
-        self.homeItems.append(HomeItem(major: .compSci, color: .systemTeal))
-        self.homeItems.append(HomeItem(major: .envBio, color: .systemTeal))
+        self.homeItems.append(HomeItem(major: .computerScience, color: .systemTeal))
+        self.homeItems.append(HomeItem(major: .environmentalBiology, color: .systemTeal))
         self.homeItems.append(HomeItem(major: .geology, color: .systemTeal))
-        self.homeItems.append(HomeItem(major: .kin, color: .systemTeal))
-        self.homeItems.append(HomeItem(major: .math, color: .systemTeal))
+        self.homeItems.append(HomeItem(major: .kinesiology, color: .systemTeal))
+        self.homeItems.append(HomeItem(major: .mathematics, color: .systemTeal))
         self.homeItems.append(HomeItem(major: .physics, color: .systemTeal))
     }
     

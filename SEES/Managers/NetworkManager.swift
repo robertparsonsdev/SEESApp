@@ -47,4 +47,12 @@ class NetworkManager {
             completed(.success(student))
         }
     }
+    
+    func fetchMajor(for major: String, completed: @escaping (Result<Major, SEESError>) -> Void) {
+        Database.database().reference().child("majors").child(major).observeSingleEvent(of: .value) { (snapshot) in
+            guard let optionsDictionary = snapshot.value as? [String: [String: Any]] else { completed(.failure(.unableToRetrieveData)); return }
+            let major = Major(dictionary: optionsDictionary)
+            completed(.success(major))
+        }
+    }
 }

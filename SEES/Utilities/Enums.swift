@@ -33,20 +33,20 @@ enum SEESError: Error {
     }
 }
 
-enum Major {
-    case academicAdvising, biology, biotech, chemistry, compSci, envBio, geology, kin, math, physics
+enum MajorInfo {
+    case academicAdvising, biology, biotechnology, chemistry, computerScience, environmentalBiology, geology, kinesiology, mathematics, physics
     
     var name: String {
         switch self {
         case .academicAdvising: return "Academic Advising"
         case .biology: return "Biology"
-        case .biotech: return "Biotechnology"
+        case .biotechnology: return "Biotechnology"
         case .chemistry: return "Chemistry"
-        case .compSci: return "Computer Science"
-        case .envBio: return "Environmental Biology"
+        case .computerScience: return "Computer Science"
+        case .environmentalBiology: return "Environmental Biology"
         case .geology: return "Geology"
-        case .kin: return "Kinesiology"
-        case .math: return "Mathematics"
+        case .kinesiology: return "Kinesiology"
+        case .mathematics: return "Mathematics"
         case .physics: return "Physics"
         }
     }
@@ -55,13 +55,13 @@ enum Major {
         switch self {
         case .academicAdvising: return UIImage(named: "checkmark")!
         case .biology: return UIImage(named: "bio")!
-        case .biotech: return UIImage(named: "biotech")!
+        case .biotechnology: return UIImage(named: "biotech")!
         case .chemistry: return UIImage(named: "chem")!
-        case .compSci: return UIImage(named: "cs")!
-        case .envBio: return UIImage(named: "env-bio")!
+        case .computerScience: return UIImage(named: "cs")!
+        case .environmentalBiology: return UIImage(named: "env-bio")!
         case .geology: return UIImage(named: "geo")!
-        case .kin: return UIImage(named: "kin")!
-        case .math: return UIImage(named: "math")!
+        case .kinesiology: return UIImage(named: "kin")!
+        case .mathematics: return UIImage(named: "math")!
         case .physics: return UIImage(named: "phy")!
         }
     }

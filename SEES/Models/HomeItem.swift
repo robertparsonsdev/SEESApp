@@ -8,6 +8,6 @@
 import UIKit
 
 struct HomeItem {
-    let major: Major
+    let major: MajorInfo
     let color: UIColor
 }

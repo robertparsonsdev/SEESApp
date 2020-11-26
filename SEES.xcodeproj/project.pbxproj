@@ -16,6 +16,7 @@
 		EE06F59E2566255B0044CC27 /* SEESTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE06F59D2566255B0044CC27 /* SEESTitleLabel.swift */; };
 		EE122C16256DDD9400D11454 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE122C15256DDD9400D11454 /* Student.swift */; };
 		EE122C22256E0BD900D11454 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE122C21256E0BD900D11454 /* PersistenceManager.swift */; };
+		EE31AB1D25704CD7009F51D8 /* MajorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE31AB1C25704CD7009F51D8 /* MajorTableViewController.swift */; };
 		EE47B574256F0883007AE9D8 /* Major.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47B573256F0883007AE9D8 /* Major.swift */; };
 		EE61809325620C80000283B9 /* SEESBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE61809225620C80000283B9 /* SEESBodyLabel.swift */; };
 		EE61809825621154000283B9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE61809725621154000283B9 /* NetworkManager.swift */; };
@@ -50,6 +51,7 @@
 		EE06F59D2566255B0044CC27 /* SEESTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEESTitleLabel.swift; sourceTree = "<group>"; };
 		EE122C15256DDD9400D11454 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		EE122C21256E0BD900D11454 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		EE31AB1C25704CD7009F51D8 /* MajorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorTableViewController.swift; sourceTree = "<group>"; };
 		EE47B573256F0883007AE9D8 /* Major.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Major.swift; sourceTree = "<group>"; };
 		EE61809225620C80000283B9 /* SEESBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEESBodyLabel.swift; sourceTree = "<group>"; };
 		EE61809725621154000283B9 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -204,13 +206,13 @@
 		EEA590D1255F5E4A00B8F856 /* SEES */ = {
 			isa = PBXGroup;
 			children = (
+				EEA5910F255F71DF00B8F856 /* Support */,
 				EE06F599256606330044CC27 /* Models */,
 				EE06F58D2565FC230044CC27 /* Utilities */,
 				EE61809625621142000283B9 /* Managers */,
 				EEA5912A255F792100B8F856 /* Screens */,
 				EEA59139255F880100B8F856 /* Custom Views */,
 				EEA59111255F72AA00B8F856 /* Extensions */,
-				EEA5910F255F71DF00B8F856 /* Support */,
 				EEA590DB255F5E4E00B8F856 /* Assets.xcassets */,
 				EEA590DD255F5E4E00B8F856 /* LaunchScreen.storyboard */,
 				EEA590E0255F5E4E00B8F856 /* Info.plist */,
@@ -247,6 +249,7 @@
 				EEA5912F255F7A0900B8F856 /* HomeCollectionViewController.swift */,
 				EEA59132255F7A1400B8F856 /* CalendarCollectionViewController.swift */,
 				EEA59135255F7A2000B8F856 /* ContactCollectionViewController.swift */,
+				EE31AB1C25704CD7009F51D8 /* MajorTableViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				TargetAttributes = {
 					EEA590CE255F5E4A00B8F856 = {
 						CreatedOnToolsVersion = 12.2;
+						LastSwiftMigration = 1220;
 					};
 				};
 			};
@@ -399,6 +403,7 @@
 				EE06F59B256607240044CC27 /* HomeItem.swift in Sources */,
 				EEA59136255F7A2000B8F856 /* ContactCollectionViewController.swift in Sources */,
 				EEA59117255F73DF00B8F856 /* MainTabBarController.swift in Sources */,
+				EE31AB1D25704CD7009F51D8 /* MajorTableViewController.swift in Sources */,
 				EEA59130255F7A0900B8F856 /* HomeCollectionViewController.swift in Sources */,
 				EEA59113255F72CD00B8F856 /* UIViewExtension.swift in Sources */,
 				EE61809825621154000283B9 /* NetworkManager.swift in Sources */,
@@ -543,6 +548,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2PZN25HHY7;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
@@ -553,6 +559,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.robertparsonsdev.SEES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -564,6 +571,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2PZN25HHY7;
 				INFOPLIST_FILE = SEES/Info.plist;

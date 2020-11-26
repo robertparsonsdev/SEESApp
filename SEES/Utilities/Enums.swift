@@ -16,6 +16,7 @@ enum SEESError: Error {
     case loginError, signOutError
     case unableToGetCurrentStudent, unableToRetrieveData
     case unableToSaveStudent, unableToRetrieveStudent
+    case unableToLoadMajorInformation
     
     var info: (title: String, message: String) {
         switch self {
@@ -29,6 +30,7 @@ enum SEESError: Error {
         case .unableToRetrieveData: return ("Unable to Retrieve Data", "Please ensure that you have an internet connection and are logged in.")
         case .unableToSaveStudent: return ("Unable to Save Student Data", "Please try restarting this app.")
         case .unableToRetrieveStudent: return ("Unable to Retrieve Student Data", "Please try restarting this app.")
+        case .unableToLoadMajorInformation: return ("Unable to Load Major Information", "Not able to load information for this major's option. Either it doesn't exist or the connection is bad. Please report this to the SEES Office.")
         }
     }
 }
@@ -63,6 +65,21 @@ enum MajorInfo {
         case .kinesiology: return UIImage(named: "kin")!
         case .mathematics: return UIImage(named: "math")!
         case .physics: return UIImage(named: "phy")!
+        }
+    }
+    
+    var networkName: String {
+        switch self {
+        case .academicAdvising: return ""
+        case .biology: return "biology"
+        case .biotechnology: return "biotechnology"
+        case .chemistry: return "chemistry"
+        case .computerScience: return "computerScience"
+        case .environmentalBiology: return "environmentalBiology"
+        case .geology: return "geology"
+        case .kinesiology: return "kinesiology"
+        case .mathematics: return "mathematics"
+        case .physics: return "physics"
         }
     }
 }

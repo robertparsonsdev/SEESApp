@@ -70,7 +70,10 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0: print("academic advising")
-        default: print("default")
+        default:
+            let majorInfo = self.homeItems[indexPath.row].major
+            let majorTable = MajorTableViewController(networkManager: self.networkManager, majorInfo: majorInfo)
+            self.navigationController?.pushViewController(majorTable, animated: true)
         }
     }
     
@@ -127,6 +130,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     private func fetchStudentFromNetwork() {
         self.networkManager.fetchStudent { [weak self] (result) in
             guard let self = self else { return }
+            self.endRefreshing()
             switch result {
             case .success(let student):
                 self.reload(withStudent: student)
@@ -135,10 +139,6 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
                 self.presentErrorOnMainThread(withError: error, optionalMessage: nil)
             }
         }
-        
-        if self.refresh.isRefreshing {
-            self.refresh.endRefreshing()
-        }
     }
     
     private func reload(withStudent student: Student) {
@@ -146,6 +146,14 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
             self.student = student
             self.navigationController?.navigationBar.topItem?.title = "Welcome \(student.firstName)!"
             self.collectionView.reloadData()
+        }
+    }
+    
+    private func endRefreshing() {
+        DispatchQueue.main.async {
+            if self.refresh.isRefreshing {
+                self.refresh.endRefreshing()
+            }
         }
     }
     

@@ -26,6 +26,8 @@
 		EE7BA664256095A2005126D2 /* SEESButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7BA663256095A2005126D2 /* SEESButton.swift */; };
 		EE7BA66925609FCC005126D2 /* NSRegularExpressionExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7BA66725609FCC005126D2 /* NSRegularExpressionExt.swift */; };
 		EE7BA66A25609FCC005126D2 /* StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7BA66825609FCC005126D2 /* StringExt.swift */; };
+		EE9B976E2571847A0088A593 /* CalendarGridVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9B976D2571847A0088A593 /* CalendarGridVC.swift */; };
+		EE9B9771257184970088A593 /* CalendarListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9B9770257184970088A593 /* CalendarListVC.swift */; };
 		EEA590D3255F5E4A00B8F856 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA590D2255F5E4A00B8F856 /* AppDelegate.swift */; };
 		EEA590D5255F5E4A00B8F856 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA590D4255F5E4A00B8F856 /* SceneDelegate.swift */; };
 		EEA590DC255F5E4E00B8F856 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEA590DB255F5E4E00B8F856 /* Assets.xcassets */; };
@@ -35,7 +37,7 @@
 		EEA59117255F73DF00B8F856 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA59116255F73DF00B8F856 /* MainTabBarController.swift */; };
 		EEA5912C255F79E800B8F856 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5912B255F79E800B8F856 /* LoginViewController.swift */; };
 		EEA59130255F7A0900B8F856 /* HomeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5912F255F7A0900B8F856 /* HomeCollectionViewController.swift */; };
-		EEA59133255F7A1400B8F856 /* CalendarCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA59132255F7A1400B8F856 /* CalendarCollectionViewController.swift */; };
+		EEA59133255F7A1400B8F856 /* EventsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA59132255F7A1400B8F856 /* EventsCollectionViewController.swift */; };
 		EEA59136255F7A2000B8F856 /* ContactCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA59135255F7A2000B8F856 /* ContactCollectionViewController.swift */; };
 		EEA5913B255F881400B8F856 /* SEESLogoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5913A255F881400B8F856 /* SEESLogoImageView.swift */; };
 /* End PBXBuildFile section */
@@ -61,6 +63,8 @@
 		EE7BA663256095A2005126D2 /* SEESButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEESButton.swift; sourceTree = "<group>"; };
 		EE7BA66725609FCC005126D2 /* NSRegularExpressionExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSRegularExpressionExt.swift; sourceTree = "<group>"; };
 		EE7BA66825609FCC005126D2 /* StringExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
+		EE9B976D2571847A0088A593 /* CalendarGridVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGridVC.swift; sourceTree = "<group>"; };
+		EE9B9770257184970088A593 /* CalendarListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarListVC.swift; sourceTree = "<group>"; };
 		EEA590CF255F5E4A00B8F856 /* SEES.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SEES.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEA590D2255F5E4A00B8F856 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEA590D4255F5E4A00B8F856 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,7 +76,7 @@
 		EEA59116255F73DF00B8F856 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		EEA5912B255F79E800B8F856 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EEA5912F255F7A0900B8F856 /* HomeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewController.swift; sourceTree = "<group>"; };
-		EEA59132255F7A1400B8F856 /* CalendarCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewController.swift; sourceTree = "<group>"; };
+		EEA59132255F7A1400B8F856 /* EventsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCollectionViewController.swift; sourceTree = "<group>"; };
 		EEA59135255F7A2000B8F856 /* ContactCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCollectionViewController.swift; sourceTree = "<group>"; };
 		EEA5913A255F881400B8F856 /* SEESLogoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEESLogoImageView.swift; sourceTree = "<group>"; };
 		FB293462A91E2B75DA431EF0 /* Pods_SEES.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SEES.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,6 +189,16 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
+		EE9B9773257184A00088A593 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				EEA59132255F7A1400B8F856 /* EventsCollectionViewController.swift */,
+				EE9B976D2571847A0088A593 /* CalendarGridVC.swift */,
+				EE9B9770257184970088A593 /* CalendarListVC.swift */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
 		EEA590C6255F5E4A00B8F856 = {
 			isa = PBXGroup;
 			children = (
@@ -247,7 +261,7 @@
 			children = (
 				EEA5912B255F79E800B8F856 /* LoginViewController.swift */,
 				EEA5912F255F7A0900B8F856 /* HomeCollectionViewController.swift */,
-				EEA59132255F7A1400B8F856 /* CalendarCollectionViewController.swift */,
+				EE9B9773257184A00088A593 /* Events */,
 				EEA59135255F7A2000B8F856 /* ContactCollectionViewController.swift */,
 				EE31AB1C25704CD7009F51D8 /* MajorTableViewController.swift */,
 			);
@@ -387,6 +401,7 @@
 				EEA5912C255F79E800B8F856 /* LoginViewController.swift in Sources */,
 				EE025286256B3B1400E7047A /* SEESMessageView.swift in Sources */,
 				EE06F5932566034A0044CC27 /* HomeCell.swift in Sources */,
+				EE9B9771257184970088A593 /* CalendarListVC.swift in Sources */,
 				EE61809C25622560000283B9 /* UIViewControllerExt.swift in Sources */,
 				EE7BA66A25609FCC005126D2 /* StringExt.swift in Sources */,
 				EE06F59E2566255B0044CC27 /* SEESTitleLabel.swift in Sources */,
@@ -394,6 +409,7 @@
 				EEA590D3255F5E4A00B8F856 /* AppDelegate.swift in Sources */,
 				EE06F58F2565FC3B0044CC27 /* UIHelper.swift in Sources */,
 				EE61809F2562278D000283B9 /* Enums.swift in Sources */,
+				EE9B976E2571847A0088A593 /* CalendarGridVC.swift in Sources */,
 				EEA5913B255F881400B8F856 /* SEESLogoImageView.swift in Sources */,
 				EE06F597256604630044CC27 /* HomeHeader.swift in Sources */,
 				EE7BA66925609FCC005126D2 /* NSRegularExpressionExt.swift in Sources */,
@@ -407,7 +423,7 @@
 				EEA59130255F7A0900B8F856 /* HomeCollectionViewController.swift in Sources */,
 				EEA59113255F72CD00B8F856 /* UIViewExtension.swift in Sources */,
 				EE61809825621154000283B9 /* NetworkManager.swift in Sources */,
-				EEA59133255F7A1400B8F856 /* CalendarCollectionViewController.swift in Sources */,
+				EEA59133255F7A1400B8F856 /* EventsCollectionViewController.swift in Sources */,
 				EEA590D5255F5E4A00B8F856 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

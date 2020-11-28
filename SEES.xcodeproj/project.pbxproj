@@ -18,6 +18,7 @@
 		EE122C22256E0BD900D11454 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE122C21256E0BD900D11454 /* PersistenceManager.swift */; };
 		EE31AB1D25704CD7009F51D8 /* MajorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE31AB1C25704CD7009F51D8 /* MajorTableViewController.swift */; };
 		EE47B574256F0883007AE9D8 /* Major.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47B573256F0883007AE9D8 /* Major.swift */; };
+		EE594EF325720C370053A47E /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE594EF225720C370053A47E /* Event.swift */; };
 		EE61809325620C80000283B9 /* SEESBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE61809225620C80000283B9 /* SEESBodyLabel.swift */; };
 		EE61809825621154000283B9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE61809725621154000283B9 /* NetworkManager.swift */; };
 		EE61809C25622560000283B9 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE61809B25622560000283B9 /* UIViewControllerExt.swift */; };
@@ -55,6 +56,7 @@
 		EE122C21256E0BD900D11454 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		EE31AB1C25704CD7009F51D8 /* MajorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorTableViewController.swift; sourceTree = "<group>"; };
 		EE47B573256F0883007AE9D8 /* Major.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Major.swift; sourceTree = "<group>"; };
+		EE594EF225720C370053A47E /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		EE61809225620C80000283B9 /* SEESBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEESBodyLabel.swift; sourceTree = "<group>"; };
 		EE61809725621154000283B9 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		EE61809B25622560000283B9 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				EE06F59A256607240044CC27 /* HomeItem.swift */,
 				EE122C15256DDD9400D11454 /* Student.swift */,
 				EE47B573256F0883007AE9D8 /* Major.swift */,
+				EE594EF225720C370053A47E /* Event.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				EE122C22256E0BD900D11454 /* PersistenceManager.swift in Sources */,
 				EEA5912C255F79E800B8F856 /* LoginViewController.swift in Sources */,
 				EE025286256B3B1400E7047A /* SEESMessageView.swift in Sources */,
+				EE594EF325720C370053A47E /* Event.swift in Sources */,
 				EE06F5932566034A0044CC27 /* HomeCell.swift in Sources */,
 				EE9B9771257184970088A593 /* CalendarListVC.swift in Sources */,
 				EE61809C25622560000283B9 /* UIViewControllerExt.swift in Sources */,

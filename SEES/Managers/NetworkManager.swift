@@ -55,4 +55,15 @@ class NetworkManager {
             completed(.success(major))
         }
     }
+    
+    func fetchEvents(completed: @escaping(Result<[Event], SEESError>) -> Void) {
+        Database.database().reference().child("events").observeSingleEvent(of: .value) { (snapshot) in
+            guard let eventsDictionary = snapshot.value as? [String: [String: Any]] else { completed(.failure(.unableToLoadEvents)); return }
+            var events: [Event] = []
+            for (_, value) in eventsDictionary {
+                events.append(Event(dictionary: value))
+            }
+            completed(.success(events))
+        }
+    }
 }

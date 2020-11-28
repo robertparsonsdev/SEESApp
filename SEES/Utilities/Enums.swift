@@ -17,6 +17,7 @@ enum SEESError: Error {
     case unableToGetCurrentStudent, unableToRetrieveData
     case unableToSaveStudent, unableToRetrieveStudent
     case unableToLoadMajorInformation
+    case unableToLoadEvents
     
     var info: (title: String, message: String) {
         switch self {
@@ -31,6 +32,7 @@ enum SEESError: Error {
         case .unableToSaveStudent: return ("Unable to Save Student Data", "Please try restarting this app.")
         case .unableToRetrieveStudent: return ("Unable to Retrieve Student Data", "Please try restarting this app.")
         case .unableToLoadMajorInformation: return ("Unable to Load Major Information", "Not able to load information for this major's option. Either it doesn't exist or the connection is bad. Please report this to the SEES Office.")
+        case .unableToLoadEvents: return ("Unable to Load Events", "Please try refreshing or restarting the app.")
         }
     }
 }

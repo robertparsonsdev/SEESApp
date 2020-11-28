@@ -14,4 +14,13 @@ extension String {
         let range = NSRange(location: 0, length: lhs.utf16.count)
         return regex.firstMatch(in: lhs, options: [], range: range) != nil
     }
+    
+    func convertToDate() -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.timeZone = .current
+        
+        return dateFormatter.date(from: self)
+    }
 }

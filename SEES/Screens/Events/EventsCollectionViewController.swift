@@ -8,7 +8,9 @@
 import UIKit
 
 class EventsCollectionViewController: UIViewController {
-//    private var events: [Event] = []
+    private var events: [Event] = []
+    private let networkManager: NetworkManager
+    
     private let segmentedControl = UISegmentedControl(items: ["Calendar View", "List View"])
     private let containerView = UIView()
     private lazy var calendarGridVC: CalendarGridVC = {
@@ -20,6 +22,18 @@ class EventsCollectionViewController: UIViewController {
         return calendarListVC
     }()
     
+    // MARK: - Initializers
+    init(networkManager: NetworkManager) {
+        self.networkManager = networkManager
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - View Controller Functions
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -53,7 +67,16 @@ class EventsCollectionViewController: UIViewController {
     
     // MARK: - Functions
     private func fetchEvents() {
-        
+        self.networkManager.fetchEvents { [weak self] (result) in
+            guard let self = self else { return }
+            switch result {
+            case .success(let events):
+                self.events = events
+                print(self.events)
+            case .failure(let error):
+                self.presentErrorOnMainThread(withError: error, optionalMessage: "\n\n\(error.localizedDescription)")
+            }
+        }
     }
     
     private func add(viewController: UIViewController) {

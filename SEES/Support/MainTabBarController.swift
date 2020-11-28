@@ -34,8 +34,8 @@ class MainTabBarController: UITabBarController {
     }
     
     fileprivate func buildTabBarViewController(withTitle title: String, andImage image: UIImage, andRootVC root: UIViewController) -> UINavigationController {
-        root.title = title
         root.tabBarItem.image = image
+        root.tabBarItem.title = title
         let navController = UINavigationController(rootViewController: root)
         navController.navigationBar.tintColor = .systemTeal
         return navController

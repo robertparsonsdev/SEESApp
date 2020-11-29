@@ -42,6 +42,7 @@
 		EEA59136255F7A2000B8F856 /* ContactCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA59135255F7A2000B8F856 /* ContactCollectionViewController.swift */; };
 		EEA5913B255F881400B8F856 /* SEESLogoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5913A255F881400B8F856 /* SEESLogoImageView.swift */; };
 		EEB49B38257317BE004FECDE /* DateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB49B37257317BE004FECDE /* DateExt.swift */; };
+		EEB49B3B2573285D004FECDE /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB49B3A2573285D004FECDE /* EventDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,7 @@
 		EEA59135255F7A2000B8F856 /* ContactCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCollectionViewController.swift; sourceTree = "<group>"; };
 		EEA5913A255F881400B8F856 /* SEESLogoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEESLogoImageView.swift; sourceTree = "<group>"; };
 		EEB49B37257317BE004FECDE /* DateExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExt.swift; sourceTree = "<group>"; };
+		EEB49B3A2573285D004FECDE /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		FB293462A91E2B75DA431EF0 /* Pods_SEES.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SEES.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -200,6 +202,7 @@
 				EEA59132255F7A1400B8F856 /* EventsCollectionViewController.swift */,
 				EE9B976D2571847A0088A593 /* CalendarGridVC.swift */,
 				EE9B9770257184970088A593 /* CalendarListVC.swift */,
+				EEB49B3A2573285D004FECDE /* EventDetailViewController.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				EE122C16256DDD9400D11454 /* Student.swift in Sources */,
 				EEA590D3255F5E4A00B8F856 /* AppDelegate.swift in Sources */,
 				EE06F58F2565FC3B0044CC27 /* UIHelper.swift in Sources */,
+				EEB49B3B2573285D004FECDE /* EventDetailViewController.swift in Sources */,
 				EE61809F2562278D000283B9 /* Enums.swift in Sources */,
 				EE9B976E2571847A0088A593 /* CalendarGridVC.swift in Sources */,
 				EEA5913B255F881400B8F856 /* SEESLogoImageView.swift in Sources */,

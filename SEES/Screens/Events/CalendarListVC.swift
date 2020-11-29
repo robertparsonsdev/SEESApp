@@ -48,7 +48,8 @@ class CalendarListVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let eventDetailVC = EventDetailViewController(event: self.events[indexPath.row])
+        self.navigationController?.pushViewController(eventDetailVC, animated: true)
     }
     
     // MARK: - Configuration Functions

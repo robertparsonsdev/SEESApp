@@ -19,4 +19,10 @@ extension UIView {
         if width != 0 { widthAnchor.constraint(equalToConstant: width).isActive = true }
         if height != 0 { heightAnchor.constraint(equalToConstant: height).isActive = true }
     }
+    
+    func addSubviews(_ views: UIView...) {
+        for view in views {
+            addSubview(view)
+        }
+    }
 }

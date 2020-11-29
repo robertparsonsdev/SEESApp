@@ -13,7 +13,7 @@ class HomeHeader: UICollectionReusableView {
     private let stackView = UIStackView()
     private let advisorNameMessage = SEESMessageView()
     private let advisorOfficeMessage = SEESMessageView()
-    private let infoMessage = SEESMessageView(message: "SEES students are required to receive academic advising each semester. Instructions on how to do so can be found below along with major curriculum information.")
+    private let infoMessage = SEESMessageView(message: "SEES students are required to receive academic advising each semester. Instructions on how to do so can be found below along with major curriculum information.", dimensions: .full)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,8 +26,8 @@ class HomeHeader: UICollectionReusableView {
     }
     
     func set(name: String, office: String) {
-        advisorNameMessage.set(title: "My Advisor:", message: name)
-        advisorOfficeMessage.set(title: "Advisor Office:", message: office)
+        advisorNameMessage.set(title: "My Advisor:", message: name, dimensions: .half)
+        advisorOfficeMessage.set(title: "Advisor Office:", message: office, dimensions: .half)
     }
     
     fileprivate func configureCell() {

@@ -89,3 +89,23 @@ enum MajorInfo {
 enum Keys {
     static let student = "student"
 }
+
+enum ScreenDimensions: CGFloat {
+    case full, half, thirds
+    
+    var width: CGFloat {
+        switch self {
+        case .full: return UIScreen.main.bounds.width - 60
+        case .half: return (UIScreen.main.bounds.width / 2) - 45
+        case .thirds: return (UIScreen.main.bounds.width / 3) - 45
+        }
+    }
+    
+    var height: CGFloat {
+        switch self {
+        case .full: return UIScreen.main.bounds.height
+        case .half: return UIScreen.main.bounds.height / 2
+        case .thirds: return UIScreen.main.bounds.height / 3
+        }
+    }
+}

@@ -41,6 +41,7 @@
 		EEA59133255F7A1400B8F856 /* EventsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA59132255F7A1400B8F856 /* EventsCollectionViewController.swift */; };
 		EEA59136255F7A2000B8F856 /* ContactCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA59135255F7A2000B8F856 /* ContactCollectionViewController.swift */; };
 		EEA5913B255F881400B8F856 /* SEESLogoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5913A255F881400B8F856 /* SEESLogoImageView.swift */; };
+		EEB49B38257317BE004FECDE /* DateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB49B37257317BE004FECDE /* DateExt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,7 @@
 		EEA59132255F7A1400B8F856 /* EventsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCollectionViewController.swift; sourceTree = "<group>"; };
 		EEA59135255F7A2000B8F856 /* ContactCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCollectionViewController.swift; sourceTree = "<group>"; };
 		EEA5913A255F881400B8F856 /* SEESLogoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEESLogoImageView.swift; sourceTree = "<group>"; };
+		EEB49B37257317BE004FECDE /* DateExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExt.swift; sourceTree = "<group>"; };
 		FB293462A91E2B75DA431EF0 /* Pods_SEES.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SEES.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -255,6 +257,7 @@
 				EE7BA66725609FCC005126D2 /* NSRegularExpressionExt.swift */,
 				EE7BA66825609FCC005126D2 /* StringExt.swift */,
 				EE61809B25622560000283B9 /* UIViewControllerExt.swift */,
+				EEB49B37257317BE004FECDE /* DateExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 			files = (
 				EE61809325620C80000283B9 /* SEESBodyLabel.swift in Sources */,
 				EE122C22256E0BD900D11454 /* PersistenceManager.swift in Sources */,
+				EEB49B38257317BE004FECDE /* DateExt.swift in Sources */,
 				EEA5912C255F79E800B8F856 /* LoginViewController.swift in Sources */,
 				EE025286256B3B1400E7047A /* SEESMessageView.swift in Sources */,
 				EE594EF325720C370053A47E /* Event.swift in Sources */,

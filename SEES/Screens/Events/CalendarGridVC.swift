@@ -9,7 +9,20 @@ import UIKit
 import HorizonCalendar
 
 class CalendarGridVC: UIViewController {
-
+    private var events: [Event] = []
+    
+    // MARK: - Intializers
+    init(events: [Event]) {
+        super.init(nibName: nil, bundle: nil)
+        
+        self.events = events
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - View Controller Life Cycle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         

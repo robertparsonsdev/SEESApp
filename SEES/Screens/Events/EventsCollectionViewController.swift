@@ -14,11 +14,11 @@ class EventsCollectionViewController: UIViewController {
     private let segmentedControl = UISegmentedControl(items: ["Calendar View", "List View"])
     private let containerView = UIView()
     private lazy var calendarGridVC: CalendarGridVC = {
-        let calendarVC = CalendarGridVC()
+        let calendarVC = CalendarGridVC(events: self.events)
         return calendarVC
     }()
     private lazy var calendarListVC: CalendarListVC = {
-        let calendarListVC = CalendarListVC()
+        let calendarListVC = CalendarListVC(events: self.events)
         return calendarListVC
     }()
     
@@ -33,14 +33,13 @@ class EventsCollectionViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - View Controller Functions
+    // MARK: - View Controller Lifecycle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureViewController()
         configureSegmentedControl()
         configureConstraints()
-        updateUI()
         
         fetchEvents()
     }
@@ -50,6 +49,10 @@ class EventsCollectionViewController: UIViewController {
         self.view.backgroundColor = .systemBackground
         self.navigationController?.navigationBar.topItem?.title = "Upcoming Events"
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        let refreshButton = UIBarButtonItem(image: UIImage(systemName: "arrow.clockwise"), style: .plain, target: self, action: #selector(refreshTapped))
+        refreshButton.tintColor = .systemTeal
+        self.navigationItem.rightBarButtonItem = refreshButton
     }
     
     private func configureSegmentedControl() {
@@ -67,15 +70,18 @@ class EventsCollectionViewController: UIViewController {
     
     // MARK: - Functions
     private func fetchEvents() {
+        showLoadingView()
         self.networkManager.fetchEvents { [weak self] (result) in
             guard let self = self else { return }
+            self.dismissLoadingView()
             switch result {
             case .success(let events):
                 self.events = events
-                print(self.events)
+                self.events.sort { $0.startDate < $1.startDate }
             case .failure(let error):
                 self.presentErrorOnMainThread(withError: error, optionalMessage: "\n\n\(error.localizedDescription)")
             }
+            DispatchQueue.main.async { self.updateUI() }
         }
     }
     
@@ -100,5 +106,9 @@ class EventsCollectionViewController: UIViewController {
             remove(viewController: self.calendarGridVC)
             add(viewController: self.calendarListVC)
         }
+    }
+    
+    @objc private func refreshTapped() {
+        
     }
 }

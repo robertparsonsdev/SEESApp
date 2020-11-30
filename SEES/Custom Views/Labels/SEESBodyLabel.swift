@@ -27,6 +27,7 @@ class SEESBodyLabel: UILabel {
     public func set(textAlignment: NSTextAlignment, text: String) {
         self.textAlignment = textAlignment
         self.text = text
+        sizeToFit()
     }
     
     private func configure() {
@@ -36,6 +37,5 @@ class SEESBodyLabel: UILabel {
         minimumScaleFactor = 0.75
         lineBreakMode = .byWordWrapping
         numberOfLines = 0
-        sizeToFit()
     }
 }

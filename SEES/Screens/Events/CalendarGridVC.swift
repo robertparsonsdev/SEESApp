@@ -31,7 +31,7 @@ class CalendarGridVC: UIViewController {
         let calendar = CalendarView(initialContent: makeCalendarContent())
         
         view.addSubview(calendar)
-        calendar.anchor(top: view.topAnchor, leading: nil, bottom: view.bottomAnchor, trailing: nil, x: view.centerXAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: view.frame.width - 40, height: 0)
+        calendar.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
     }
     
     // MARK: - Configuration Functions

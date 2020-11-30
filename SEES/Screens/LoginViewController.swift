@@ -66,20 +66,17 @@ class LoginViewController: UIViewController {
     
     fileprivate func configureConstraints() {
         let itemWidth = view.frame.width - 100, itemHeight: CGFloat = 40
-        view.addSubview(logoImageView)
+        view.addSubviews(logoImageView, broncoEmailTextField, broncoIDTextField, loginButton, warningLabel)
+        
         logoImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: nil, bottom: nil, trailing: nil, x: view.centerXAnchor, paddingTop: 25, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         logoImageView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: logoMultiplier).isActive = true
         logoImageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: logoMultiplier).isActive = true
         
-        view.addSubview(broncoEmailTextField)
         broncoEmailTextField.anchor(top: logoImageView.bottomAnchor, leading: nil, bottom: nil, trailing: nil, x: view.centerXAnchor, y: nil, paddingTop: 25, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: itemWidth, height: itemHeight)
-        view.addSubview(broncoIDTextField)
         broncoIDTextField.anchor(top: broncoEmailTextField.bottomAnchor, leading: nil, bottom: nil, trailing: nil, x: view.centerXAnchor, y: nil, paddingTop: 15, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: itemWidth, height: itemHeight)
         
-        view.addSubview(loginButton)
         loginButton.anchor(top: broncoIDTextField.bottomAnchor, leading: nil, bottom: nil, trailing: nil, x: view.centerXAnchor, y: nil, paddingTop: 15, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: itemWidth, height: itemHeight)
         
-        view.addSubview(warningLabel)
         warningLabel.anchor(top: nil, leading: nil, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: nil, x: view.centerXAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: itemWidth + 50, height: 0)
     }
     

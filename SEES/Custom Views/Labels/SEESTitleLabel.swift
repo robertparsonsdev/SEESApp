@@ -26,8 +26,9 @@ class SEESTitleLabel: UILabel {
     
     public func set(textAlignment: NSTextAlignment, text: String, fontSize: CGFloat) {
         self.textAlignment = textAlignment
-        self.text = text
         self.font = UIFont.boldSystemFont(ofSize: fontSize)
+        self.text = text
+        sizeToFit()
     }
     
     private func configure() {

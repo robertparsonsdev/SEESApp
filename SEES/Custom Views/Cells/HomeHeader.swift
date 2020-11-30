@@ -13,7 +13,7 @@ class HomeHeader: UICollectionReusableView {
     private let stackView = UIStackView()
     private let advisorNameMessage = SEESMessageView()
     private let advisorOfficeMessage = SEESMessageView()
-    private let infoMessage = SEESMessageView(message: "SEES students are required to receive academic advising each semester. Instructions on how to do so can be found below along with major curriculum information.", dimensions: .full)
+    private let infoMessage = SEESMessageView(message: "SEES students are required to receive academic advising each semester. Instructions on how to do so can be found below along with major curriculum information.")
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,8 +26,8 @@ class HomeHeader: UICollectionReusableView {
     }
     
     func set(name: String, office: String) {
-        advisorNameMessage.set(title: "My Advisor:", message: name, dimensions: .half)
-        advisorOfficeMessage.set(title: "Advisor Office:", message: office, dimensions: .half)
+        advisorNameMessage.set(title: "My Advisor:", message: name)
+        advisorOfficeMessage.set(title: "Advisor Office:", message: office)
     }
     
     fileprivate func configureCell() {
@@ -39,9 +39,9 @@ class HomeHeader: UICollectionReusableView {
         stackView.addArrangedSubview(advisorNameMessage)
         stackView.addArrangedSubview(advisorOfficeMessage)
         
-        addSubview(stackView)
-        stackView.anchor(top: topAnchor, leading: nil, bottom: nil, trailing: nil, x: centerXAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: self.frame.width - (externalPadding * 2), height: self.frame.height / 2 - (internalPadding / 2) - externalPadding)
-        addSubview(infoMessage)
-        infoMessage.anchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: nil, x: centerXAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: self.frame.width - (externalPadding * 2), height: self.frame.height / 2 - (internalPadding / 2) + externalPadding)
+        addSubviews(stackView, infoMessage)
+        
+        stackView.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 0, paddingLeft: externalPadding, paddingBottom: 0, paddingRight: externalPadding, width: 0, height: 100)
+        infoMessage.anchor(top: stackView.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: internalPadding, paddingLeft: externalPadding, paddingBottom: 0, paddingRight: externalPadding, width: 0, height: 0)
     }
 }

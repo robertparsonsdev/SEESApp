@@ -34,9 +34,9 @@ class HomeCell: UICollectionViewCell {
         clipsToBounds = true
         let padding: CGFloat = 10
         
-        addSubview(imageView)
+        addSubviews(imageView, titleLabel)
+        
         imageView.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: nil, paddingTop: padding, paddingLeft: (padding * 2), paddingBottom: padding, paddingRight: padding, width: self.frame.height - (padding * 2), height: 0)
-        addSubview(titleLabel)
-        titleLabel.anchor(top: topAnchor, leading: imageView.trailingAnchor, bottom: bottomAnchor, trailing: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: self.frame.width - self.frame.height - (padding * 2), height: 0)
+        titleLabel.anchor(top: topAnchor, leading: imageView.trailingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: padding * 2, width: 0, height: 0)
     }
 }

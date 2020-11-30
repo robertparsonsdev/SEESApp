@@ -21,9 +21,9 @@ class EventDetailViewController: UIViewController {
     // MARK: - Intializers
     init(event: Event) {
         self.event = event
-        self.whenMessage = SEESMessageView(title: "When:", message: event.startDate.convertToString(), dimensions: .half)
-        self.whereMessage = SEESMessageView(title: "Where:", message: event.locationName, dimensions: .half)
-        self.notesMessage = SEESMessageView(title: "Notes:", titleAlignment: .left, message: event.notes, messageAlignment: .left, dimensions: .full)
+        self.whenMessage = SEESMessageView(title: "When:", message: event.startDate.convertToString())
+        self.whereMessage = SEESMessageView(title: "Where:", message: event.locationName)
+        self.notesMessage = SEESMessageView(title: "Notes:", titleAlignment: .left, message: event.notes, messageAlignment: .left)
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -51,6 +51,7 @@ class EventDetailViewController: UIViewController {
     private func configureConstraints() {
         view.addSubview(scrollView)
         scrollView.frame = self.view.frame
+        scrollView.alwaysBounceVertical = true
 
         let externalPadding: CGFloat = 20, internalPadding: CGFloat = 15
         stackView.axis = .horizontal
@@ -61,7 +62,9 @@ class EventDetailViewController: UIViewController {
 
         scrollView.addSubviews(stackView, notesMessage, addToCalButton)
         
-        let top = scrollView.topAnchor, leading = scrollView.leadingAnchor, trailing = scrollView.trailingAnchor, x = view.centerXAnchor
-        stackView.anchor(top: top, leading: nil, bottom: nil, trailing: nil, x: x, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: self.view.frame.width - (externalPadding * 2), height: 100)
+        let top = scrollView.topAnchor, leading = view.leadingAnchor, trailing = view.trailingAnchor
+        stackView.anchor(top: top, leading: view.leadingAnchor, bottom: nil, trailing: trailing, paddingTop: 0, paddingLeft: externalPadding, paddingBottom: 0, paddingRight: externalPadding, width: 0, height: 100)
+        notesMessage.anchor(top: stackView.bottomAnchor, leading: leading, bottom: nil, trailing: trailing, paddingTop: internalPadding, paddingLeft: externalPadding, paddingBottom: 0, paddingRight: externalPadding, width: 0, height: 200)
+        addToCalButton.anchor(top: notesMessage.bottomAnchor, leading: leading, bottom: nil, trailing: trailing, paddingTop: internalPadding, paddingLeft: externalPadding, paddingBottom: 0, paddingRight: externalPadding, width: 0, height: 40)
     }
 }

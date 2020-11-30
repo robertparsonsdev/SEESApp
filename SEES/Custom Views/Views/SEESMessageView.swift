@@ -58,8 +58,9 @@ class SEESMessageView: UIView {
     }
     
     private func configureConstraints() {
-        let externalPadding: CGFloat = 10
+        guard !self.stackView.arrangedSubviews.contains(self.messageLabel) else { return }
         
+        let externalPadding: CGFloat = 10
         if let titleLabel = self.titleLabel {
             titleLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
             stackView.addArrangedSubview(titleLabel)

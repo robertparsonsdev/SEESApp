@@ -20,25 +20,25 @@ struct Event {
     let notes: String
     
     init(dictionary: [String: Any]) {
-        if let startDate = dictionary["startDate"] as? String {
+        if let startDate = dictionary[FirebaseValue.startDate] as? String {
             self.startDate = startDate.convertToDate() ?? Date()
         } else {
             self.startDate = Date()
         }
         
-        if let endDate = dictionary["endDate"] as? String {
+        if let endDate = dictionary[FirebaseValue.endDate] as? String {
             self.endDate = endDate.convertToDate() ?? Date()
         } else {
             self.endDate = Date()
         }
         
-        self.eventName = dictionary["eventName"] as? String ?? "eventNameError"
-        self.locationName = dictionary["locationName"] as? String ?? "locationNameError"
-        self.locationAddress = dictionary["locationAddress"] as? String ?? "locationAddressError"
-        self.locationCity = dictionary["locationCity"] as? String ?? "locationCityError"
-        self.locationState = dictionary["locationState"] as? String ?? "locationStateError"
-        self.locationZIP = dictionary["locationZIP"] as? Int ?? -1
-        self.locationCountry = dictionary["locationCountry"] as? String ?? "locationCountryError"
-        self.notes = dictionary["notes"] as? String ?? "notesError"
+        self.eventName = dictionary[FirebaseValue.eventName] as? String ?? "eventNameError"
+        self.locationName = dictionary[FirebaseValue.locationName] as? String ?? "locationNameError"
+        self.locationAddress = dictionary[FirebaseValue.locationAddress] as? String ?? "locationAddressError"
+        self.locationCity = dictionary[FirebaseValue.locationCity] as? String ?? "locationCityError"
+        self.locationState = dictionary[FirebaseValue.locationState] as? String ?? "locationStateError"
+        self.locationZIP = dictionary[FirebaseValue.locationZIP] as? Int ?? -1
+        self.locationCountry = dictionary[FirebaseValue.locationCountry] as? String ?? "locationCountryError"
+        self.notes = dictionary[FirebaseValue.notes] as? String ?? "notesError"
     }
 }

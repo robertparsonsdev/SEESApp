@@ -94,7 +94,7 @@ class MajorTableViewController: UITableViewController {
     // MARK: - Functions
     private func fetchOptions() {
         showLoadingView()
-        self.networkManager.fetchMajor(for: self.majorInfo.networkName) { [weak self] (result) in
+        self.networkManager.fetchMajor(for: self.majorInfo.firebaseValue) { [weak self] (result) in
             guard let self = self else { return }
             self.dismissLoadingView()
             self.endRefreshing()

@@ -70,18 +70,18 @@ enum MajorInfo {
         }
     }
     
-    var networkName: String {
+    var firebaseValue: String {
         switch self {
         case .academicAdvising: return ""
-        case .biology: return "biology"
-        case .biotechnology: return "biotechnology"
-        case .chemistry: return "chemistry"
-        case .computerScience: return "computerScience"
-        case .environmentalBiology: return "environmentalBiology"
-        case .geology: return "geology"
-        case .kinesiology: return "kinesiology"
-        case .mathematics: return "mathematics"
-        case .physics: return "physics"
+        case .biology: return FirebaseValue.biology
+        case .biotechnology: return FirebaseValue.biotechnology
+        case .chemistry: return FirebaseValue.chemistry
+        case .computerScience: return FirebaseValue.computerScience
+        case .environmentalBiology: return FirebaseValue.environmentalBiology
+        case .geology: return FirebaseValue.geology
+        case .kinesiology: return FirebaseValue.kinesiology
+        case .mathematics: return FirebaseValue.mathematics
+        case .physics: return FirebaseValue.physics
         }
     }
 }
@@ -90,22 +90,39 @@ enum Keys {
     static let student = "student"
 }
 
-enum ScreenDimensions: CGFloat {
-    case full, half, thirds
+enum FirebaseValue {
+    static let users = "users", majors = "majors", events = "events"
     
-    var width: CGFloat {
-        switch self {
-        case .full: return UIScreen.main.bounds.width - 60
-        case .half: return (UIScreen.main.bounds.width / 2) - 45
-        case .thirds: return (UIScreen.main.bounds.width / 3) - 45
-        }
-    }
+    static let advisor = "advisor"
+    static let advisorOffice = "advisorOffice"
+    static let broncoID = "broncoID"
+    static let email = "email"
+    static let firstName = "firstName"
+    static let lastName = "lastName"
     
-    var height: CGFloat {
-        switch self {
-        case .full: return UIScreen.main.bounds.height
-        case .half: return UIScreen.main.bounds.height / 2
-        case .thirds: return UIScreen.main.bounds.height / 3
-        }
-    }
+    static let biology = "biology"
+    static let biotechnology = "biotechnology"
+    static let chemistry = "chemistry"
+    static let computerScience = "computerScience"
+    static let environmentalBiology = "environmentalBiology"
+    static let geology = "geology"
+    static let kinesiology = "kinesiology"
+    static let mathematics = "mathematics"
+    static let physics = "physics"
+    
+    static let optionName = "optionName"
+    static let curriculumSheet = "curriculumSheet"
+    static let flowchart = "flowchart"
+    static let roadMap = "roadMap"
+    
+    static let eventName = "eventName"
+    static let startDate = "startDate"
+    static let endDate = "endDate"
+    static let locationName = "locationName"
+    static let locationAddress = "locationAddress"
+    static let locationCity = "locationCity"
+    static let locationState = "locationState"
+    static let locationZIP = "locationZIP"
+    static let locationCountry = "locationCountry"
+    static let notes = "notes"
 }

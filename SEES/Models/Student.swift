@@ -16,11 +16,11 @@ struct Student: Codable, Hashable {
     let lastName: String
     
     init(dictionary: [String: Any]) {
-        self.advisor = dictionary["advisor"] as? String ?? "advisorError"
-        self.advisorOffice = dictionary["advisorOffice"] as? String ?? "advisorOfficeError"
-        self.broncoID = dictionary["broncoID"] as? String ?? "broncoIDError"
-        self.email = dictionary["email"] as? String ?? "emailError"
-        self.firstName = dictionary["firstName"] as? String ?? "firstNameError"
-        self.lastName = dictionary["lastName"] as? String ?? "lastNameError"
+        self.advisor = dictionary[FirebaseValue.advisor] as? String ?? "advisorError"
+        self.advisorOffice = dictionary[FirebaseValue.advisorOffice] as? String ?? "advisorOfficeError"
+        self.broncoID = dictionary[FirebaseValue.broncoID] as? String ?? "broncoIDError"
+        self.email = dictionary[FirebaseValue.email] as? String ?? "emailError"
+        self.firstName = dictionary[FirebaseValue.firstName] as? String ?? "firstNameError"
+        self.lastName = dictionary[FirebaseValue.lastName] as? String ?? "lastNameError"
     }
 }

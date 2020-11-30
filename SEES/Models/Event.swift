@@ -13,6 +13,10 @@ struct Event {
     let eventName: String
     let locationName: String
     let locationAddress: String
+    let locationCity: String
+    let locationState: String
+    let locationZIP: Int
+    let locationCountry: String
     let notes: String
     
     init(dictionary: [String: Any]) {
@@ -31,6 +35,10 @@ struct Event {
         self.eventName = dictionary["eventName"] as? String ?? "eventNameError"
         self.locationName = dictionary["locationName"] as? String ?? "locationNameError"
         self.locationAddress = dictionary["locationAddress"] as? String ?? "locationAddressError"
+        self.locationCity = dictionary["locationCity"] as? String ?? "locationCityError"
+        self.locationState = dictionary["locationState"] as? String ?? "locationStateError"
+        self.locationZIP = dictionary["locationZIP"] as? Int ?? -1
+        self.locationCountry = dictionary["locationCountry"] as? String ?? "locationCountryError"
         self.notes = dictionary["notes"] as? String ?? "notesError"
     }
 }

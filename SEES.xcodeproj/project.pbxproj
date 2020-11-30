@@ -14,6 +14,7 @@
 		EE06F597256604630044CC27 /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE06F596256604630044CC27 /* HomeHeader.swift */; };
 		EE06F59B256607240044CC27 /* HomeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE06F59A256607240044CC27 /* HomeItem.swift */; };
 		EE06F59E2566255B0044CC27 /* SEESTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE06F59D2566255B0044CC27 /* SEESTitleLabel.swift */; };
+		EE0C0C94257498AC00591B89 /* SEESMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0C0C93257498AC00591B89 /* SEESMapView.swift */; };
 		EE122C16256DDD9400D11454 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE122C15256DDD9400D11454 /* Student.swift */; };
 		EE122C22256E0BD900D11454 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE122C21256E0BD900D11454 /* PersistenceManager.swift */; };
 		EE31AB1D25704CD7009F51D8 /* MajorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE31AB1C25704CD7009F51D8 /* MajorTableViewController.swift */; };
@@ -54,6 +55,7 @@
 		EE06F596256604630044CC27 /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
 		EE06F59A256607240044CC27 /* HomeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeItem.swift; sourceTree = "<group>"; };
 		EE06F59D2566255B0044CC27 /* SEESTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEESTitleLabel.swift; sourceTree = "<group>"; };
+		EE0C0C93257498AC00591B89 /* SEESMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SEESMapView.swift; sourceTree = "<group>"; };
 		EE122C15256DDD9400D11454 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		EE122C21256E0BD900D11454 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		EE31AB1C25704CD7009F51D8 /* MajorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorTableViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				EE025285256B3B1400E7047A /* SEESMessageView.swift */,
+				EE0C0C93257498AC00591B89 /* SEESMapView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				EE7BA660256090FE005126D2 /* SEESTextField.swift in Sources */,
 				EE7BA664256095A2005126D2 /* SEESButton.swift in Sources */,
 				EE06F59B256607240044CC27 /* HomeItem.swift in Sources */,
+				EE0C0C94257498AC00591B89 /* SEESMapView.swift in Sources */,
 				EEA59136255F7A2000B8F856 /* ContactCollectionViewController.swift in Sources */,
 				EEA59117255F73DF00B8F856 /* MainTabBarController.swift in Sources */,
 				EE31AB1D25704CD7009F51D8 /* MajorTableViewController.swift in Sources */,

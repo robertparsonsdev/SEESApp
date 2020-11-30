@@ -15,7 +15,7 @@ class EventDetailViewController: UIViewController {
     private let whenMessage: SEESMessageView
     private let whereMessage: SEESMessageView
     private let notesMessage: SEESMessageView
-    
+    private let mapView: SEESMapView
     private let addToCalButton = SEESButton(backgroundColor: .systemRed, title: "Add to iPhone Calendar")
     
     // MARK: - Intializers
@@ -24,7 +24,8 @@ class EventDetailViewController: UIViewController {
         self.whenMessage = SEESMessageView(title: "When:", message: event.startDate.convertToString())
         self.whereMessage = SEESMessageView(title: "Where:", message: event.locationName)
         self.notesMessage = SEESMessageView(title: "Notes:", titleAlignment: .left, message: event.notes, messageAlignment: .left)
-
+        self.mapView = SEESMapView(title: event.locationName, address: event.locationAddress, city: event.locationCity, state: event.locationState, zip: event.locationZIP, country: event.locationCountry)
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -60,11 +61,12 @@ class EventDetailViewController: UIViewController {
         stackView.addArrangedSubview(whenMessage)
         stackView.addArrangedSubview(whereMessage)
 
-        scrollView.addSubviews(stackView, notesMessage, addToCalButton)
+        scrollView.addSubviews(stackView, notesMessage, addToCalButton, mapView)
         
         let top = scrollView.topAnchor, leading = view.leadingAnchor, trailing = view.trailingAnchor
         stackView.anchor(top: top, leading: view.leadingAnchor, bottom: nil, trailing: trailing, paddingTop: 0, paddingLeft: externalPadding, paddingBottom: 0, paddingRight: externalPadding, width: 0, height: 100)
         notesMessage.anchor(top: stackView.bottomAnchor, leading: leading, bottom: nil, trailing: trailing, paddingTop: internalPadding, paddingLeft: externalPadding, paddingBottom: 0, paddingRight: externalPadding, width: 0, height: 200)
-        addToCalButton.anchor(top: notesMessage.bottomAnchor, leading: leading, bottom: nil, trailing: trailing, paddingTop: internalPadding, paddingLeft: externalPadding, paddingBottom: 0, paddingRight: externalPadding, width: 0, height: 40)
+        mapView.anchor(top: notesMessage.bottomAnchor, leading: leading, bottom: nil, trailing: trailing, paddingTop: internalPadding, paddingLeft: externalPadding, paddingBottom: 0, paddingRight: externalPadding, width: 0, height: 150)
+        addToCalButton.anchor(top: mapView.bottomAnchor, leading: leading, bottom: nil, trailing: trailing, paddingTop: internalPadding, paddingLeft: externalPadding, paddingBottom: 0, paddingRight: externalPadding, width: 0, height: 40)
     }
 }

@@ -21,6 +21,15 @@ extension UIViewController {
         }
     }
     
+    func presentAlertOnMainThread(withTitle title: String, andMessage message: String) {
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alertController.view.tintColor = .systemTeal
+            alertController.addAction(UIAlertAction(title: "Okay", style: .default))
+            self.present(alertController, animated: true)
+        }
+    }
+    
     func showLoadingView() {
         containerView = UIView(frame: view.bounds)
         view.addSubview(containerView)

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import EventKit
 
 class EventDetailViewController: UIViewController {
     private let event: Event
@@ -47,6 +48,7 @@ class EventDetailViewController: UIViewController {
         self.title = self.event.eventName
         self.view.backgroundColor = .systemBackground
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.addToCalButton.addTarget(self, action: #selector(addToCalButtonTapped), for: .touchUpInside)
     }
     
     private func configureConstraints() {
@@ -68,5 +70,38 @@ class EventDetailViewController: UIViewController {
         notesMessage.anchor(top: stackView.bottomAnchor, leading: leading, bottom: nil, trailing: trailing, paddingTop: internalPadding, paddingLeft: externalPadding, paddingBottom: 0, paddingRight: externalPadding, width: 0, height: 200)
         mapView.anchor(top: notesMessage.bottomAnchor, leading: leading, bottom: nil, trailing: trailing, paddingTop: internalPadding, paddingLeft: externalPadding, paddingBottom: 0, paddingRight: externalPadding, width: 0, height: 150)
         addToCalButton.anchor(top: mapView.bottomAnchor, leading: leading, bottom: nil, trailing: trailing, paddingTop: internalPadding, paddingLeft: externalPadding, paddingBottom: 0, paddingRight: externalPadding, width: 0, height: 40)
+    }
+    
+    // MARK: - Selectors
+    @objc private func addToCalButtonTapped() {
+        let eventStore = EKEventStore()
+        switch EKEventStore.authorizationStatus(for: .event) {
+        case .authorized: insertEvent(store: eventStore)
+        case .denied: print("Calendar access denied.")
+        case .notDetermined:
+            eventStore.requestAccess(to: .event) { [weak self] (granted, error) in
+                guard let self = self else { return }
+                if granted { self.insertEvent(store: eventStore) } else { print("Calendar access denied.") }
+            }
+        default: print("Default case.")
+        }
+    }
+    
+    func insertEvent(store: EKEventStore) {
+        // refactor to handle missing times, coordinates, and event times
+        let calendarEvent = EKEvent(eventStore: store)
+        calendarEvent.calendar = store.defaultCalendarForNewEvents
+        calendarEvent.title = event.eventName
+        calendarEvent.startDate = event.startDate
+        calendarEvent.endDate = event.endDate
+        calendarEvent.location = event.locationAddress
+        calendarEvent.notes = event.notes
+        
+        do {
+            try store.save(calendarEvent, span: .thisEvent)
+            presentAlertOnMainThread(withTitle: "Success!", andMessage: "This event was succesfully added to your calendar.")
+        } catch let error {
+            print("Error saving event:", error)
+        }
     }
 }

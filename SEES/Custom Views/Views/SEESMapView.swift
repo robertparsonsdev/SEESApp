@@ -22,7 +22,7 @@ class SEESMapView: MKMapView {
     
     private var location = CLLocation()
     private var annotation = MKPointAnnotation()
-    private var placemark: MKPlacemark?
+    var placemark: MKPlacemark?
     
     init(title: String, address: String, city: String, state: String, zip: Int, country: String) {
         self.locationTitle = title
@@ -88,8 +88,10 @@ extension SEESMapView: MKMapViewDelegate {
 //        mapView.deselectAnnotation(mapItem as? MKAnnotation, animated: true)
 //    }
     
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        let mapItem = MKMapItem(placemark: self.placemark!)
-        mapItem.openInMaps(launchOptions: .none)
-    }
+//    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+//        print("selected")
+//        let mapItem = MKMapItem(placemark: self.placemark!)
+//        let coordinates = CLLocationCoordinate2D(latitude: self.location.coordinate.latitude, longitude: self.location.coordinate.longitude)
+//        mapItem.openInMaps(launchOptions: [MKLaunchOptionsMapCenterKey: coordinates])
+//    }
 }

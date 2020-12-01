@@ -44,6 +44,7 @@
 		EEA5913B255F881400B8F856 /* SEESLogoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5913A255F881400B8F856 /* SEESLogoImageView.swift */; };
 		EEB49B38257317BE004FECDE /* DateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB49B37257317BE004FECDE /* DateExt.swift */; };
 		EEB49B3B2573285D004FECDE /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB49B3A2573285D004FECDE /* EventDetailViewController.swift */; };
+		EEF4A6E82575FBA000D8F72B /* SEESMapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF4A6E72575FBA000D8F72B /* SEESMapButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +88,7 @@
 		EEA5913A255F881400B8F856 /* SEESLogoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEESLogoImageView.swift; sourceTree = "<group>"; };
 		EEB49B37257317BE004FECDE /* DateExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExt.swift; sourceTree = "<group>"; };
 		EEB49B3A2573285D004FECDE /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
+		EEF4A6E72575FBA000D8F72B /* SEESMapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEESMapButton.swift; sourceTree = "<group>"; };
 		FB293462A91E2B75DA431EF0 /* Pods_SEES.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SEES.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -195,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				EE7BA663256095A2005126D2 /* SEESButton.swift */,
+				EEF4A6E72575FBA000D8F72B /* SEESMapButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 				EEA59136255F7A2000B8F856 /* ContactCollectionViewController.swift in Sources */,
 				EEA59117255F73DF00B8F856 /* MainTabBarController.swift in Sources */,
 				EE31AB1D25704CD7009F51D8 /* MajorTableViewController.swift in Sources */,
+				EEF4A6E82575FBA000D8F72B /* SEESMapButton.swift in Sources */,
 				EEA59130255F7A0900B8F856 /* HomeCollectionViewController.swift in Sources */,
 				EEA59113255F72CD00B8F856 /* UIViewExtension.swift in Sources */,
 				EE61809825621154000283B9 /* NetworkManager.swift in Sources */,

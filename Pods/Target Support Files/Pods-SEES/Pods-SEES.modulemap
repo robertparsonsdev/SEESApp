@@ -1,0 +1,6 @@
+framework module Pods_SEES {
+  umbrella header "Pods-SEES-umbrella.h"
+
+  export *
+  module * { export * }
+}

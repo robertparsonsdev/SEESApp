@@ -76,7 +76,7 @@ class MajorTableViewController: UITableViewController {
             return
         }
         
-        presentSafariVC(with: url)
+        presentSafariVCOnMainThread(with: url)
     }
     
     // MARK: - Configuration Functions

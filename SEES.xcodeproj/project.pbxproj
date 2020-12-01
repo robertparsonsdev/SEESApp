@@ -44,6 +44,7 @@
 		EEA5913B255F881400B8F856 /* SEESLogoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5913A255F881400B8F856 /* SEESLogoImageView.swift */; };
 		EEB49B38257317BE004FECDE /* DateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB49B37257317BE004FECDE /* DateExt.swift */; };
 		EEB49B3B2573285D004FECDE /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB49B3A2573285D004FECDE /* EventDetailViewController.swift */; };
+		EEDC62212576FA42008DF73B /* AcademicAdvisingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC62202576FA42008DF73B /* AcademicAdvisingVC.swift */; };
 		EEF4A6E82575FBA000D8F72B /* SEESMapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF4A6E72575FBA000D8F72B /* SEESMapButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +89,7 @@
 		EEA5913A255F881400B8F856 /* SEESLogoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEESLogoImageView.swift; sourceTree = "<group>"; };
 		EEB49B37257317BE004FECDE /* DateExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExt.swift; sourceTree = "<group>"; };
 		EEB49B3A2573285D004FECDE /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
+		EEDC62202576FA42008DF73B /* AcademicAdvisingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademicAdvisingVC.swift; sourceTree = "<group>"; };
 		EEF4A6E72575FBA000D8F72B /* SEESMapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEESMapButton.swift; sourceTree = "<group>"; };
 		FB293462A91E2B75DA431EF0 /* Pods_SEES.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SEES.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -237,10 +239,10 @@
 				EEA5910F255F71DF00B8F856 /* Support */,
 				EE06F599256606330044CC27 /* Models */,
 				EE06F58D2565FC230044CC27 /* Utilities */,
+				EEA59111255F72AA00B8F856 /* Extensions */,
 				EE61809625621142000283B9 /* Managers */,
 				EEA5912A255F792100B8F856 /* Screens */,
 				EEA59139255F880100B8F856 /* Custom Views */,
-				EEA59111255F72AA00B8F856 /* Extensions */,
 				EEA590DB255F5E4E00B8F856 /* Assets.xcassets */,
 				EEA590DD255F5E4E00B8F856 /* LaunchScreen.storyboard */,
 				EEA590E0255F5E4E00B8F856 /* Info.plist */,
@@ -279,6 +281,7 @@
 				EE9B9773257184A00088A593 /* Events */,
 				EEA59135255F7A2000B8F856 /* ContactCollectionViewController.swift */,
 				EE31AB1C25704CD7009F51D8 /* MajorTableViewController.swift */,
+				EEDC62202576FA42008DF73B /* AcademicAdvisingVC.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 				EEA59130255F7A0900B8F856 /* HomeCollectionViewController.swift in Sources */,
 				EEA59113255F72CD00B8F856 /* UIViewExtension.swift in Sources */,
 				EE61809825621154000283B9 /* NetworkManager.swift in Sources */,
+				EEDC62212576FA42008DF73B /* AcademicAdvisingVC.swift in Sources */,
 				EEA59133255F7A1400B8F856 /* EventsCollectionViewController.swift in Sources */,
 				EEA590D5255F5E4A00B8F856 /* SceneDelegate.swift in Sources */,
 			);

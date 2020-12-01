@@ -18,6 +18,7 @@ enum SEESError: Error {
     case unableToSaveStudent, unableToRetrieveStudent
     case unableToLoadMajorInformation
     case unableToLoadEvents
+    case unableToLoadWorksheet
     
     var info: (title: String, message: String) {
         switch self {
@@ -33,6 +34,7 @@ enum SEESError: Error {
         case .unableToRetrieveStudent: return ("Unable to Retrieve Student Data", "Please try restarting this app.")
         case .unableToLoadMajorInformation: return ("Unable to Load Major Information", "Not able to load information for this major's option. Either it doesn't exist or the connection is bad. Please report this to the SEES Office.")
         case .unableToLoadEvents: return ("Unable to Load Events", "Please try refreshing or restarting the app.")
+        case .unableToLoadWorksheet: return ("Unable to Load Advising Worksheet", "Please ensure you have an internet connection and if the problem persists, please inform the SEES Office.")
         }
     }
 }
@@ -125,4 +127,8 @@ enum FirebaseValue {
     static let locationZIP = "locationZIP"
     static let locationCountry = "locationCountry"
     static let notes = "notes"
+}
+
+enum Dimensions {
+    static let homeCellHeight: CGFloat = 100
 }

@@ -57,9 +57,11 @@ extension UIViewController {
         }
     }
     
-    func presentSafariVC(with url: URL) {
-        let safariVC = SFSafariViewController(url: url)
-        safariVC.preferredControlTintColor = .systemTeal
-        present(safariVC, animated: true)
+    func presentSafariVCOnMainThread(with url: URL) {
+        DispatchQueue.main.async {
+            let safariVC = SFSafariViewController(url: url)
+            safariVC.preferredControlTintColor = .systemTeal
+            self.present(safariVC, animated: true)
+        }
     }
 }

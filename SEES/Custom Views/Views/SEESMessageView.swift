@@ -46,6 +46,11 @@ class SEESMessageView: UIView {
         configureConstraints()
     }
     
+    public func set(attributedMessage: NSAttributedString, messageAlignment: NSTextAlignment) {
+        self.messageLabel.set(attributedText: attributedMessage, alignment: messageAlignment)
+        configureConstraints()
+    }
+    
     private func configureView() {
         backgroundColor = .tertiarySystemFill
         clipsToBounds = true

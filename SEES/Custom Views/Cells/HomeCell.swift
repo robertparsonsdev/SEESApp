@@ -36,7 +36,8 @@ class HomeCell: UICollectionViewCell {
         
         addSubviews(imageView, titleLabel)
         
-        imageView.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: nil, paddingTop: padding, paddingLeft: (padding * 2), paddingBottom: padding, paddingRight: padding, width: self.frame.height - (padding * 2), height: 0)
+        let imageDimensions = Dimensions.homeCellHeight - (padding * 2)
+        imageView.anchor(top: nil, leading: leadingAnchor, bottom: nil, trailing: nil, y: centerYAnchor, paddingTop: 0, paddingLeft: (padding * 2), paddingBottom: 0, paddingRight: 0, width: imageDimensions, height: imageDimensions)
         titleLabel.anchor(top: topAnchor, leading: imageView.trailingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: padding * 2, width: 0, height: 0)
     }
 }

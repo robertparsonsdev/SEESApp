@@ -69,7 +69,9 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.row {
-        case 0: print("academic advising")
+        case 0:
+            let academicAdvisingVC = AcademicAdvisingVC()
+            self.navigationController?.pushViewController(academicAdvisingVC, animated: true)
         default:
             let majorInfo = self.homeItems[indexPath.row].major
             let majorTable = MajorTableViewController(networkManager: self.networkManager, majorInfo: majorInfo)

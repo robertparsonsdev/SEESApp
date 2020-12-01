@@ -30,6 +30,12 @@ class SEESBodyLabel: UILabel {
         sizeToFit()
     }
     
+    public func set(attributedText: NSAttributedString, alignment: NSTextAlignment) {
+        self.textAlignment = alignment
+        self.attributedText = attributedText
+        sizeToFit()
+    }
+    
     private func configure() {
         textColor = .label
         font = UIFont.preferredFont(forTextStyle: .body)

@@ -10,22 +10,26 @@ import HorizonCalendar
 
 class CalendarGridVC: UIViewController {
     private var events: [Event] = []
-    private let currentDay: DateComponents
-    private var cornerRadius: CGFloat {
-        return (self.view.frame.width - 7 * 8) / 7 / 2
-    }
+    private var eventDays: Set<EventDay> = []
+    private let currentEventDay: EventDay
+    private var cornerRadius: CGFloat = 0
     
     private var calendarGrid: CalendarView!
     
     // MARK: - Intializers
     init(events: [Event]) {
         self.events = events
-        let date = Date()
         let calendar = Calendar.current
-        self.currentDay = calendar.dateComponents([.year, .month, .day], from: date)
         
+        for event in events {
+            let eventComponents = calendar.dateComponents([.month, .day], from: event.startDate)
+            self.eventDays.insert(EventDay(day: eventComponents.day, month: eventComponents.month))
+        }
+        
+        let currentDayComponents = calendar.dateComponents([.month, .day], from: Date())
+        self.currentEventDay = EventDay(day: currentDayComponents.day ?? 0, month: currentDayComponents.month ?? 0)
+
         super.init(nibName: nil, bundle: nil)
-        
         self.calendarGrid = CalendarView(initialContent: makeCalendarContent())
     }
     
@@ -44,6 +48,7 @@ class CalendarGridVC: UIViewController {
     // MARK: - Configuration Functions
     private func configureViewController() {
         view.backgroundColor = .systemBackground
+        self.cornerRadius = (self.view.frame.width - 7 * 16) / 7 / 2
     }
     
     private func configureConstraints() {
@@ -58,12 +63,17 @@ class CalendarGridVC: UIViewController {
         let endDate = calendar.date(byAdding: .month, value: 6, to: Date())!
         
         return CalendarViewContent(calendar: calendar, visibleDateRange: startDate...endDate, monthsLayout: .vertical(options: VerticalMonthsLayoutOptions()))
-            .withDayItemModelProvider { (day) -> AnyCalendarItemModel in
-                var invariantViewProperties = DayLabel.InvariantViewProperties(font: UIFont.systemFont(ofSize: 18), textColor: .label, backgroundColor: .clear, cornerRadius: self.cornerRadius)
+            .withDayItemModelProvider { [weak self] (day) -> AnyCalendarItemModel in
+                var invariantViewProperties = DayLabel.InvariantViewProperties(font: UIFont.systemFont(ofSize: 18), textColor: .label, backgroundColor: .clear, cornerRadius: self!.cornerRadius)
+                let horizonEventDay: EventDay = EventDay(day: day.components.day, month: day.components.month)
                 
-                if self.currentDay.day == day.day && self.currentDay.month == day.components.month && self.currentDay.year == day.components.year {
+                if self!.currentEventDay == horizonEventDay {
                     invariantViewProperties.font = UIFont.boldSystemFont(ofSize: 18)
                     invariantViewProperties.backgroundColor = .tertiarySystemFill
+                } else if self!.eventDays.contains(horizonEventDay) {
+                    invariantViewProperties.font = UIFont.systemFont(ofSize: 18, weight: .heavy)
+                    invariantViewProperties.backgroundColor = .systemTeal
+                    invariantViewProperties.textColor = .white
                 }
                 
                 return CalendarItemModel<DayLabel>(invariantViewProperties: invariantViewProperties, viewModel: .init(day: day))
@@ -103,4 +113,9 @@ struct DayLabel: CalendarItemViewRepresentable {
     static func setViewModel(_ viewModel: ViewModel, on view: UILabel) {
         view.text = "\(viewModel.day.day)"
     }
+}
+
+struct EventDay: Hashable {
+    let day: Int?
+    let month: Int?
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EventsCollectionViewController: UIViewController {
+class EventsViewController: UIViewController {
     private var events: [Event] = []
     private let networkManager: NetworkManager
     

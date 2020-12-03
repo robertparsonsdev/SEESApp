@@ -19,6 +19,7 @@ enum SEESError: Error {
     case unableToLoadMajorInformation
     case unableToLoadEvents
     case unableToLoadWorksheet
+    case unableToSaveEvent, unableToAccessCalendar
     
     var info: (title: String, message: String) {
         switch self {
@@ -35,6 +36,8 @@ enum SEESError: Error {
         case .unableToLoadMajorInformation: return ("Unable to Load Major Information", "Not able to load information for this major's option. Either it doesn't exist or the connection is bad. Please report this to the SEES Office.")
         case .unableToLoadEvents: return ("Unable to Load Events", "Please try refreshing or restarting the app.")
         case .unableToLoadWorksheet: return ("Unable to Load Advising Worksheet", "Please ensure you have an internet connection and if the problem persists, please inform the SEES Office.")
+        case .unableToSaveEvent: return ("Unable to Save Event", "Please try restarting the app and try again.")
+        case .unableToAccessCalendar: return ("Unable to Access Calendar", "You need to grant this app access to your calendar by going to Settings, Privacy, Calendars and making sure SEES is on.")
         }
     }
 }

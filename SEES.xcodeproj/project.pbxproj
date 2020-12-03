@@ -39,7 +39,7 @@
 		EEA59117255F73DF00B8F856 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA59116255F73DF00B8F856 /* MainTabBarController.swift */; };
 		EEA5912C255F79E800B8F856 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5912B255F79E800B8F856 /* LoginViewController.swift */; };
 		EEA59130255F7A0900B8F856 /* HomeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5912F255F7A0900B8F856 /* HomeCollectionViewController.swift */; };
-		EEA59133255F7A1400B8F856 /* EventsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA59132255F7A1400B8F856 /* EventsCollectionViewController.swift */; };
+		EEA59133255F7A1400B8F856 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA59132255F7A1400B8F856 /* EventsViewController.swift */; };
 		EEA59136255F7A2000B8F856 /* ContactCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA59135255F7A2000B8F856 /* ContactCollectionViewController.swift */; };
 		EEA5913B255F881400B8F856 /* SEESLogoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5913A255F881400B8F856 /* SEESLogoImageView.swift */; };
 		EEB49B38257317BE004FECDE /* DateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB49B37257317BE004FECDE /* DateExt.swift */; };
@@ -84,7 +84,7 @@
 		EEA59116255F73DF00B8F856 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		EEA5912B255F79E800B8F856 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EEA5912F255F7A0900B8F856 /* HomeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewController.swift; sourceTree = "<group>"; };
-		EEA59132255F7A1400B8F856 /* EventsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCollectionViewController.swift; sourceTree = "<group>"; };
+		EEA59132255F7A1400B8F856 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		EEA59135255F7A2000B8F856 /* ContactCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCollectionViewController.swift; sourceTree = "<group>"; };
 		EEA5913A255F881400B8F856 /* SEESLogoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEESLogoImageView.swift; sourceTree = "<group>"; };
 		EEB49B37257317BE004FECDE /* DateExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExt.swift; sourceTree = "<group>"; };
@@ -207,7 +207,7 @@
 		EE9B9773257184A00088A593 /* Events */ = {
 			isa = PBXGroup;
 			children = (
-				EEA59132255F7A1400B8F856 /* EventsCollectionViewController.swift */,
+				EEA59132255F7A1400B8F856 /* EventsViewController.swift */,
 				EE9B976D2571847A0088A593 /* CalendarGridVC.swift */,
 				EE9B9770257184970088A593 /* CalendarListVC.swift */,
 				EEB49B3A2573285D004FECDE /* EventDetailViewController.swift */,
@@ -447,7 +447,7 @@
 				EEA59113255F72CD00B8F856 /* UIViewExtension.swift in Sources */,
 				EE61809825621154000283B9 /* NetworkManager.swift in Sources */,
 				EEDC62212576FA42008DF73B /* AcademicAdvisingVC.swift in Sources */,
-				EEA59133255F7A1400B8F856 /* EventsCollectionViewController.swift in Sources */,
+				EEA59133255F7A1400B8F856 /* EventsViewController.swift in Sources */,
 				EEA590D5255F5E4A00B8F856 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

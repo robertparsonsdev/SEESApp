@@ -31,20 +31,18 @@ extension UIViewController {
     }
     
     func showLoadingView() {
-        containerView = UIView(frame: view.bounds)
-        view.addSubview(containerView)
+        containerView = UIView()
         containerView.backgroundColor = .systemBackground
         containerView.alpha = 0
         
+        view.addSubview(containerView)
+        containerView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: nil, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: nil, x: view.centerXAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         UIView.animate(withDuration: 0.25) { containerView.alpha = 0.8 }
         
         let activityIndicator = UIActivityIndicatorView(style: .large)
         containerView.addSubview(activityIndicator)
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            activityIndicator.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
-            activityIndicator.centerXAnchor.constraint(equalTo: containerView.centerXAnchor)
-        ])
+        activityIndicator.anchor(top: nil, leading: nil, bottom: nil, trailing: nil, x: containerView.centerXAnchor, y: containerView.centerYAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        
         activityIndicator.startAnimating()
     }
     

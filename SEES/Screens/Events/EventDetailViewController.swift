@@ -12,6 +12,8 @@ class EventDetailViewController: UIViewController {
     private let event: Event
     
     private let scrollView = UIScrollView()
+    private let contentView = UIView()
+    
     private let stackView = UIStackView()
     private let whenMessage: SEESMessageView
     private let whereMessage: SEESMessageView
@@ -39,7 +41,6 @@ class EventDetailViewController: UIViewController {
         super.viewDidLoad()
         
         configureViewController()
-        
         configureConstraints()
     }
     
@@ -52,24 +53,27 @@ class EventDetailViewController: UIViewController {
     }
     
     private func configureConstraints() {
-        view.addSubview(scrollView)
-        scrollView.frame = self.view.frame
-        scrollView.alwaysBounceVertical = true
-
         let externalPadding: CGFloat = 20, internalPadding: CGFloat = 15
+        let stackHeight: CGFloat = 100, notesHeight: CGFloat = 200, mapHeight: CGFloat = 150, buttonHeight: CGFloat = 45
+        let contentHeight = stackHeight + notesHeight + mapHeight + buttonHeight + (4 * internalPadding)
+        
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.spacing = internalPadding
         stackView.addArrangedSubview(whenMessage)
         stackView.addArrangedSubview(whereMessage)
-
-        scrollView.addSubviews(stackView, notesMessage, addToCalButton, mapView)
         
-        let top = scrollView.topAnchor, leading = view.leadingAnchor, trailing = view.trailingAnchor
-        stackView.anchor(top: top, leading: view.leadingAnchor, bottom: nil, trailing: trailing, paddingTop: 0, paddingLeft: externalPadding, paddingBottom: 0, paddingRight: externalPadding, width: 0, height: 100)
-        notesMessage.anchor(top: stackView.bottomAnchor, leading: leading, bottom: nil, trailing: trailing, paddingTop: internalPadding, paddingLeft: externalPadding, paddingBottom: 0, paddingRight: externalPadding, width: 0, height: 200)
-        mapView.anchor(top: notesMessage.bottomAnchor, leading: leading, bottom: nil, trailing: trailing, paddingTop: internalPadding, paddingLeft: externalPadding, paddingBottom: 0, paddingRight: externalPadding, width: 0, height: 150)
-        addToCalButton.anchor(top: mapView.bottomAnchor, leading: leading, bottom: nil, trailing: trailing, paddingTop: internalPadding, paddingLeft: externalPadding, paddingBottom: 0, paddingRight: externalPadding, width: 0, height: 40)
+        view.addSubview(scrollView)
+        scrollView.frame = self.view.frame
+        scrollView.addSubview(contentView)
+        contentView.anchor(top: scrollView.topAnchor, leading: scrollView.leadingAnchor, bottom: scrollView.bottomAnchor, trailing: scrollView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: scrollView.frame.width, height: contentHeight)
+        
+        contentView.addSubviews(stackView, notesMessage, addToCalButton, mapView)
+        let top = contentView.topAnchor, leading = contentView.leadingAnchor, trailing = contentView.trailingAnchor
+        stackView.anchor(top: top, leading: view.leadingAnchor, bottom: nil, trailing: trailing, paddingTop: 0, paddingLeft: externalPadding, paddingBottom: 0, paddingRight: externalPadding, width: 0, height: stackHeight)
+        notesMessage.anchor(top: stackView.bottomAnchor, leading: leading, bottom: nil, trailing: trailing, paddingTop: internalPadding, paddingLeft: externalPadding, paddingBottom: 0, paddingRight: externalPadding, width: 0, height: notesHeight)
+        mapView.anchor(top: notesMessage.bottomAnchor, leading: leading, bottom: nil, trailing: trailing, paddingTop: internalPadding, paddingLeft: externalPadding, paddingBottom: 0, paddingRight: externalPadding, width: 0, height: mapHeight)
+        addToCalButton.anchor(top: mapView.bottomAnchor, leading: leading, bottom: nil, trailing: trailing, paddingTop: internalPadding, paddingLeft: externalPadding, paddingBottom: 0, paddingRight: externalPadding, width: 0, height: buttonHeight)
     }
     
     // MARK: - Selectors
@@ -77,31 +81,38 @@ class EventDetailViewController: UIViewController {
         let eventStore = EKEventStore()
         switch EKEventStore.authorizationStatus(for: .event) {
         case .authorized: insertEvent(store: eventStore)
-        case .denied: print("Calendar access denied.")
+        case .denied: presentErrorOnMainThread(withError: .unableToAccessCalendar)
         case .notDetermined:
             eventStore.requestAccess(to: .event) { [weak self] (granted, error) in
                 guard let self = self else { return }
-                if granted { self.insertEvent(store: eventStore) } else { print("Calendar access denied.") }
+                guard error == nil else { self.presentErrorOnMainThread(withError: .unableToAccessCalendar); return }
+                
+                if granted {
+                    self.insertEvent(store: eventStore)
+                } else {
+                    self.presentErrorOnMainThread(withError: .unableToAccessCalendar)
+                }
             }
-        default: print("Default case.")
+        case .restricted: presentErrorOnMainThread(withError: .unableToAccessCalendar)
+        @unknown default:
+            fatalError()
         }
     }
     
     func insertEvent(store: EKEventStore) {
-        // refactor to handle missing times, coordinates, and event times
         let calendarEvent = EKEvent(eventStore: store)
         calendarEvent.calendar = store.defaultCalendarForNewEvents
         calendarEvent.title = event.eventName
         calendarEvent.startDate = event.startDate
         calendarEvent.endDate = event.endDate
-        calendarEvent.location = event.locationAddress
+        calendarEvent.location = "\(event.locationAddress), \(event.locationCity), \(event.locationState) \(event.locationZIP)"
         calendarEvent.notes = event.notes
         
         do {
             try store.save(calendarEvent, span: .thisEvent)
-            presentAlertOnMainThread(withTitle: "Success!", andMessage: "This event was succesfully added to your calendar.")
+            presentAlertOnMainThread(withTitle: "Success!", andMessage: "This event was succesfully saved to your calendar.")
         } catch let error {
-            print("Error saving event:", error)
+            presentErrorOnMainThread(withError: .unableToSaveEvent, optionalMessage: "\n\n\(error.localizedDescription)")
         }
     }
 }

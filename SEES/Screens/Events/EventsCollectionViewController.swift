@@ -13,14 +13,14 @@ class EventsCollectionViewController: UIViewController {
     
     private let segmentedControl = UISegmentedControl(items: ["Calendar View", "List View"])
     private let containerView = UIView()
-    private lazy var calendarGridVC: CalendarGridVC = {
+    private var calendarGridVC: CalendarGridVC {
         let calendarVC = CalendarGridVC(events: self.events)
         return calendarVC
-    }()
-    private lazy var calendarListVC: CalendarListVC = {
+    }
+    private var calendarListVC: CalendarListVC {
         let calendarListVC = CalendarListVC(events: self.events)
         return calendarListVC
-    }()
+    }
     
     // MARK: - Initializers
     init(networkManager: NetworkManager) {
@@ -75,7 +75,7 @@ class EventsCollectionViewController: UIViewController {
             self.dismissLoadingView()
             switch result {
             case .success(let events):
-                var filteredEvents = events.filter { $0.startDate >= Calendar.current.date(byAdding: .day, value: 0, to: Date())! }
+                var filteredEvents = events.filter { $0.startDate >= Calendar.current.date(byAdding: .day, value: -1, to: Date())! }
                 filteredEvents.sort { $0.startDate < $1.startDate }
                 self.events = filteredEvents
             case .failure(let error):
@@ -109,6 +109,6 @@ class EventsCollectionViewController: UIViewController {
     }
     
     @objc private func refreshTapped() {
-        
+        fetchEvents()
     }
 }

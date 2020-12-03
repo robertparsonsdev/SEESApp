@@ -89,13 +89,13 @@ class CalendarGridVC: UIViewController {
                 var invariantViewProperties = DayLabel.InvariantViewProperties(cornerRadius: self.cornerRadius)
                 let horizonEventDay: EventDay = EventDay(day: day.components.day, month: day.components.month)
                 
-                if self.currentEventDay == horizonEventDay {
-                    invariantViewProperties.font = UIFont.boldSystemFont(ofSize: 18)
-                    invariantViewProperties.backgroundColor = .tertiarySystemFill
-                } else if self.eventDaysSet.contains(horizonEventDay) {
+                if self.eventDaysSet.contains(horizonEventDay) {
                     invariantViewProperties.font = UIFont.systemFont(ofSize: 18, weight: .heavy)
                     invariantViewProperties.backgroundColor = .systemTeal
                     invariantViewProperties.textColor = .white
+                } else if self.currentEventDay == horizonEventDay {
+                    invariantViewProperties.font = UIFont.boldSystemFont(ofSize: 18)
+                    invariantViewProperties.backgroundColor = .tertiarySystemFill
                 }
                 
                 return CalendarItemModel<DayLabel>(invariantViewProperties: invariantViewProperties, viewModel: .init(day: day))

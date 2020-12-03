@@ -20,9 +20,12 @@ class SEESMapView: MKMapView {
     private let locationZIP: Int
     private let locationCountry: String
     
-    private var location = CLLocation()
+    private var coordinate = CLLocationCoordinate2D()
     private var annotation = MKPointAnnotation()
-    var placemark: MKPlacemark?
+    
+    private lazy var mapErrorView: SEESMessageView = {
+        return SEESMessageView(message: "There was an error loading this location's address. 😣\nPlease inform the SEES Office.", messageAlignment: .center)
+    }()
     
     init(title: String, address: String, city: String, state: String, zip: Int, country: String) {
         self.locationTitle = title
@@ -34,64 +37,61 @@ class SEESMapView: MKMapView {
         
         super.init(frame: .zero)
         
-        configureMapView()
+        createMapView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func configureMapView() {
+    private func createMapView() {
         layer.cornerRadius = 14
         delegate = self
         
-        convertToCoordinates() { [weak self] (location) in
+        convertToCoordinate(forAddress: self.locationAddress) { [weak self] (coordinate) in
             guard let self = self else { return }
-            self.location = location
-            self.centerMapOnLocation(location: location)
-            self.configureAnnotation(withLocation: location)
+            guard let coordinate = coordinate else {
+                self.addErrorOverlay()
+                return
+            }
+            self.coordinate = coordinate
+            self.centerMapOnLocation(withCoordinate: coordinate)
+            self.configureAnnotation(withCoordinate: coordinate)
         }
     }
     
-    func convertToCoordinates(completion: @escaping (_ location: CLLocation) -> Void) {
+    private func convertToCoordinate(forAddress address: String, completion: @escaping (_ location: CLLocationCoordinate2D?) -> Void) {
         let geoCoder = CLGeocoder()
-        geoCoder.geocodeAddressString(self.locationAddress) { (placemarks, error) in
-            guard let placemarks = placemarks, let location = placemarks.first?.location else { return }
-            completion(location)
+        geoCoder.geocodeAddressString(address) { (placemarks, error) in
+            guard error == nil, let placemarks = placemarks else { completion(nil); return }
+            completion(placemarks.first?.location?.coordinate)
         }
     }
     
-    func centerMapOnLocation(location: CLLocation) {
-        let coordinateRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+    private func centerMapOnLocation(withCoordinate coordinate: CLLocationCoordinate2D) {
+        let coordinateRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: self.regionRadius, longitudinalMeters: self.regionRadius)
         setRegion(coordinateRegion, animated: true)
     }
     
-    func configureAnnotation(withLocation location: CLLocation) {
-//        self.annotation.title = "\(locationTitle)\n\(locationAddress)"
-//        self.annotation.coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-//        addAnnotation(annotation)
-        
-        // refactor database to include separate entries for address
-        let coordinates = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        let address: [String: Any] = [CNPostalAddressStreetKey: self.locationAddress, CNPostalAddressCityKey: self.locationCity, CNPostalAddressStateKey: self.locationCity, CNPostalAddressPostalCodeKey: self.locationZIP, CNPostalAddressISOCountryCodeKey: self.locationCountry]
-        
-        self.placemark = MKPlacemark(coordinate: coordinates, addressDictionary: address)
-        addAnnotation(self.placemark!)
+    private func configureAnnotation(withCoordinate coordinate: CLLocationCoordinate2D) {
+        self.annotation.title = "\(self.locationTitle)\n\(self.locationAddress)\n\(self.locationCity), \(self.locationState) \(self.locationZIP)\nTap pin to open in Maps"
+        self.annotation.coordinate = coordinate
+        addAnnotation(annotation)
+    }
+    
+    private func addErrorOverlay() {
+        DispatchQueue.main.async {
+            self.mapErrorView.backgroundColor = UIColor.tertiarySystemFill.withAlphaComponent(0.75)
+            self.addSubview(self.mapErrorView)
+            self.mapErrorView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        }
     }
 }
 
 extension SEESMapView: MKMapViewDelegate {
-//    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-//        let mapItem = MKMapItem(placemark: self.placemark!)
-//        mapItem.name = "Test"
-//        mapItem.openInMaps(launchOptions: nil)
-//        mapView.deselectAnnotation(mapItem as? MKAnnotation, animated: true)
-//    }
-    
-//    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-//        print("selected")
-//        let mapItem = MKMapItem(placemark: self.placemark!)
-//        let coordinates = CLLocationCoordinate2D(latitude: self.location.coordinate.latitude, longitude: self.location.coordinate.longitude)
-//        mapItem.openInMaps(launchOptions: [MKLaunchOptionsMapCenterKey: coordinates])
-//    }
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: self.coordinate))
+        mapItem.openInMaps(launchOptions: [MKLaunchOptionsMapCenterKey: self.coordinate])
+        mapView.deselectAnnotation(mapItem as? MKAnnotation, animated: true)
+    }
 }

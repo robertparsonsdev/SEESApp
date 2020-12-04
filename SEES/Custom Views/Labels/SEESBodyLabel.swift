@@ -27,13 +27,11 @@ class SEESBodyLabel: UILabel {
     public func set(textAlignment: NSTextAlignment, text: String) {
         self.textAlignment = textAlignment
         self.text = text
-        sizeToFit()
     }
     
     public func set(attributedText: NSAttributedString, alignment: NSTextAlignment) {
         self.textAlignment = alignment
         self.attributedText = attributedText
-        sizeToFit()
     }
     
     private func configure() {

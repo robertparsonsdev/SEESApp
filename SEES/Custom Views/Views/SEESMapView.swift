@@ -24,7 +24,7 @@ class SEESMapView: MKMapView {
     private var annotation = MKPointAnnotation()
     
     private lazy var mapErrorView: SEESMessageView = {
-        return SEESMessageView(message: "There was an error loading this location's address. 😣\nPlease inform the SEES Office.", messageAlignment: .center)
+        return SEESMessageView(message: "There was an error loading this location's address. 😣\nPlease inform the SEES Office.", messageAlignment: .center, frame: .zero)
     }()
     
     init(title: String, address: String, city: String, state: String, zip: Int, country: String) {

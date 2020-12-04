@@ -13,7 +13,10 @@ class HomeHeader: UICollectionReusableView {
     private let stackView = UIStackView()
     private let advisorNameMessage = SEESMessageView()
     private let advisorOfficeMessage = SEESMessageView()
-    private let infoMessage = SEESMessageView(message: "SEES students are required to receive academic advising each semester. Instructions on how to do so can be found below along with major curriculum information.")
+    private lazy var infoMessage: SEESMessageView = {
+        return SEESMessageView(message: "SEES students are required to receive academic advising each semester. Instructions on how to do so can be found below along with major curriculum information.",
+                               frame: CGRect(x: 0, y: 0, width: self.frame.width - (20 * 2), height: self.frame.height - 100 - 15))
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -12,8 +12,6 @@ class EventDetailViewController: UIViewController {
     private let event: Event
     
     private let scrollView = UIScrollView()
-    private let contentView = UIView()
-    
     private let stackView = UIStackView()
     private let whenMessage: SEESMessageView
     private let whereMessage: SEESMessageView
@@ -24,9 +22,9 @@ class EventDetailViewController: UIViewController {
     // MARK: - Intializers
     init(event: Event) {
         self.event = event
-        self.whenMessage = SEESMessageView(title: "When:", message: event.startDate.convertToString())
-        self.whereMessage = SEESMessageView(title: "Where:", message: event.locationName)
-        self.notesMessage = SEESMessageView(title: "Notes:", titleAlignment: .left, message: event.notes, messageAlignment: .left)
+        self.whenMessage = SEESMessageView(title: "When:", message: event.startDate.convertToString(), frame: .zero)
+        self.whereMessage = SEESMessageView(title: "Where:", message: event.locationName, frame: .zero)
+        self.notesMessage = SEESMessageView(title: "Notes:", titleAlignment: .left, message: event.notes, messageAlignment: .left, frame: .zero)
         self.mapView = SEESMapView(title: event.locationName, address: event.locationAddress, city: event.locationCity, state: event.locationState, zip: event.locationZIP, country: event.locationCountry)
         
         super.init(nibName: nil, bundle: nil)
@@ -56,21 +54,20 @@ class EventDetailViewController: UIViewController {
         let externalPadding: CGFloat = 20, internalPadding: CGFloat = 15
         let stackHeight: CGFloat = 100, notesHeight: CGFloat = 200, mapHeight: CGFloat = 150, buttonHeight: CGFloat = 45
         let contentHeight = stackHeight + notesHeight + mapHeight + buttonHeight + (4 * internalPadding)
-        
+        let top = scrollView.topAnchor, leading = view.leadingAnchor, trailing = view.trailingAnchor
+
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.spacing = internalPadding
         stackView.addArrangedSubview(whenMessage)
         stackView.addArrangedSubview(whereMessage)
         
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: contentHeight)
         view.addSubview(scrollView)
-        scrollView.frame = self.view.frame
-        scrollView.addSubview(contentView)
-        contentView.anchor(top: scrollView.topAnchor, leading: scrollView.leadingAnchor, bottom: scrollView.bottomAnchor, trailing: scrollView.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: scrollView.frame.width, height: contentHeight)
+        scrollView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
-        contentView.addSubviews(stackView, notesMessage, addToCalButton, mapView)
-        let top = contentView.topAnchor, leading = contentView.leadingAnchor, trailing = contentView.trailingAnchor
-        stackView.anchor(top: top, leading: view.leadingAnchor, bottom: nil, trailing: trailing, paddingTop: 0, paddingLeft: externalPadding, paddingBottom: 0, paddingRight: externalPadding, width: 0, height: stackHeight)
+        scrollView.addSubviews(stackView, notesMessage, addToCalButton, mapView)
+        stackView.anchor(top: top, leading: leading, bottom: nil, trailing: trailing, paddingTop: 0, paddingLeft: externalPadding, paddingBottom: 0, paddingRight: externalPadding, width: 0, height: stackHeight)
         notesMessage.anchor(top: stackView.bottomAnchor, leading: leading, bottom: nil, trailing: trailing, paddingTop: internalPadding, paddingLeft: externalPadding, paddingBottom: 0, paddingRight: externalPadding, width: 0, height: notesHeight)
         mapView.anchor(top: notesMessage.bottomAnchor, leading: leading, bottom: nil, trailing: trailing, paddingTop: internalPadding, paddingLeft: externalPadding, paddingBottom: 0, paddingRight: externalPadding, width: 0, height: mapHeight)
         addToCalButton.anchor(top: mapView.bottomAnchor, leading: leading, bottom: nil, trailing: trailing, paddingTop: internalPadding, paddingLeft: externalPadding, paddingBottom: 0, paddingRight: externalPadding, width: 0, height: buttonHeight)

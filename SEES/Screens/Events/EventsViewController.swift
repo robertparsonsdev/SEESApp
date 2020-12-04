@@ -50,7 +50,7 @@ class EventsViewController: UIViewController {
         self.navigationController?.navigationBar.topItem?.title = "Upcoming Events"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
-        let refreshButton = UIBarButtonItem(image: UIImage(systemName: "arrow.clockwise"), style: .plain, target: self, action: #selector(refreshTapped))
+        let refreshButton = UIBarButtonItem(image: Symbol.refresh, style: .plain, target: self, action: #selector(refreshTapped))
         refreshButton.tintColor = .systemTeal
         self.navigationItem.rightBarButtonItem = refreshButton
     }

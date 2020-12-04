@@ -45,6 +45,6 @@ class HomeHeader: UICollectionReusableView {
         addSubviews(stackView, infoMessage)
         
         stackView.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 0, paddingLeft: externalPadding, paddingBottom: 0, paddingRight: externalPadding, width: 0, height: 100)
-        infoMessage.anchor(top: stackView.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: internalPadding, paddingLeft: externalPadding, paddingBottom: 0, paddingRight: externalPadding, width: 0, height: 0)
+        infoMessage.anchor(top: stackView.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: internalPadding, paddingLeft: externalPadding, paddingBottom: 20, paddingRight: externalPadding, width: 0, height: 0)
     }
 }

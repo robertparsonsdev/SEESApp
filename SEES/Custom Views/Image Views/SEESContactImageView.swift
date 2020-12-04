@@ -7,11 +7,13 @@
 
 import UIKit
 
-class SEESLogoImageView: UIView {
+class SEESContactImageView: UIView {
+    private let contact: Contact
     private let imageView = UIImageView()
     private var radius: CGFloat = 0
     
-    init(cornerRadius: CGFloat) {
+    init(cornerRadius: CGFloat, contact: Contact) {
+        self.contact = contact
         super.init(frame: .zero)
         
         self.radius = cornerRadius
@@ -29,10 +31,18 @@ class SEESLogoImageView: UIView {
         layer.cornerRadius = self.radius
         
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "sees_logo")!
-        
         addSubview(imageView)
+        
+        switch self.contact {
+        case .logo:
+            imageView.image = UIImage(named: "sees_logo")!
+            imageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: radius / 9.75).isActive = true
+        case .alas:
+            imageView.image = UIImage(named: "alas")!
+        case .dora:
+            imageView.image = UIImage(named: "dora")!
+        }
+        
         imageView.anchor(top: nil, leading: nil, bottom: nil, trailing: nil, x: centerXAnchor, y: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: self.radius * 2, height: self.radius * 2)
-        imageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: radius / 9.75).isActive = true
     }
 }

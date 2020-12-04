@@ -18,13 +18,13 @@ class SEESTitleLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(textAlignment: NSTextAlignment, text: String, fontSize: CGFloat) {
+    convenience init(textAlignment: NSTextAlignment = .center, text: String, fontSize: CGFloat = 20) {
         self.init(frame: .zero)
         
         set(textAlignment: textAlignment, text: text, fontSize: fontSize)
     }
     
-    public func set(textAlignment: NSTextAlignment, text: String, fontSize: CGFloat) {
+    public func set(textAlignment: NSTextAlignment = .center, text: String, fontSize: CGFloat = 20) {
         self.textAlignment = textAlignment
         self.font = UIFont.boldSystemFont(ofSize: fontSize)
         self.text = text

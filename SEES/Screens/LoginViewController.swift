@@ -11,7 +11,7 @@ class LoginViewController: UIViewController {
     private let networkManager: NetworkManager
     
     private let logoMultiplier: CGFloat = 0.5
-    private var logoImageView: SEESLogoImageView!
+    private var logoImageView: SEESContactImageView!
     private let broncoEmailTextField = SEESTextField(placeholder: "Bronco Email", keyboardType: .emailAddress, returnKeyType: .next)
     private let broncoIDTextField = SEESTextField(placeholder: "Bronco ID", keyboardType: .numberPad, returnKeyType: .go)
     private let loginButton = SEESButton(backgroundColor: .systemTeal, title: "Log In")
@@ -48,7 +48,7 @@ class LoginViewController: UIViewController {
     }
     
     fileprivate func configureLogoImageView() {
-        logoImageView = SEESLogoImageView(cornerRadius: (self.view.frame.width * logoMultiplier) / 2)
+        logoImageView = SEESContactImageView(cornerRadius: (self.view.frame.width * logoMultiplier) / 2, contact: .logo)
     }
     
     fileprivate func configureTextField(textField: SEESTextField, tag: Int) {

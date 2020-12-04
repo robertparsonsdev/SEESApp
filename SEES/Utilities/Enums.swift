@@ -134,4 +134,20 @@ enum FirebaseValue {
 
 enum Dimensions {
     static let homeCellHeight: CGFloat = 100
+    static let homeHeaderHeight: CGFloat = 270
+    static let contactCellHeight: CGFloat = 200
+}
+
+enum Symbol {
+    static let home = UIImage(systemName: "house.fill")!
+    static let calendar = UIImage(systemName: "calendar")!
+    static let envelope = UIImage(systemName: "envelope.fill")!
+    static let refresh = UIImage(systemName: "arrow.clockwise")!
+    static let phone = UIImage(systemName: "phone.fill")!
+}
+
+enum Contact {
+    case logo
+    case alas
+    case dora
 }

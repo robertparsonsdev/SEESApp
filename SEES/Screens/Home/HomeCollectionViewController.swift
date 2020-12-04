@@ -64,7 +64,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: view.frame.width, height: 250)
+        return CGSize(width: view.frame.width, height: Dimensions.homeHeaderHeight)
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -82,7 +82,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     // MARK: - Configuration Functions
     private func configureViewController() {
         self.collectionView.backgroundColor = .systemBackground
-        self.collectionView.collectionViewLayout = UIHelper.createSingleColumnFlowLayout(in: self.collectionView)
+        self.collectionView.collectionViewLayout = UIHelper.createSingleColumnFlowLayout(in: self.collectionView, cellHeight: Dimensions.homeCellHeight)
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
         let signOutButton = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOut))

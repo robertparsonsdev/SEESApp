@@ -18,18 +18,18 @@ class SEESBodyLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(textAlignment: NSTextAlignment, text: String) {
+    convenience init(textAlignment: NSTextAlignment = .center, text: String) {
         self.init(frame: .zero)
         
         set(textAlignment: textAlignment, text: text)
     }
     
-    public func set(textAlignment: NSTextAlignment, text: String) {
+    public func set(textAlignment: NSTextAlignment = .center, text: String) {
         self.textAlignment = textAlignment
         self.text = text
     }
     
-    public func set(attributedText: NSAttributedString, alignment: NSTextAlignment) {
+    public func set(attributedText: NSAttributedString, alignment: NSTextAlignment = .center) {
         self.textAlignment = alignment
         self.attributedText = attributedText
     }

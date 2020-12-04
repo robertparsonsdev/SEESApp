@@ -26,9 +26,9 @@ class MainTabBarController: UITabBarController {
     }
     
     func configureViewControllers() {
-        let homeViewController = buildTabBarViewController(withTitle: "Home", andImage: UIImage(systemName: "house.fill")!, andRootVC: HomeCollectionViewController(networkManager: self.networkManager, persistence: self.persistence))
-        let calendarViewController = buildTabBarViewController(withTitle: "Events", andImage: UIImage(systemName: "calendar")!, andRootVC: EventsViewController(networkManager: self.networkManager))
-        let contactViewController = buildTabBarViewController(withTitle: "Contact Us", andImage: UIImage(systemName: "envelope.fill")!, andRootVC: ContactCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout()))
+        let homeViewController = buildTabBarViewController(withTitle: "Home", andImage: Symbol.home, andRootVC: HomeCollectionViewController(networkManager: self.networkManager, persistence: self.persistence))
+        let calendarViewController = buildTabBarViewController(withTitle: "Events", andImage: Symbol.calendar, andRootVC: EventsViewController(networkManager: self.networkManager))
+        let contactViewController = buildTabBarViewController(withTitle: "Contact Us", andImage: Symbol.envelope, andRootVC: ContactCollectionViewController(networkManager: self.networkManager))
         
         self.viewControllers = [homeViewController, calendarViewController, contactViewController]
     }

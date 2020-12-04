@@ -7,16 +7,25 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
 class ContactCollectionViewController: UICollectionViewController {
-
+    private let networkManager: NetworkManager
+    
+    // MARK: - Initializers
+    init(networkManager: NetworkManager) {
+        self.networkManager = networkManager
+        
+        super.init(collectionViewLayout: UICollectionViewFlowLayout())
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Collection View Lifecycle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureViewController()
-
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
 
     // MARK: - UICollectionViewDataSource
@@ -24,20 +33,23 @@ class ContactCollectionViewController: UICollectionViewController {
         return 1
     }
 
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return 1
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ContactCell.identifier, for: indexPath) as! ContactCell
         
         return cell
     }
 
     // MARK: - Configuration Functions
-    fileprivate func configureViewController() {
-        self.collectionView.backgroundColor = .systemOrange
+    private func configureViewController() {
+        self.title = "Contact Us"
+        self.collectionView.backgroundColor = .systemBackground
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.collectionView.collectionViewLayout = UIHelper.createSingleColumnFlowLayout(in: self.collectionView, cellHeight: Dimensions.contactCellHeight)
+        
+        self.collectionView!.register(ContactCell.self, forCellWithReuseIdentifier: ContactCell.identifier)
     }
 }

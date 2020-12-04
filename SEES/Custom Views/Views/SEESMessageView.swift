@@ -64,7 +64,7 @@ class SEESMessageView: UIView {
     }
     
     private func configureConstraints() {
-        guard !self.stackView.arrangedSubviews.contains(self.messageLabel) else { return }
+        guard !self.stackView.arrangedSubviews.contains(self.scrollView) else { return }
         let externalPadding: CGFloat = 10
         
         var titleHeight: CGFloat = 0

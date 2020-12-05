@@ -46,6 +46,7 @@
 		EEA5913B255F881400B8F856 /* SEESContactImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA5913A255F881400B8F856 /* SEESContactImageView.swift */; };
 		EEB49B38257317BE004FECDE /* DateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB49B37257317BE004FECDE /* DateExt.swift */; };
 		EEB49B3B2573285D004FECDE /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB49B3A2573285D004FECDE /* EventDetailViewController.swift */; };
+		EEBF274D257C1B20006940A7 /* ContactHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBF274C257C1B20006940A7 /* ContactHeader.swift */; };
 		EEDC62212576FA42008DF73B /* AcademicAdvisingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC62202576FA42008DF73B /* AcademicAdvisingVC.swift */; };
 		EEF4A6E82575FBA000D8F72B /* SEESMapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF4A6E72575FBA000D8F72B /* SEESMapButton.swift */; };
 /* End PBXBuildFile section */
@@ -93,6 +94,7 @@
 		EEA5913A255F881400B8F856 /* SEESContactImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEESContactImageView.swift; sourceTree = "<group>"; };
 		EEB49B37257317BE004FECDE /* DateExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExt.swift; sourceTree = "<group>"; };
 		EEB49B3A2573285D004FECDE /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
+		EEBF274C257C1B20006940A7 /* ContactHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactHeader.swift; sourceTree = "<group>"; };
 		EEDC62202576FA42008DF73B /* AcademicAdvisingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademicAdvisingVC.swift; sourceTree = "<group>"; };
 		EEF4A6E72575FBA000D8F72B /* SEESMapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEESMapButton.swift; sourceTree = "<group>"; };
 		FB293462A91E2B75DA431EF0 /* Pods_SEES.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SEES.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +153,7 @@
 				EE06F5922566034A0044CC27 /* HomeCell.swift */,
 				EE06F596256604630044CC27 /* HomeHeader.swift */,
 				EE7DBA78257ADDEA005A6812 /* ContactCell.swift */,
+				EEBF274C257C1B20006940A7 /* ContactHeader.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 				EE7BA664256095A2005126D2 /* SEESButton.swift in Sources */,
 				EE06F59B256607240044CC27 /* HomeItem.swift in Sources */,
 				EE0C0C94257498AC00591B89 /* SEESMapView.swift in Sources */,
+				EEBF274D257C1B20006940A7 /* ContactHeader.swift in Sources */,
 				EEA59136255F7A2000B8F856 /* ContactCollectionViewController.swift in Sources */,
 				EEA59117255F73DF00B8F856 /* MainTabBarController.swift in Sources */,
 				EE31AB1D25704CD7009F51D8 /* MajorTableViewController.swift in Sources */,

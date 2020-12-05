@@ -8,7 +8,7 @@
 import UIKit
 import MessageUI
 
-class ContactCollectionViewController: UICollectionViewController {
+class ContactCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     private var contacts: [Contact] = []
     private let networkManager: NetworkManager
     private let persistenceManager: PersistenceManager
@@ -44,11 +44,20 @@ class ContactCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return contacts.count
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ContactHeader.identifier, for: indexPath) as! ContactHeader
+        return header
+    }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ContactCell.identifier, for: indexPath) as! ContactCell
         cell.set(contact: self.contacts[indexPath.row], delegate: self)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: self.collectionView.frame.width, height: Dimensions.contactHeaderHeight)
     }
 
     // MARK: - Configuration Functions
@@ -60,7 +69,8 @@ class ContactCollectionViewController: UICollectionViewController {
         self.collectionView.refreshControl = self.refresh
         self.refresh.addTarget(self, action: #selector(refreshPulled), for: .allEvents)
         
-        self.collectionView!.register(ContactCell.self, forCellWithReuseIdentifier: ContactCell.identifier)
+        self.collectionView.register(ContactHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ContactHeader.identifier)
+        self.collectionView.register(ContactCell.self, forCellWithReuseIdentifier: ContactCell.identifier)
     }
     
     // MARK: - Functions

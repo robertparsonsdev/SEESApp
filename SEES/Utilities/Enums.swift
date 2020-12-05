@@ -145,7 +145,8 @@ enum FirebaseValue {
 enum Dimensions {
     static let homeCellHeight: CGFloat = 100
     static let homeHeaderHeight: CGFloat = 270
-    static let contactCellHeight: CGFloat = 200
+    static let contactCellHeight: CGFloat = 225
+    static let contactHeaderHeight: CGFloat = 200
 }
 
 enum Symbol {
@@ -160,4 +161,12 @@ enum ContactImage {
     case logo
     case alas
     case dora
+}
+
+enum SVDay: String, CaseIterable {
+    case monday = "M"
+    case tuesday = "T"
+    case wednesday = "W"
+    case thursday = "Th"
+    case friday = "F"
 }

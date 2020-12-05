@@ -8,41 +8,58 @@
 import UIKit
 
 class SEESContactImageView: UIView {
-    private let contact: ContactImage
+    private var contact: ContactImage = .logo
     private let imageView = UIImageView()
-    private var radius: CGFloat = 0
     
-    init(cornerRadius: CGFloat, contact: ContactImage) {
-        self.contact = contact
-        super.init(frame: .zero)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
-        self.radius = cornerRadius
-        configure()
+        configureView()
+    }
+    
+    convenience init(cornerRadius: CGFloat, contact: ContactImage) {
+        self.init(frame: .zero)
+        
+        set(cornerRadius: cornerRadius, contact: contact)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func configure() {
+    public func set(cornerRadius: CGFloat, contact: ContactImage) {
+        self.layer.cornerRadius = cornerRadius
+        self.contact = contact
+        self.imageView.contentMode = .scaleAspectFit
+        
+        if !self.subviews.contains(self.imageView) {
+            configureConstraints()
+        }
+
+        switch self.contact {
+        case .logo:
+            self.imageView.image = UIImage(named: "sees_logo")!
+        case .alas:
+            self.imageView.image = UIImage(named: "alas")!
+        case .dora:
+            self.imageView.image = UIImage(named: "dora")!
+        }
+    }
+    
+    private func configureView() {
         backgroundColor = .white
         layer.masksToBounds = true
         clipsToBounds = true
-        layer.cornerRadius = self.radius
+    }
+    
+    private func configureConstraints() {
+        let radius = self.layer.cornerRadius
         
-        imageView.contentMode = .scaleAspectFit
         addSubview(imageView)
+        imageView.anchor(top: nil, leading: nil, bottom: nil, trailing: nil, x: centerXAnchor, y: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: radius * 2 + 5, height: radius * 2 + 5)
         
-        switch self.contact {
-        case .logo:
-            imageView.image = UIImage(named: "sees_logo")!
+        if self.contact == .logo {
             imageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: radius / 9.75).isActive = true
-        case .alas:
-            imageView.image = UIImage(named: "alas")!
-        case .dora:
-            imageView.image = UIImage(named: "dora")!
         }
-        
-        imageView.anchor(top: nil, leading: nil, bottom: nil, trailing: nil, x: centerXAnchor, y: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: self.radius * 2, height: self.radius * 2)
     }
 }

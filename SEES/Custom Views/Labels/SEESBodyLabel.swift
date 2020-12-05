@@ -34,6 +34,10 @@ class SEESBodyLabel: UILabel {
         self.attributedText = attributedText
     }
     
+    public func set(fontSize: CGFloat) {
+        font = UIFont.systemFont(ofSize: fontSize)
+    }
+    
     private func configure() {
         textColor = .label
         font = UIFont.preferredFont(forTextStyle: .body)

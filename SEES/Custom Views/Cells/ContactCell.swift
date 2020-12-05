@@ -10,6 +10,7 @@ import UIKit
 class ContactCell: UICollectionViewCell {
     static let identifier = "contactUsCellIdentifier"
     private let contactImageDimensions: CGFloat = 45
+    private weak var delegate: ContactCellDelegate!
     
     private let contactImage = SEESContactImageView(cornerRadius: 45 / 2, contact: .alas)
     private let contactNameLabel = SEESTitleLabel(textAlignment: .left, text: "Dr. Steve Alas")
@@ -18,11 +19,13 @@ class ContactCell: UICollectionViewCell {
     private lazy var callButton: SEESButton = {
         let button = SEESButton(backgroundColor: .systemGreen, title: "")
         button.setAttributedTitle(configureButton(withTitle: "Call", andSymbol: Symbol.phone), for: .normal)
+        button.addTarget(self, action: #selector(self.callButtonTapped), for: .touchUpInside)
         return button
     }()
     private lazy var emailButton: SEESButton = {
         let button = SEESButton(backgroundColor: .systemBlue, title: "")
         button.setAttributedTitle(configureButton(withTitle: "Email", andSymbol: Symbol.envelope), for: .normal)
+        button.addTarget(self, action: #selector(self.emailButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -31,7 +34,6 @@ class ContactCell: UICollectionViewCell {
         super.init(frame: frame)
         
         configureCell()
-        configureConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -64,4 +66,26 @@ class ContactCell: UICollectionViewCell {
         callButton.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: nil, paddingTop: 0, paddingLeft: internalPadding, paddingBottom: internalPadding, paddingRight: 0, width: buttonWidth, height: buttonHeight)
         emailButton.anchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: internalPadding, paddingRight: internalPadding, width: buttonWidth, height: buttonHeight)
     }
+    
+    // MARK: - Functions
+    public func set(delegate: ContactCellDelegate) {
+        self.delegate = delegate
+        
+        configureConstraints()
+    }
+    
+    // MARK: - Selectors
+    @objc private func callButtonTapped() {
+        self.delegate.callButtonTapped(withNumber: "6263392112")
+    }
+    
+    @objc private func emailButtonTapped() {
+        self.delegate.emailButtonTapped(withEmail: "robertparsons4@icloud.com")
+    }
+}
+
+// MARK: - Protocols
+protocol ContactCellDelegate: class {
+    func callButtonTapped(withNumber number: String)
+    func emailButtonTapped(withEmail email: String)
 }

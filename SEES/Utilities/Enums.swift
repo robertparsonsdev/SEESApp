@@ -20,6 +20,7 @@ enum SEESError: Error {
     case unableToLoadEvents
     case unableToLoadWorksheet
     case unableToSaveEvent, unableToAccessCalendar
+    case unableToSendEmail, unableToOpenPage
     
     var info: (title: String, message: String) {
         switch self {
@@ -38,6 +39,8 @@ enum SEESError: Error {
         case .unableToLoadWorksheet: return ("Unable to Load Advising Worksheet", "Please ensure you have an internet connection and if the problem persists, please inform the SEES Office.")
         case .unableToSaveEvent: return ("Unable to Save Event", "Please try restarting the app and try again.")
         case .unableToAccessCalendar: return ("Unable to Access Calendar", "You need to grant this app access to your calendar by going to Settings, Privacy, Calendars and making sure SEES is on.")
+        case .unableToSendEmail: return ("Unable to Send Email", "Your device is not configured to send email. Please visit the SEES page on the CPP website to view email information.")
+        case .unableToOpenPage: return ("Unable to Open Page", "Please ensure you have an internet connection. If you do, please inform the SEES office of this error: Unable to open SEES Contact Information webpage.")
         }
     }
 }

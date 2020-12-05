@@ -8,11 +8,11 @@
 import UIKit
 
 class SEESContactImageView: UIView {
-    private let contact: Contact
+    private let contact: ContactImage
     private let imageView = UIImageView()
     private var radius: CGFloat = 0
     
-    init(cornerRadius: CGFloat, contact: Contact) {
+    init(cornerRadius: CGFloat, contact: ContactImage) {
         self.contact = contact
         super.init(frame: .zero)
         
@@ -24,7 +24,7 @@ class SEESContactImageView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    fileprivate func configure() {
+    private func configure() {
         backgroundColor = .white
         layer.masksToBounds = true
         clipsToBounds = true

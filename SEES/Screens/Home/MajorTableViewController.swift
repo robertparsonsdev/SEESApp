@@ -33,6 +33,7 @@ class MajorTableViewController: UITableViewController {
         configureTableView()
         configureRefresh()
         
+        showLoadingView()
         fetchOptions()
     }
 
@@ -93,17 +94,17 @@ class MajorTableViewController: UITableViewController {
     
     // MARK: - Functions
     private func fetchOptions() {
-        showLoadingView()
         self.networkManager.fetchMajor(for: self.majorInfo.firebaseValue) { [weak self] (result) in
             guard let self = self else { return }
             self.dismissLoadingView()
             self.endRefreshing()
+            
             switch result {
             case .success(let major):
                 self.options = major.options
                 DispatchQueue.main.async { self.tableView.reloadData() }
             case .failure(let error):
-                self.presentErrorOnMainThread(withError: .unableToLoadMajorInformation, optionalMessage: "\n\n\(error.localizedDescription)")
+                self.presentErrorOnMainThread(withError: error, optionalMessage: "\n\n\(error.localizedDescription)")
             }
         }
     }

@@ -20,7 +20,7 @@ enum SEESError: Error {
     case unableToLoadEvents
     case unableToLoadWorksheet
     case unableToSaveEvent, unableToAccessCalendar
-    case unableToSendEmail, unableToOpenPage
+    case unableToSendEmail, unableToOpenPage, unableToLoadContacts
     
     var info: (title: String, message: String) {
         switch self {
@@ -35,12 +35,13 @@ enum SEESError: Error {
         case .unableToSaveStudent: return ("Unable to Save Student Data", "Please try restarting this app.")
         case .unableToRetrieveStudent: return ("Unable to Retrieve Student Data", "Please try restarting this app.")
         case .unableToLoadMajorInformation: return ("Unable to Load Major Information", "Not able to load information for this major's option. Either it doesn't exist or the connection is bad. Please report this to the SEES Office.")
-        case .unableToLoadEvents: return ("Unable to Load Events", "Please try refreshing or restarting the app.")
+        case .unableToLoadEvents: return ("Unable to Load Events", "Please try refreshing, ensuring you have an internet connection, or restarting the app.")
         case .unableToLoadWorksheet: return ("Unable to Load Advising Worksheet", "Please ensure you have an internet connection and if the problem persists, please inform the SEES Office.")
         case .unableToSaveEvent: return ("Unable to Save Event", "Please try restarting the app and try again.")
         case .unableToAccessCalendar: return ("Unable to Access Calendar", "You need to grant this app access to your calendar by going to Settings, Privacy, Calendars and making sure SEES is on.")
         case .unableToSendEmail: return ("Unable to Send Email", "Your device is not configured to send email. Please visit the SEES page on the CPP website to view email information.")
         case .unableToOpenPage: return ("Unable to Open Page", "Please ensure you have an internet connection. If you do, please inform the SEES office of this error: Unable to open SEES Contact Information webpage.")
+        case .unableToLoadContacts: return ("Unable to Load Contacts", "Please try refreshing, ensuring you have an internet connection, or restarting the app.")
         }
     }
 }
@@ -99,7 +100,7 @@ enum Keys {
 }
 
 enum FirebaseValue {
-    static let users = "users", majors = "majors", events = "events"
+    static let users = "users", majors = "majors", events = "events", contacts = "contacts"
     
     static let advisor = "advisor"
     static let advisorOffice = "advisorOffice"
@@ -133,6 +134,12 @@ enum FirebaseValue {
     static let locationZIP = "locationZIP"
     static let locationCountry = "locationCountry"
     static let notes = "notes"
+    
+    static let name = "name"
+    static let title = "title"
+    static let office = "office"
+    static let phone = "phone"
+    static let order = "order"
 }
 
 enum Dimensions {
@@ -149,7 +156,7 @@ enum Symbol {
     static let phone = UIImage(systemName: "phone.fill")!
 }
 
-enum Contact {
+enum ContactImage {
     case logo
     case alas
     case dora

@@ -8,7 +8,7 @@
 import UIKit
 import SafariServices
 
-fileprivate var containerView: UIView!
+fileprivate var containerView: UIView?
 
 extension UIViewController {
     
@@ -32,16 +32,16 @@ extension UIViewController {
     
     func showLoadingView() {
         containerView = UIView()
-        containerView.backgroundColor = .systemBackground
-        containerView.alpha = 0
+        containerView?.backgroundColor = .systemBackground
+        containerView?.alpha = 0
         
-        view.addSubview(containerView)
-        containerView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: nil, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: nil, x: view.centerXAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-        UIView.animate(withDuration: 0.25) { containerView.alpha = 0.8 }
+        view.addSubview(containerView!)
+        containerView?.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: nil, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: nil, x: view.centerXAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        UIView.animate(withDuration: 0.25) { containerView?.alpha = 0.8 }
         
         let activityIndicator = UIActivityIndicatorView(style: .large)
-        containerView.addSubview(activityIndicator)
-        activityIndicator.anchor(top: nil, leading: nil, bottom: nil, trailing: nil, x: containerView.centerXAnchor, y: containerView.centerYAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        containerView?.addSubview(activityIndicator)
+        activityIndicator.anchor(top: nil, leading: nil, bottom: nil, trailing: nil, x: containerView?.centerXAnchor, y: containerView?.centerYAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
         activityIndicator.startAnimating()
     }
@@ -49,7 +49,7 @@ extension UIViewController {
     func dismissLoadingView() {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.25) {
-                containerView.removeFromSuperview()
+                containerView?.removeFromSuperview()
             }
             containerView = nil
         }

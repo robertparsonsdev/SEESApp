@@ -66,4 +66,15 @@ class NetworkManager {
             completed(.success(events))
         }
     }
+    
+    func fetchContacts(completed: @escaping(Result<[Contact], SEESError>) -> Void) {
+        Database.database().reference().child(FirebaseValue.contacts).observeSingleEvent(of: .value) { (snapshot) in
+            guard let contactsDictionary = snapshot.value as? [String: [String: Any]] else { completed(.failure(.unableToLoadContacts)); return }
+            var contacts: [Contact] = []
+            for (_, value) in contactsDictionary {
+                contacts.append(Contact(dictionary: value))
+            }
+            completed(.success(contacts))
+        }
+    }
 }

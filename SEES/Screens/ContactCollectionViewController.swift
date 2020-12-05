@@ -9,8 +9,10 @@ import UIKit
 import MessageUI
 
 class ContactCollectionViewController: UICollectionViewController {
+    private var contacts: [Contact] = []
     private let networkManager: NetworkManager
     private let persistenceManager: PersistenceManager
+    private let refresh = UIRefreshControl()
     
     // MARK: - Initializers
     init(networkManager: NetworkManager, persistence: PersistenceManager) {
@@ -29,6 +31,9 @@ class ContactCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
 
         configureViewController()
+        
+        showLoadingView()
+        fetchContacts()
     }
 
     // MARK: - UICollectionViewDataSource
@@ -37,12 +42,12 @@ class ContactCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return contacts.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ContactCell.identifier, for: indexPath) as! ContactCell
-        cell.set(delegate: self)
+        cell.set(contact: self.contacts[indexPath.row], delegate: self)
         return cell
     }
 
@@ -52,8 +57,41 @@ class ContactCollectionViewController: UICollectionViewController {
         self.collectionView.backgroundColor = .systemBackground
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.collectionView.collectionViewLayout = UIHelper.createSingleColumnFlowLayout(in: self.collectionView, cellHeight: Dimensions.contactCellHeight)
+        self.collectionView.refreshControl = self.refresh
+        self.refresh.addTarget(self, action: #selector(refreshPulled), for: .allEvents)
         
         self.collectionView!.register(ContactCell.self, forCellWithReuseIdentifier: ContactCell.identifier)
+    }
+    
+    // MARK: - Functions
+    private func fetchContacts() {
+        self.networkManager.fetchContacts { [weak self] (result) in
+            guard let self = self else { return }
+            self.dismissLoadingView()
+            self.endRefreshing()
+            
+            switch result {
+            case .success(var contacts):
+                contacts.sort { $0.order < $1.order }
+                self.contacts = contacts
+                DispatchQueue.main.async { self.collectionView.reloadData() }
+            case .failure(let error):
+                self.presentErrorOnMainThread(withError: error, optionalMessage: "\n\n\(error.localizedDescription)")
+            }
+        }
+    }
+    
+    private func endRefreshing() {
+        DispatchQueue.main.async {
+            if self.refresh.isRefreshing {
+                self.refresh.endRefreshing()
+            }
+        }
+    }
+    
+    // MARK: - Selectors
+    @objc private func refreshPulled() {
+        fetchContacts()
     }
 }
 
@@ -81,12 +119,11 @@ extension ContactCollectionViewController: ContactCellDelegate {
             return
         }
         
-        var subject: String = "", messageBody: String = ""
+        var subject: String = "SEES App: ", messageBody: String = ""
         self.persistenceManager.retrieve { (result) in
             switch result {
             case .success(let student):
                 if let student = student {
-                    subject = "SEES App: \(student.lastName), \(student.firstName)"
                     messageBody = "Name: \(student.firstName) \(student.lastName)\nBronco ID: \(student.broncoID)\n\nPlease compose your email here:\n"
                 }
             case .failure(_): break

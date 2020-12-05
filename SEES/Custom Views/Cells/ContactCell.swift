@@ -10,11 +10,13 @@ import UIKit
 class ContactCell: UICollectionViewCell {
     static let identifier = "contactUsCellIdentifier"
     private let contactImageDimensions: CGFloat = 45
+    
+    private var contact: Contact!
     private weak var delegate: ContactCellDelegate!
     
-    private let contactImage = SEESContactImageView(cornerRadius: 45 / 2, contact: .alas)
-    private let contactNameLabel = SEESTitleLabel(textAlignment: .left, text: "Dr. Steve Alas")
-    private let locationLabel = SEESBodyLabel(textAlignment: .left, text: "3-2123")
+    private var contactImage: SEESContactImageView! // refactor this
+    private let contactNameLabel = SEESTitleLabel()
+    private let contactSubLabel = SEESBodyLabel()
     
     private lazy var callButton: SEESButton = {
         let button = SEESButton(backgroundColor: .systemGreen, title: "")
@@ -58,29 +60,34 @@ class ContactCell: UICollectionViewCell {
         let internalPadding: CGFloat = 15
         let buttonWidth = frame.width / 2 - (internalPadding * 1.5), buttonHeight: CGFloat = 40
         
-        addSubviews(contactImage, contactNameLabel, locationLabel, callButton, emailButton)
+        addSubviews(contactImage, contactNameLabel, contactSubLabel, callButton, emailButton)
         contactImage.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, paddingTop: internalPadding, paddingLeft: internalPadding, paddingBottom: 0, paddingRight: 0, width: self.contactImageDimensions, height: self.contactImageDimensions)
         contactNameLabel.anchor(top: contactImage.topAnchor, leading: contactImage.trailingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 0, paddingLeft: internalPadding, paddingBottom: 0, paddingRight: internalPadding, width: 0, height: 0)
-        locationLabel.anchor(top: contactNameLabel.bottomAnchor, leading: contactImage.trailingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 0, paddingLeft: internalPadding, paddingBottom: 0, paddingRight: internalPadding, width: 0, height: 0)
+        contactSubLabel.anchor(top: contactNameLabel.bottomAnchor, leading: contactImage.trailingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 0, paddingLeft: internalPadding, paddingBottom: 0, paddingRight: internalPadding, width: 0, height: 0)
         
         callButton.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: nil, paddingTop: 0, paddingLeft: internalPadding, paddingBottom: internalPadding, paddingRight: 0, width: buttonWidth, height: buttonHeight)
         emailButton.anchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: internalPadding, paddingRight: internalPadding, width: buttonWidth, height: buttonHeight)
     }
     
     // MARK: - Functions
-    public func set(delegate: ContactCellDelegate) {
+    public func set(contact: Contact, delegate: ContactCellDelegate) {
+        self.contact = contact
         self.delegate = delegate
+        
+        contactImage = SEESContactImageView(cornerRadius: self.contactImageDimensions / 2, contact: contact.image)
+        contactNameLabel.set(textAlignment: .left, text: contact.name)
+        contactSubLabel.set(textAlignment: .left, text: "\(contact.title), \(contact.office)")
         
         configureConstraints()
     }
     
     // MARK: - Selectors
     @objc private func callButtonTapped() {
-        self.delegate.callButtonTapped(withNumber: "6263392112")
+        self.delegate.callButtonTapped(withNumber: self.contact.phone)
     }
     
     @objc private func emailButtonTapped() {
-        self.delegate.emailButtonTapped(withEmail: "robertparsons4@icloud.com")
+        self.delegate.emailButtonTapped(withEmail: self.contact.email)
     }
 }
 

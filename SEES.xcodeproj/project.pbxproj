@@ -29,6 +29,7 @@
 		EE7BA66925609FCC005126D2 /* NSRegularExpressionExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7BA66725609FCC005126D2 /* NSRegularExpressionExt.swift */; };
 		EE7BA66A25609FCC005126D2 /* StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7BA66825609FCC005126D2 /* StringExt.swift */; };
 		EE7DBA79257ADDEA005A6812 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7DBA78257ADDEA005A6812 /* ContactCell.swift */; };
+		EE7DBA7D257B1888005A6812 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7DBA7C257B1888005A6812 /* Contact.swift */; };
 		EE9B976E2571847A0088A593 /* CalendarGridVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9B976D2571847A0088A593 /* CalendarGridVC.swift */; };
 		EE9B9771257184970088A593 /* CalendarListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9B9770257184970088A593 /* CalendarListVC.swift */; };
 		EEA590D3255F5E4A00B8F856 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA590D2255F5E4A00B8F856 /* AppDelegate.swift */; };
@@ -73,6 +74,7 @@
 		EE7BA66725609FCC005126D2 /* NSRegularExpressionExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSRegularExpressionExt.swift; sourceTree = "<group>"; };
 		EE7BA66825609FCC005126D2 /* StringExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
 		EE7DBA78257ADDEA005A6812 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
+		EE7DBA7C257B1888005A6812 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		EE9B976D2571847A0088A593 /* CalendarGridVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGridVC.swift; sourceTree = "<group>"; };
 		EE9B9770257184970088A593 /* CalendarListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarListVC.swift; sourceTree = "<group>"; };
 		EEA590CF255F5E4A00B8F856 /* SEES.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SEES.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +162,7 @@
 				EE122C15256DDD9400D11454 /* Student.swift */,
 				EE47B573256F0883007AE9D8 /* Major.swift */,
 				EE594EF225720C370053A47E /* Event.swift */,
+				EE7DBA7C257B1888005A6812 /* Contact.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 				EE7BA66925609FCC005126D2 /* NSRegularExpressionExt.swift in Sources */,
 				EE47B574256F0883007AE9D8 /* Major.swift in Sources */,
 				EE7BA660256090FE005126D2 /* SEESTextField.swift in Sources */,
+				EE7DBA7D257B1888005A6812 /* Contact.swift in Sources */,
 				EE7BA664256095A2005126D2 /* SEESButton.swift in Sources */,
 				EE06F59B256607240044CC27 /* HomeItem.swift in Sources */,
 				EE0C0C94257498AC00591B89 /* SEESMapView.swift in Sources */,

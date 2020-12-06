@@ -9,7 +9,7 @@ import UIKit
 
 class SEESContactImageView: UIView {
     private var contact: ContactImage = .logo
-    private let imageView = UIImageView()
+    private let imageView = UIImageView(image: UIImage(named: "sees_logo")!)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,12 +37,9 @@ class SEESContactImageView: UIView {
         }
 
         switch self.contact {
-        case .logo:
-            self.imageView.image = UIImage(named: "sees_logo")!
-        case .alas:
-            self.imageView.image = UIImage(named: "alas")!
-        case .dora:
-            self.imageView.image = UIImage(named: "dora")!
+        case .logo: break
+        case .alas: self.imageView.image = UIImage(named: "alas")!
+        case .dora: self.imageView.image = UIImage(named: "dora")!
         }
     }
     

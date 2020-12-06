@@ -140,6 +140,11 @@ enum FirebaseValue {
     static let office = "office"
     static let phone = "phone"
     static let order = "order"
+    static let monday = "monday"
+    static let tuesday = "tuesday"
+    static let wednesday = "wednesday"
+    static let thursday = "thursday"
+    static let friday = "friday"
 }
 
 enum Dimensions {

@@ -108,11 +108,11 @@ class ContactCell: UICollectionViewCell {
     private func setStackView() {
         for case let messageView as SEESMessageView in stackView.arrangedSubviews {
             switch messageView.svDay {
-            case .monday: messageView.set(message: "\n-\n")
-            case .tuesday: messageView.set(message: "\n-\n")
-            case .wednesday: messageView.set(message: "\n-\n")
-            case .thursday: messageView.set(message: "\n-\n")
-            case .friday: messageView.set(message: "\n-\n")
+            case .monday: messageView.set(message: self.contact.monday)
+            case .tuesday: messageView.set(message: self.contact.tuesday)
+            case .wednesday: messageView.set(message: self.contact.wednesday)
+            case .thursday: messageView.set(message: self.contact.thursday)
+            case .friday: messageView.set(message: self.contact.friday)
             }
         }
     }

@@ -15,6 +15,13 @@ struct Contact {
     let email: String
     let order: Int
     let image: ContactImage
+//    let notes: String
+    
+    let monday: String
+    let tuesday: String
+    let wednesday: String
+    let thursday: String
+    let friday: String
     
     init(dictionary: [String: Any]) {
         self.name = dictionary[FirebaseValue.name] as? String ?? "nameError"
@@ -24,5 +31,11 @@ struct Contact {
         self.email = dictionary[FirebaseValue.email] as? String ?? "emailError"
         self.order = dictionary[FirebaseValue.order] as? Int ?? -1
         self.image = self.name.lowercased().contains("alas") ? .alas : .dora
+        
+        self.monday = dictionary[FirebaseValue.monday] as? String ?? "mondayError"
+        self.tuesday = dictionary[FirebaseValue.tuesday] as? String ?? "tuesdayError"
+        self.wednesday = dictionary[FirebaseValue.wednesday] as? String ?? "wednesdayError"
+        self.thursday = dictionary[FirebaseValue.thursday] as? String ?? "thursdayError"
+        self.friday = dictionary[FirebaseValue.friday] as? String ?? "fridayError"
     }
 }

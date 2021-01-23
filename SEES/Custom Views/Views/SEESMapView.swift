@@ -17,7 +17,7 @@ class SEESMapView: MKMapView {
     private let locationAddress: String
     private let locationCity: String
     private let locationState: String
-    private let locationZIP: Int
+    private let locationZIP: String
     private let locationCountry: String
     
     private var coordinate = CLLocationCoordinate2D()
@@ -27,7 +27,7 @@ class SEESMapView: MKMapView {
         return SEESMessageView(message: "There was an error loading this location's address. 😣\nPlease inform the SEES Office.", messageAlignment: .center, frame: .zero)
     }()
     
-    init(title: String, address: String, city: String, state: String, zip: Int, country: String) {
+    init(title: String, address: String, city: String, state: String, zip: String, country: String) {
         self.locationTitle = title
         self.locationAddress = address
         self.locationCity = city

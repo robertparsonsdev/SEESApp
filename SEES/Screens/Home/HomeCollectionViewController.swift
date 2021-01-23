@@ -130,15 +130,17 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     private func fetchStudentFromNetwork() {
-        self.networkManager.fetchStudent { [weak self] (result) in
+        self.networkManager.fetchData(for: .students) { [weak self] (result: Result<[Student], SEESError>) in
             guard let self = self else { return }
             self.endRefreshing()
+            
             switch result {
-            case .success(let student):
+            case .success(let students):
+                guard let student = students.getItemAt(0) else { self.presentErrorOnMainThread(withError: .unableToGetCurrentStudent); return }
                 self.reload(withStudent: student)
                 self.persistence.save(student: student)
             case .failure(let error):
-                self.presentErrorOnMainThread(withError: error, optionalMessage: nil)
+                self.presentErrorOnMainThread(withError: error)
             }
         }
     }

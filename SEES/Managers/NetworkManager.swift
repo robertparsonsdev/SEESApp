@@ -35,47 +35,44 @@ class NetworkManager {
         }
     }
     
-    func fetchStudent(completed: @escaping (Result<Student, SEESError>) -> Void) {
-        guard let email = Auth.auth().currentUser?.email?.components(separatedBy: "@")[0] else {
-            completed(.failure(.unableToGetCurrentStudent))
-            return
-        }
+    func fetchData<T: SEESDataModel>(for type: FBDataType, completed: @escaping (Result<[T], SEESError>) -> Void) {
+        guard let path = buildPath(for: type) else { completed(.failure(.unableToGetCurrentStudent)); return }
         
-        Database.database().reference().child(FBDataType.students.key).child(email).observeSingleEvent(of: .value) { (snapshot) in
-            guard let studentDictionary = snapshot.value as? [String: Any] else { completed(.failure(.unableToRetrieveData)); return }
-            let student = Student(dictionary: studentDictionary)
-            completed(.success(student))
+        Database.database().reference().child(path).observeSingleEvent(of: .value) { (snapshot) in
+            guard let dictionary = snapshot.value as? [String: Any] else { completed(.failure(.unableToRetrieveData)); return }
+            
+            switch type {
+            case .students:
+                if let studentDictionary = dictionary as? [String: String] {
+                    completed(.success([T(dictionary: studentDictionary)]))
+                } else {
+                    completed(.failure(.unableToRetrieveData))
+                }
+            default:
+                var models: [T] = []
+                for (_, value) in dictionary {
+                    if let dataDictionary = value as? [String: String] {
+                        models.append(T(dictionary: dataDictionary))
+                    } else {
+                        completed(.failure(.unableToRetrieveData))
+                        return
+                    }
+                }
+                completed(.success(models))
+            }
         }
     }
     
-    func fetchMajor(for major: String, completed: @escaping (Result<Option, SEESError>) -> Void) {
-        completed(.failure(.unableToRetrieveData))
-//        Database.database().reference().child(FBDataType.options.key).child(major).observeSingleEvent(of: .value) { (snapshot) in
-//            guard let optionsDictionary = snapshot.value as? [String: [String: Any]] else { completed(.failure(.unableToRetrieveData)); return }
-//            let major = Major(dictionary: optionsDictionary)
-//            completed(.success(major))
-//        }
-    }
-    
-    func fetchEvents(completed: @escaping(Result<[Event], SEESError>) -> Void) {
-        Database.database().reference().child(FBDataType.events.key).observeSingleEvent(of: .value) { (snapshot) in
-            guard let eventsDictionary = snapshot.value as? [String: [String: Any]] else { completed(.failure(.unableToLoadEvents)); return }
-            var events: [Event] = []
-            for (_, value) in eventsDictionary {
-                events.append(Event(dictionary: value))
+    private func buildPath(for type: FBDataType) -> String? {
+        switch type {
+        case .students:
+            if let email = Auth.auth().currentUser?.email?.components(separatedBy: "@").getItemAt(0) {
+                return "/\(type.key)/\(email)"
+            } else {
+                return nil
             }
-            completed(.success(events))
-        }
-    }
-    
-    func fetchContacts(completed: @escaping(Result<[Contact], SEESError>) -> Void) {
-        Database.database().reference().child(FBDataType.contacts.key).observeSingleEvent(of: .value) { (snapshot) in
-            guard let contactsDictionary = snapshot.value as? [String: [String: Any]] else { completed(.failure(.unableToLoadContacts)); return }
-            var contacts: [Contact] = []
-            for (_, value) in contactsDictionary {
-                contacts.append(Contact(dictionary: value))
-            }
-            completed(.success(contacts))
+        default:
+            return "/\(type.key)"
         }
     }
 }

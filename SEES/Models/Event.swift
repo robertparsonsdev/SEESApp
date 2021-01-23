@@ -7,44 +7,31 @@
 
 import Foundation
 
-struct Event {
+struct Event: SEESDataModel {
     let date: Date
-//    let endDate: Date
     let eventName: String
     let locationName: String
     let locationAddress: String
     let locationCity: String
     let locationState: String
-    let locationZIP: Int
+    let locationZIP: String
     let locationCountry: String
     let notes: String
     
-    init(dictionary: [String: Any]) {
-//        if let startDate = dictionary[FBEvent.startDate.key] as? String {
-//            self.startDate = startDate.convertToDate() ?? Date()
-//        } else {
-//            self.startDate = Date()
-//        }
-        
-//        if let endDate = dictionary[FBEvent.endDate.key] as? String {
-//            self.endDate = endDate.convertToDate() ?? Date()
-//        } else {
-//            self.endDate = Date()
-//        }
-        
-        if let dateString = dictionary[FBEvent.date.key] as? String {
+    init(dictionary: [String: String]) {
+        if let dateString = dictionary[FBEvent.date.key] {
             self.date = dateString.convertToDate()
         } else {
             self.date = Date()
         }
         
-        self.eventName = dictionary[FBEvent.eventName.key] as? String ?? "eventNameError"
-        self.locationName = dictionary[FBEvent.locationName.key] as? String ?? "locationNameError"
-        self.locationAddress = dictionary[FBEvent.locationAddress.key] as? String ?? "locationAddressError"
-        self.locationCity = dictionary[FBEvent.locationCity.key] as? String ?? "locationCityError"
-        self.locationState = dictionary[FBEvent.locationState.key] as? String ?? "locationStateError"
-        self.locationZIP = dictionary[FBEvent.locationZIP.key] as? Int ?? -1
-        self.locationCountry = dictionary[FBEvent.locationCountry.key] as? String ?? "locationCountryError"
-        self.notes = dictionary[FBEvent.notes.key] as? String ?? "notesError"
+        self.eventName = dictionary[FBEvent.eventName.key] ?? "eventNameError"
+        self.locationName = dictionary[FBEvent.locationName.key] ?? "locationNameError"
+        self.locationAddress = dictionary[FBEvent.locationAddress.key] ?? "locationAddressError"
+        self.locationCity = dictionary[FBEvent.locationCity.key] ?? "locationCityError"
+        self.locationState = dictionary[FBEvent.locationState.key] ?? "locationStateError"
+        self.locationZIP = dictionary[FBEvent.locationZIP.key] ?? "locationZIPError"
+        self.locationCountry = dictionary[FBEvent.locationCountry.key] ?? "locationCountryError"
+        self.notes = dictionary[FBEvent.notes.key] ?? "notesError"
     }
 }

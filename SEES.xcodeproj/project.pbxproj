@@ -47,6 +47,7 @@
 		EEB49B38257317BE004FECDE /* DateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB49B37257317BE004FECDE /* DateExt.swift */; };
 		EEB49B3B2573285D004FECDE /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB49B3A2573285D004FECDE /* EventDetailViewController.swift */; };
 		EEBF274D257C1B20006940A7 /* ContactHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBF274C257C1B20006940A7 /* ContactHeader.swift */; };
+		EECAD9B425BCC1C5003EA432 /* ArrayExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECAD9B325BCC1C5003EA432 /* ArrayExt.swift */; };
 		EEDC62212576FA42008DF73B /* AcademicAdvisingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDC62202576FA42008DF73B /* AcademicAdvisingVC.swift */; };
 		EEF4A6E82575FBA000D8F72B /* SEESMapButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF4A6E72575FBA000D8F72B /* SEESMapButton.swift */; };
 /* End PBXBuildFile section */
@@ -95,6 +96,7 @@
 		EEB49B37257317BE004FECDE /* DateExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExt.swift; sourceTree = "<group>"; };
 		EEB49B3A2573285D004FECDE /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		EEBF274C257C1B20006940A7 /* ContactHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactHeader.swift; sourceTree = "<group>"; };
+		EECAD9B325BCC1C5003EA432 /* ArrayExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExt.swift; sourceTree = "<group>"; };
 		EEDC62202576FA42008DF73B /* AcademicAdvisingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademicAdvisingVC.swift; sourceTree = "<group>"; };
 		EEF4A6E72575FBA000D8F72B /* SEESMapButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEESMapButton.swift; sourceTree = "<group>"; };
 		FB293462A91E2B75DA431EF0 /* Pods_SEES.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SEES.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -278,6 +280,7 @@
 				EE7BA66825609FCC005126D2 /* StringExt.swift */,
 				EE61809B25622560000283B9 /* UIViewControllerExt.swift */,
 				EEB49B37257317BE004FECDE /* DateExt.swift */,
+				EECAD9B325BCC1C5003EA432 /* ArrayExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 				EE0C0C94257498AC00591B89 /* SEESMapView.swift in Sources */,
 				EEBF274D257C1B20006940A7 /* ContactHeader.swift in Sources */,
 				EEA59136255F7A2000B8F856 /* ContactCollectionViewController.swift in Sources */,
+				EECAD9B425BCC1C5003EA432 /* ArrayExt.swift in Sources */,
 				EEA59117255F73DF00B8F856 /* MainTabBarController.swift in Sources */,
 				EE31AB1D25704CD7009F51D8 /* MajorTableViewController.swift in Sources */,
 				EEF4A6E82575FBA000D8F72B /* SEESMapButton.swift in Sources */,

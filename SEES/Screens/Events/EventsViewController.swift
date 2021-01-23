@@ -70,9 +70,10 @@ class EventsViewController: UIViewController {
     // MARK: - Functions
     private func fetchEvents() {
         showLoadingView()
-        self.networkManager.fetchEvents { [weak self] (result) in
+        self.networkManager.fetchData(for: .events) { [weak self] (result: Result<[Event], SEESError>) in
             guard let self = self else { return }
             self.dismissLoadingView()
+            
             switch result {
             case .success(let events):
                 var filteredEvents = events.filter { $0.date >= Calendar.current.date(byAdding: .day, value: -1, to: Date())! }

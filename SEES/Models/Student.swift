@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Student: Codable, Hashable {
+struct Student: SEESDataModel, Codable {
     let advisor: String
     let advisorOffice: String
     let broncoID: String
@@ -15,12 +15,16 @@ struct Student: Codable, Hashable {
     let firstName: String
     let lastName: String
     
-    init(dictionary: [String: Any]) {
-        self.advisor = dictionary[FBStudent.advisor.key] as? String ?? "advisorError"
-        self.advisorOffice = dictionary[FBStudent.advisorOffice.key] as? String ?? "advisorOfficeError"
-        self.broncoID = dictionary[FBStudent.broncoID.key] as? String ?? "broncoIDError"
-        self.email = dictionary[FBStudent.email.key] as? String ?? "emailError"
-        self.firstName = dictionary[FBStudent.firstName.key] as? String ?? "firstNameError"
-        self.lastName = dictionary[FBStudent.lastName.key] as? String ?? "lastNameError"
+    init(dictionary: [String: String]) {
+        self.advisor = dictionary[FBStudent.advisor.key] ?? "advisorError"
+        self.advisorOffice = dictionary[FBStudent.advisorOffice.key] ?? "advisorOfficeError"
+        self.broncoID = dictionary[FBStudent.broncoID.key] ?? "broncoIDError"
+        self.email = dictionary[FBStudent.email.key] ?? "emailError"
+        self.firstName = dictionary[FBStudent.firstName.key] ?? "firstNameError"
+        self.lastName = dictionary[FBStudent.lastName.key] ?? "lastNameError"
     }
+}
+
+protocol SEESDataModel {
+    init(dictionary: [String: String])
 }

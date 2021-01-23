@@ -100,7 +100,7 @@ class ContactCell: UICollectionViewCell {
         self.delegate = delegate
         
         contactImage.set(cornerRadius: self.contactImageDimensions / 2, contact: contact.image)
-        contactNameLabel.set(textAlignment: .left, text: contact.name)
+        contactNameLabel.set(textAlignment: .left, text: contact.fullName)
         contactSubLabel.set(textAlignment: .left, text: "\(contact.title), \(contact.office)")
         setStackView()
     }

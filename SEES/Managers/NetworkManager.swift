@@ -41,23 +41,24 @@ class NetworkManager {
             return
         }
         
-        Database.database().reference().child(FirebaseValue.users).child(email).observeSingleEvent(of: .value) { (snapshot) in
+        Database.database().reference().child(FBDataType.students.key).child(email).observeSingleEvent(of: .value) { (snapshot) in
             guard let studentDictionary = snapshot.value as? [String: Any] else { completed(.failure(.unableToRetrieveData)); return }
             let student = Student(dictionary: studentDictionary)
             completed(.success(student))
         }
     }
     
-    func fetchMajor(for major: String, completed: @escaping (Result<Major, SEESError>) -> Void) {
-        Database.database().reference().child(FirebaseValue.majors).child(major).observeSingleEvent(of: .value) { (snapshot) in
-            guard let optionsDictionary = snapshot.value as? [String: [String: Any]] else { completed(.failure(.unableToRetrieveData)); return }
-            let major = Major(dictionary: optionsDictionary)
-            completed(.success(major))
-        }
+    func fetchMajor(for major: String, completed: @escaping (Result<Option, SEESError>) -> Void) {
+        completed(.failure(.unableToRetrieveData))
+//        Database.database().reference().child(FBDataType.options.key).child(major).observeSingleEvent(of: .value) { (snapshot) in
+//            guard let optionsDictionary = snapshot.value as? [String: [String: Any]] else { completed(.failure(.unableToRetrieveData)); return }
+//            let major = Major(dictionary: optionsDictionary)
+//            completed(.success(major))
+//        }
     }
     
     func fetchEvents(completed: @escaping(Result<[Event], SEESError>) -> Void) {
-        Database.database().reference().child(FirebaseValue.events).observeSingleEvent(of: .value) { (snapshot) in
+        Database.database().reference().child(FBDataType.events.key).observeSingleEvent(of: .value) { (snapshot) in
             guard let eventsDictionary = snapshot.value as? [String: [String: Any]] else { completed(.failure(.unableToLoadEvents)); return }
             var events: [Event] = []
             for (_, value) in eventsDictionary {
@@ -68,7 +69,7 @@ class NetworkManager {
     }
     
     func fetchContacts(completed: @escaping(Result<[Contact], SEESError>) -> Void) {
-        Database.database().reference().child(FirebaseValue.contacts).observeSingleEvent(of: .value) { (snapshot) in
+        Database.database().reference().child(FBDataType.contacts.key).observeSingleEvent(of: .value) { (snapshot) in
             guard let contactsDictionary = snapshot.value as? [String: [String: Any]] else { completed(.failure(.unableToLoadContacts)); return }
             var contacts: [Contact] = []
             for (_, value) in contactsDictionary {

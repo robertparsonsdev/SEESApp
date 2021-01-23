@@ -79,73 +79,195 @@ enum MajorInfo {
         }
     }
     
-    var firebaseValue: String {
-        switch self {
-        case .academicAdvising: return ""
-        case .biology: return FirebaseValue.biology
-        case .biotechnology: return FirebaseValue.biotechnology
-        case .chemistry: return FirebaseValue.chemistry
-        case .computerScience: return FirebaseValue.computerScience
-        case .environmentalBiology: return FirebaseValue.environmentalBiology
-        case .geology: return FirebaseValue.geology
-        case .kinesiology: return FirebaseValue.kinesiology
-        case .mathematics: return FirebaseValue.mathematics
-        case .physics: return FirebaseValue.physics
-        }
-    }
+//    var firebaseValue: String {
+//        switch self {
+//        case .academicAdvising: return ""
+//        case .biology: return FirebaseValue.biology
+//        case .biotechnology: return FirebaseValue.biotechnology
+//        case .chemistry: return FirebaseValue.chemistry
+//        case .computerScience: return FirebaseValue.computerScience
+//        case .environmentalBiology: return FirebaseValue.environmentalBiology
+//        case .geology: return FirebaseValue.geology
+//        case .kinesiology: return FirebaseValue.kinesiology
+//        case .mathematics: return FirebaseValue.mathematics
+//        case .physics: return FirebaseValue.physics
+//        }
+//    }
 }
 
 enum Keys {
     static let student = "student"
 }
 
-enum FirebaseValue {
-    static let users = "users", majors = "majors", events = "events", contacts = "contacts"
+enum FBDataType {
+    case students
+    case options
+    case events
+    case contacts
     
-    static let advisor = "advisor"
-    static let advisorOffice = "advisorOffice"
-    static let broncoID = "broncoID"
-    static let email = "email"
-    static let firstName = "firstName"
-    static let lastName = "lastName"
-    
-    static let biology = "biology"
-    static let biotechnology = "biotechnology"
-    static let chemistry = "chemistry"
-    static let computerScience = "computerScience"
-    static let environmentalBiology = "environmentalBiology"
-    static let geology = "geology"
-    static let kinesiology = "kinesiology"
-    static let mathematics = "mathematics"
-    static let physics = "physics"
-    
-    static let optionName = "optionName"
-    static let curriculumSheet = "curriculumSheet"
-    static let flowchart = "flowchart"
-    static let roadMap = "roadMap"
-    
-    static let eventName = "eventName"
-    static let startDate = "startDate"
-    static let endDate = "endDate"
-    static let locationName = "locationName"
-    static let locationAddress = "locationAddress"
-    static let locationCity = "locationCity"
-    static let locationState = "locationState"
-    static let locationZIP = "locationZIP"
-    static let locationCountry = "locationCountry"
-    static let notes = "notes"
-    
-    static let name = "name"
-    static let title = "title"
-    static let office = "office"
-    static let phone = "phone"
-    static let order = "order"
-    static let monday = "monday"
-    static let tuesday = "tuesday"
-    static let wednesday = "wednesday"
-    static let thursday = "thursday"
-    static let friday = "friday"
+    var key: String {
+        switch self {
+        case .students: return "students"
+        case .options: return "options"
+        case .events: return "events"
+        case .contacts: return "contacts"
+        }
+    }
 }
+
+enum FBStudent: CaseIterable {
+    case firstName
+    case lastName
+    case email
+    case broncoID
+    case advisor
+    case advisorOffice
+    
+    var key: String {
+        switch self {
+        case .firstName: return "first-name"
+        case .lastName: return "last-name"
+        case .email: return "email"
+        case .broncoID: return "bronco-id"
+        case .advisor: return "advisor"
+        case .advisorOffice: return "advisor-office"
+        }
+    }
+}
+
+enum FBOption: CaseIterable {
+    case majorName
+    case optionName
+    case curriculumSheet
+    case flowchart
+    case roadMap
+    
+    var key: String {
+        switch self {
+        case .majorName: return "major-name"
+        case .optionName: return "option-name"
+        case .curriculumSheet: return "curriculum-sheet"
+        case .flowchart: return "flowchart"
+        case .roadMap: return "road-map"
+        }
+    }
+}
+
+enum FBEvent: CaseIterable {
+    case eventName
+    case date
+    case notes
+    case locationName
+    case locationAddress
+    case locationCity
+    case locationState
+    case locationZIP
+    case locationCountry
+    
+    var key: String {
+        switch self {
+        case .eventName: return "event-name"
+        case .date: return "date"
+        case .notes: return "notes"
+        case .locationName: return "location-name"
+        case .locationAddress: return "location-address"
+        case .locationCity: return "location-city"
+        case .locationState: return "location-state"
+        case .locationZIP: return "location-zip"
+        case .locationCountry: return "location-country"
+        }
+    }
+}
+
+enum FBContact: CaseIterable {
+    case monday
+    case tuesday
+    case wednesday
+    case thursday
+    case friday
+    case fullName
+    case title
+    case office
+    case phone
+    case email
+    case order
+    
+    var key: String {
+        switch self {
+        case .monday: return "monday"
+        case .tuesday: return "tuesday"
+        case .wednesday: return "wednesday"
+        case .thursday: return "thursday"
+        case .friday: return "friday"
+        case .fullName: return "full-name"
+        case .title: return "title"
+        case .office: return "office"
+        case .phone: return "phone"
+        case .email: return "email"
+        case .order: return "order"
+        }
+    }
+}
+
+enum FBMajor: String, CaseIterable {
+    case biology = "Biology"
+    case biotech = "Biotechnology"
+    case chem = "Chemistry"
+    case cs = "Computer Science"
+    case envBio = "Environmental Biology"
+    case geo = "Geology"
+    case kin = "Kinesiology"
+    case math = "Mathematics"
+    case phy = "Physics"
+}
+
+//enum FirebaseValue {
+//    static let users = "users", majors = "majors", events = "events", contacts = "contacts"
+//    
+//    static let advisor = "advisor"
+//    static let advisorOffice = "advisor-office"
+//    static let broncoID = "bronco-id"
+//    static let email = "email"
+//    static let firstName = "first-name"
+//    static let lastName = "last-name"
+//    
+//    static let biology = "biology"
+//    static let biotechnology = "biotechnology"
+//    static let chemistry = "chemistry"
+//    static let computerScience = "computerScience"
+//    static let environmentalBiology = "environmentalBiology"
+//    static let geology = "geology"
+//    static let kinesiology = "kinesiology"
+//    static let mathematics = "mathematics"
+//    static let physics = "physics"
+//    
+//    static let optionName = "optionName"
+//    static let curriculumSheet = "curriculumSheet"
+//    static let flowchart = "flowchart"
+//    static let roadMap = "roadMap"
+//    
+//    static let eventName = "eventName"
+//    static let startDate = "startDate"
+//    static let endDate = "endDate"
+//    static let locationName = "locationName"
+//    static let locationAddress = "locationAddress"
+//    static let locationCity = "locationCity"
+//    static let locationState = "locationState"
+//    static let locationZIP = "locationZIP"
+//    static let locationCountry = "locationCountry"
+//    static let notes = "notes"
+//    
+//    static let name = "name"
+//    static let title = "title"
+//    static let office = "office"
+//    static let phone = "phone"
+//    static let order = "order"
+//    static let monday = "monday"
+//    static let tuesday = "tuesday"
+//    static let wednesday = "wednesday"
+//    static let thursday = "thursday"
+//    static let friday = "friday"
+//}
 
 enum Dimensions {
     static let homeCellHeight: CGFloat = 100
@@ -174,4 +296,8 @@ enum SVDay: String, CaseIterable {
     case wednesday = "W"
     case thursday = "Th"
     case friday = "F"
+}
+
+enum DateFormat {
+    static let dateAndTime = "MMM d yyyy, h:mm a"
 }

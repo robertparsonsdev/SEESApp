@@ -22,7 +22,7 @@ class EventDetailViewController: UIViewController {
     // MARK: - Intializers
     init(event: Event) {
         self.event = event
-        self.whenMessage = SEESMessageView(title: "When:", message: event.startDate.convertToString(), frame: .zero)
+        self.whenMessage = SEESMessageView(title: "When:", message: event.date.convertToString(), frame: .zero)
         self.whereMessage = SEESMessageView(title: "Where:", message: event.locationName, frame: .zero)
         self.notesMessage = SEESMessageView(title: "Notes:", titleAlignment: .left, message: event.notes, messageAlignment: .left, frame: .zero)
         self.mapView = SEESMapView(title: event.locationName, address: event.locationAddress, city: event.locationCity, state: event.locationState, zip: event.locationZIP, country: event.locationCountry)
@@ -100,8 +100,8 @@ class EventDetailViewController: UIViewController {
         let calendarEvent = EKEvent(eventStore: store)
         calendarEvent.calendar = store.defaultCalendarForNewEvents
         calendarEvent.title = event.eventName
-        calendarEvent.startDate = event.startDate
-        calendarEvent.endDate = event.endDate
+        calendarEvent.startDate = event.date
+        calendarEvent.endDate = event.date
         calendarEvent.location = "\(event.locationAddress), \(event.locationCity), \(event.locationState) \(event.locationZIP)"
         calendarEvent.notes = event.notes
         

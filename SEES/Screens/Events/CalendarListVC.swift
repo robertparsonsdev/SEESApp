@@ -42,7 +42,7 @@ class CalendarListVC: UITableViewController {
         var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
         cell.textLabel?.text = self.events[indexPath.row].eventName
-        cell.detailTextLabel?.text = self.events[indexPath.row].startDate.convertToString()
+        cell.detailTextLabel?.text = self.events[indexPath.row].date.convertToString()
         cell.accessoryType = .disclosureIndicator
         return cell
     }

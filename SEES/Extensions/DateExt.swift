@@ -7,11 +7,19 @@
 
 import Foundation
 
+fileprivate var dateFormatter = DateFormatter()
+
 extension Date {
     func convertToString() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd/yyyy"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = DateFormat.dateAndTime
         
         return dateFormatter.string(from: self)
+    }
+    
+    static func currentDate() -> Self {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day, .month, .year, .hour, .minute, .second], from: Date())
+        return calendar.date(from: components)!
     }
 }

@@ -94,19 +94,19 @@ class MajorTableViewController: UITableViewController {
     
     // MARK: - Functions
     private func fetchOptions() {
-        self.networkManager.fetchMajor(for: self.majorInfo.firebaseValue) { [weak self] (result) in
-            guard let self = self else { return }
-            self.dismissLoadingView()
-            self.endRefreshing()
-            
-            switch result {
-            case .success(let major):
-                self.options = major.options
-                DispatchQueue.main.async { self.tableView.reloadData() }
-            case .failure(let error):
-                self.presentErrorOnMainThread(withError: error, optionalMessage: "\n\n\(error.localizedDescription)")
-            }
-        }
+//        self.networkManager.fetchMajor(for: self.majorInfo.firebaseValue) { [weak self] (result) in
+//            guard let self = self else { return }
+//            self.dismissLoadingView()
+//            self.endRefreshing()
+//            
+//            switch result {
+//            case .success(let major):
+//                self.options = major.options
+//                DispatchQueue.main.async { self.tableView.reloadData() }
+//            case .failure(let error):
+//                self.presentErrorOnMainThread(withError: error, optionalMessage: "\n\n\(error.localizedDescription)")
+//            }
+//        }
     }
     
     private func endRefreshing() {

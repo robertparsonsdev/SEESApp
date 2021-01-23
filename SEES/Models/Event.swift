@@ -8,8 +8,8 @@
 import Foundation
 
 struct Event {
-    let startDate: Date
-    let endDate: Date
+    let date: Date
+//    let endDate: Date
     let eventName: String
     let locationName: String
     let locationAddress: String
@@ -20,25 +20,31 @@ struct Event {
     let notes: String
     
     init(dictionary: [String: Any]) {
-        if let startDate = dictionary[FirebaseValue.startDate] as? String {
-            self.startDate = startDate.convertToDate() ?? Date()
+//        if let startDate = dictionary[FBEvent.startDate.key] as? String {
+//            self.startDate = startDate.convertToDate() ?? Date()
+//        } else {
+//            self.startDate = Date()
+//        }
+        
+//        if let endDate = dictionary[FBEvent.endDate.key] as? String {
+//            self.endDate = endDate.convertToDate() ?? Date()
+//        } else {
+//            self.endDate = Date()
+//        }
+        
+        if let dateString = dictionary[FBEvent.date.key] as? String {
+            self.date = dateString.convertToDate()
         } else {
-            self.startDate = Date()
+            self.date = Date()
         }
         
-        if let endDate = dictionary[FirebaseValue.endDate] as? String {
-            self.endDate = endDate.convertToDate() ?? Date()
-        } else {
-            self.endDate = Date()
-        }
-        
-        self.eventName = dictionary[FirebaseValue.eventName] as? String ?? "eventNameError"
-        self.locationName = dictionary[FirebaseValue.locationName] as? String ?? "locationNameError"
-        self.locationAddress = dictionary[FirebaseValue.locationAddress] as? String ?? "locationAddressError"
-        self.locationCity = dictionary[FirebaseValue.locationCity] as? String ?? "locationCityError"
-        self.locationState = dictionary[FirebaseValue.locationState] as? String ?? "locationStateError"
-        self.locationZIP = dictionary[FirebaseValue.locationZIP] as? Int ?? -1
-        self.locationCountry = dictionary[FirebaseValue.locationCountry] as? String ?? "locationCountryError"
-        self.notes = dictionary[FirebaseValue.notes] as? String ?? "notesError"
+        self.eventName = dictionary[FBEvent.eventName.key] as? String ?? "eventNameError"
+        self.locationName = dictionary[FBEvent.locationName.key] as? String ?? "locationNameError"
+        self.locationAddress = dictionary[FBEvent.locationAddress.key] as? String ?? "locationAddressError"
+        self.locationCity = dictionary[FBEvent.locationCity.key] as? String ?? "locationCityError"
+        self.locationState = dictionary[FBEvent.locationState.key] as? String ?? "locationStateError"
+        self.locationZIP = dictionary[FBEvent.locationZIP.key] as? Int ?? -1
+        self.locationCountry = dictionary[FBEvent.locationCountry.key] as? String ?? "locationCountryError"
+        self.notes = dictionary[FBEvent.notes.key] as? String ?? "notesError"
     }
 }

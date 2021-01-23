@@ -21,7 +21,7 @@ class CalendarGridVC: UIViewController {
         let calendar = Calendar.current
         
         for event in events {
-            let eventComponents = calendar.dateComponents([.month, .day], from: event.startDate)
+            let eventComponents = calendar.dateComponents([.month, .day], from: event.date)
             let eventDay = EventDay(day: eventComponents.day, month: eventComponents.month)
             self.eventDaysSet.insert(eventDay)
             

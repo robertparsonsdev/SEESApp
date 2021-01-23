@@ -75,8 +75,8 @@ class EventsViewController: UIViewController {
             self.dismissLoadingView()
             switch result {
             case .success(let events):
-                var filteredEvents = events.filter { $0.startDate >= Calendar.current.date(byAdding: .day, value: -1, to: Date())! }
-                filteredEvents.sort { $0.startDate < $1.startDate }
+                var filteredEvents = events.filter { $0.date >= Calendar.current.date(byAdding: .day, value: -1, to: Date())! }
+                filteredEvents.sort { $0.date < $1.date }
                 self.events = filteredEvents
             case .failure(let error):
                 self.presentErrorOnMainThread(withError: error, optionalMessage: "\n\n\(error.localizedDescription)")

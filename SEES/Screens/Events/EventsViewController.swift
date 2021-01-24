@@ -72,7 +72,7 @@ class EventsViewController: UIViewController {
         showLoadingView()
         self.networkManager.fetchData(for: .events) { [weak self] (result: Result<[Event], SEESError>) in
             guard let self = self else { return }
-            self.dismissLoadingView()
+            self.dismissLoadingViewOnMainThread()
             
             switch result {
             case .success(let events):

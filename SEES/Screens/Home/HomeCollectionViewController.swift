@@ -57,9 +57,9 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCell.identifier, for: indexPath) as! HomeCell
-        let item = self.homeItems[indexPath.row]
-        cell.backgroundColor = item.color
-        cell.set(image: item.major.image, andText: item.major.name)
+        let homeItem = self.homeItems[indexPath.row]
+        cell.backgroundColor = homeItem.color
+        cell.set(image: homeItem.info.image, andText: homeItem.info.name)
         return cell
     }
     
@@ -73,8 +73,8 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
             let academicAdvisingVC = AcademicAdvisingVC()
             self.navigationController?.pushViewController(academicAdvisingVC, animated: true)
         default:
-            let majorInfo = self.homeItems[indexPath.row].major
-            let majorTable = MajorTableViewController(networkManager: self.networkManager, majorInfo: majorInfo)
+            let homeItemInfo = self.homeItems[indexPath.row].info
+            let majorTable = MajorTableViewController(networkManager: self.networkManager, homeItemInfo: homeItemInfo)
             self.navigationController?.pushViewController(majorTable, animated: true)
         }
     }
@@ -89,8 +89,8 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         signOutButton.tintColor = .systemRed
         navigationItem.rightBarButtonItem = signOutButton
         
-        self.collectionView!.register(HomeCell.self, forCellWithReuseIdentifier: HomeCell.identifier)
-        self.collectionView!.register(HomeHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HomeHeader.identifer)
+        self.collectionView.register(HomeCell.self, forCellWithReuseIdentifier: HomeCell.identifier)
+        self.collectionView.register(HomeHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HomeHeader.identifer)
     }
     
     private func configureRefresh() {
@@ -100,16 +100,14 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     
     // MARK: - Functions
     private func createHomeItems() {
-        self.homeItems.append(HomeItem(major: .academicAdvising, color: .systemGreen))
-        self.homeItems.append(HomeItem(major: .biology, color: .systemTeal))
-        self.homeItems.append(HomeItem(major: .biotechnology, color: .systemTeal))
-        self.homeItems.append(HomeItem(major: .chemistry, color: .systemTeal))
-        self.homeItems.append(HomeItem(major: .computerScience, color: .systemTeal))
-        self.homeItems.append(HomeItem(major: .environmentalBiology, color: .systemTeal))
-        self.homeItems.append(HomeItem(major: .geology, color: .systemTeal))
-        self.homeItems.append(HomeItem(major: .kinesiology, color: .systemTeal))
-        self.homeItems.append(HomeItem(major: .mathematics, color: .systemTeal))
-        self.homeItems.append(HomeItem(major: .physics, color: .systemTeal))
+        for info in HomeItemInfo.allCases {
+            switch info {
+            case .academicAdvising:
+                self.homeItems.append(HomeItem(info: info, color: .systemGreen))
+            default:
+                self.homeItems.append(HomeItem(info: info, color: .systemTeal))
+            }
+        }
     }
     
     private func fetchStudent() {
@@ -118,7 +116,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
             switch result {
             case .success(let student):
                 if let savedStudent = student {
-                    self.reload(withStudent: savedStudent)
+                    self.reloadCollectionViewOnMainThread(with: savedStudent)
                 } else {
                     self.fetchStudentFromNetwork()
                 }
@@ -130,14 +128,15 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     private func fetchStudentFromNetwork() {
+        self.refresh.beginRefreshing()
         self.networkManager.fetchData(for: .students) { [weak self] (result: Result<[Student], SEESError>) in
             guard let self = self else { return }
-            self.endRefreshing()
+            self.endRefreshingOnMainThread()
             
             switch result {
             case .success(let students):
                 guard let student = students.getItemAt(0) else { self.presentErrorOnMainThread(withError: .unableToGetCurrentStudent); return }
-                self.reload(withStudent: student)
+                self.reloadCollectionViewOnMainThread(with: student)
                 self.persistence.save(student: student)
             case .failure(let error):
                 self.presentErrorOnMainThread(withError: error)
@@ -145,7 +144,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         }
     }
     
-    private func reload(withStudent student: Student) {
+    private func reloadCollectionViewOnMainThread(with student: Student) {
         DispatchQueue.main.async {
             self.student = student
             self.navigationController?.navigationBar.topItem?.title = "Welcome \(student.firstName)!"
@@ -153,7 +152,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         }
     }
     
-    private func endRefreshing() {
+    private func endRefreshingOnMainThread() {
         DispatchQueue.main.async {
             if self.refresh.isRefreshing {
                 self.refresh.endRefreshing()

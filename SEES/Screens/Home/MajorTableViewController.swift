@@ -10,14 +10,14 @@ import UIKit
 private let majorCellIdentifier = "majorCell"
 
 class MajorTableViewController: UITableViewController {
-    private let majorInfo: MajorInfo
+    private let itemInfo: HomeItemInfo
     private var options: [Option] = []
     private let networkManager: NetworkManager
     
     private let refresh = UIRefreshControl()
     
-    init(networkManager: NetworkManager, majorInfo: MajorInfo) {
-        self.majorInfo = majorInfo
+    init(networkManager: NetworkManager, homeItemInfo: HomeItemInfo) {
+        self.itemInfo = homeItemInfo
         self.networkManager = networkManager
         
         super.init(style: .plain)
@@ -82,7 +82,7 @@ class MajorTableViewController: UITableViewController {
     
     // MARK: - Configuration Functions
     private func configureTableView() {
-        self.title = self.majorInfo.name
+        self.title = self.itemInfo.name
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: majorCellIdentifier)
     }
@@ -94,22 +94,24 @@ class MajorTableViewController: UITableViewController {
     
     // MARK: - Functions
     private func fetchOptions() {
-//        self.networkManager.fetchMajor(for: self.majorInfo.firebaseValue) { [weak self] (result) in
-//            guard let self = self else { return }
-//            self.dismissLoadingView()
-//            self.endRefreshing()
-//            
-//            switch result {
-//            case .success(let major):
-//                self.options = major.options
-//                DispatchQueue.main.async { self.tableView.reloadData() }
-//            case .failure(let error):
-//                self.presentErrorOnMainThread(withError: error, optionalMessage: "\n\n\(error.localizedDescription)")
-//            }
-//        }
+        self.networkManager.fetchData(for: .options) { [weak self] (result: Result<[Option], SEESError>) in
+            guard let self = self else { return }
+            self.dismissLoadingViewOnMainThread()
+            self.endRefreshingOnMainThread()
+            
+            switch result {
+            case .success(let options):
+                let majorName = self.itemInfo.name
+                self.options = options.filter { $0.majorName == majorName }
+                self.options.sort { $0.optionName < $1.optionName }
+                DispatchQueue.main.async { self.tableView.reloadData() }
+            case .failure(let error):
+                self.presentErrorOnMainThread(withError: error, optionalMessage: "\n\n\(error.localizedDescription)")
+            }
+        }
     }
     
-    private func endRefreshing() {
+    private func endRefreshingOnMainThread() {
         DispatchQueue.main.async {
             if self.refresh.isRefreshing {
                 self.refresh.endRefreshing()
@@ -122,3 +124,4 @@ class MajorTableViewController: UITableViewController {
         fetchOptions()
     }
 }
+

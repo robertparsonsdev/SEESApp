@@ -77,7 +77,7 @@ class ContactCollectionViewController: UICollectionViewController, UICollectionV
     private func fetchContacts() {
         self.networkManager.fetchData(for: .contacts) { [weak self] (result: Result<[Contact], SEESError>) in
             guard let self = self else { return }
-            self.dismissLoadingView()
+            self.dismissLoadingViewOnMainThread()
             self.endRefreshing()
             
             switch result {

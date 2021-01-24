@@ -18,7 +18,7 @@
 		EE122C16256DDD9400D11454 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE122C15256DDD9400D11454 /* Student.swift */; };
 		EE122C22256E0BD900D11454 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE122C21256E0BD900D11454 /* PersistenceManager.swift */; };
 		EE31AB1D25704CD7009F51D8 /* MajorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE31AB1C25704CD7009F51D8 /* MajorTableViewController.swift */; };
-		EE47B574256F0883007AE9D8 /* Major.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47B573256F0883007AE9D8 /* Major.swift */; };
+		EE47B574256F0883007AE9D8 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47B573256F0883007AE9D8 /* Option.swift */; };
 		EE594EF325720C370053A47E /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE594EF225720C370053A47E /* Event.swift */; };
 		EE61809325620C80000283B9 /* SEESBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE61809225620C80000283B9 /* SEESBodyLabel.swift */; };
 		EE61809825621154000283B9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE61809725621154000283B9 /* NetworkManager.swift */; };
@@ -65,7 +65,7 @@
 		EE122C15256DDD9400D11454 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		EE122C21256E0BD900D11454 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		EE31AB1C25704CD7009F51D8 /* MajorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorTableViewController.swift; sourceTree = "<group>"; };
-		EE47B573256F0883007AE9D8 /* Major.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Major.swift; sourceTree = "<group>"; };
+		EE47B573256F0883007AE9D8 /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
 		EE594EF225720C370053A47E /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		EE61809225620C80000283B9 /* SEESBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SEESBodyLabel.swift; sourceTree = "<group>"; };
 		EE61809725621154000283B9 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -165,7 +165,7 @@
 			children = (
 				EE06F59A256607240044CC27 /* HomeItem.swift */,
 				EE122C15256DDD9400D11454 /* Student.swift */,
-				EE47B573256F0883007AE9D8 /* Major.swift */,
+				EE47B573256F0883007AE9D8 /* Option.swift */,
 				EE594EF225720C370053A47E /* Event.swift */,
 				EE7DBA7C257B1888005A6812 /* Contact.swift */,
 			);
@@ -455,7 +455,7 @@
 				EEA5913B255F881400B8F856 /* SEESContactImageView.swift in Sources */,
 				EE06F597256604630044CC27 /* HomeHeader.swift in Sources */,
 				EE7BA66925609FCC005126D2 /* NSRegularExpressionExt.swift in Sources */,
-				EE47B574256F0883007AE9D8 /* Major.swift in Sources */,
+				EE47B574256F0883007AE9D8 /* Option.swift in Sources */,
 				EE7BA660256090FE005126D2 /* SEESTextField.swift in Sources */,
 				EE7DBA7D257B1888005A6812 /* Contact.swift in Sources */,
 				EE7BA664256095A2005126D2 /* SEESButton.swift in Sources */,

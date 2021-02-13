@@ -108,11 +108,11 @@ class ContactCell: UICollectionViewCell {
     private func setStackView() {
         for case let messageView as SEESMessageView in stackView.arrangedSubviews {
             switch messageView.svDay {
-            case .monday: messageView.set(message: self.contact.monday)
-            case .tuesday: messageView.set(message: self.contact.tuesday)
-            case .wednesday: messageView.set(message: self.contact.wednesday)
-            case .thursday: messageView.set(message: self.contact.thursday)
-            case .friday: messageView.set(message: self.contact.friday)
+            case .monday: messageView.set(message: self.contact.monday.insertNewLines())
+            case .tuesday: messageView.set(message: self.contact.tuesday.insertNewLines())
+            case .wednesday: messageView.set(message: self.contact.wednesday.insertNewLines())
+            case .thursday: messageView.set(message: self.contact.thursday.insertNewLines())
+            case .friday: messageView.set(message: self.contact.friday.insertNewLines())
             }
         }
     }
@@ -131,4 +131,15 @@ class ContactCell: UICollectionViewCell {
 protocol ContactCellDelegate: class {
     func callButtonTapped(withNumber number: String)
     func emailButtonTapped(withEmail email: String)
+}
+
+extension String {
+    func insertNewLines() -> String {
+        guard let dashIndex = self.firstIndex(of: "-") else { return "-" }
+        
+        var day = self
+        day.insert("\n", at: dashIndex)
+        day.insert("\n", at: self.index(dashIndex, offsetBy: 2))
+        return day
+    }
 }

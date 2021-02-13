@@ -128,7 +128,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     private func fetchStudentFromNetwork() {
-        self.refresh.beginRefreshing()
+        DispatchQueue.main.async { self.refresh.beginRefreshing() }
         self.networkManager.fetchData(for: .students) { [weak self] (result: Result<[Student], SEESError>) in
             guard let self = self else { return }
             self.endRefreshingOnMainThread()

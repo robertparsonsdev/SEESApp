@@ -128,7 +128,7 @@ class ContactCell: UICollectionViewCell {
 }
 
 // MARK: - Protocols
-protocol ContactCellDelegate: class {
+protocol ContactCellDelegate: AnyObject {
     func callButtonTapped(withNumber number: String)
     func emailButtonTapped(withEmail email: String)
 }

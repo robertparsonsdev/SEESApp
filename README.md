@@ -1,5 +1,5 @@
 # SEES App
-An iPhone app designed for Cal Poly Pomona SEES students to view academic information, calendar events, and office information that are located in a Firebase database instance. This data can be controlled, edited, and updated by SEES office personnel  in real time using the [SEES Admin iPad App](https://github.com/robertparsonsdev/SEESAdmin).
+An iPhone app designed for Cal Poly Pomona SEES students to view academic information, calendar events, and office information that are located in a Firebase database instance. This data can be controlled, edited, and updated by SEES office personnel in real time using the [SEES Admin iPad App](https://github.com/robertparsonsdev/SEESAdmin). SEES (Science Educational Enhancement Services) is a program in the College of Science at Cal Poly Pomona whose aim is to support and engage under-represented minority students in STEM.
 
 The SEES app was designed, built, and tested using Swift and programatic UI in Xcode.
 
